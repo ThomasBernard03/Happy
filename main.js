@@ -22,6 +22,7 @@ function createWindow () {
     minWidth: 450,
     minHeight: 300,
     titleBarStyle: 'hiddenInset',
+    backgroundColor: '#1B1C21',
     webPreferences: {
       // --- !! IMPORTANT !! ---
       // Disable 'contextIsolation' to allow 'nodeIntegration'

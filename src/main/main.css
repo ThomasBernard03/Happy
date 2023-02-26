@@ -1,0 +1,97 @@
+:root {
+    --primary : #319E73;
+    --dark100 : #1B1C21;
+    --dark200 : #232429;
+    --dark300 : #2F3136;
+    --orange : #F8AA4C;
+    --red : #F87659;
+    --yellow : #EEE149;
+    --disabled : #C6C6C6;
+}
+
+*:focus{
+    outline-width: 0;
+}
+
+body {
+    display: grid;
+    gap: 1px;
+    background-color: var(--dark300);
+    height: 100vh;
+    width: 100vw;
+    margin: 0 !important;
+    grid-template-columns: 300px 1fr 1fr;
+}
+
+section.menu, section.request, section.result {
+    background-color: var(--dark100);
+}
+
+section.menu {
+    grid-row: 1/2;
+    grid-column: 1;
+}
+
+section.request {
+    grid-row: 1;
+    grid-column: 2;
+    padding: 20px;
+}
+
+section.result {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        grid-template-columns: 300px 1fr;
+    }
+
+    section.menu {
+        grid-row: 1/3;
+    }
+    
+    section.result {
+        grid-row: 2;
+        grid-column: 2;
+    }
+}
+
+div.request_bar {
+    display: flex;
+    background-color: var(--dark300);
+    gap: 1px;
+    border-radius: 8px;
+}
+
+div.request_bar > select {
+    border: none;
+    padding: 10px;
+    border-radius: 8px 0px 0px 8px;
+    background-color: var(--dark200);
+    color: white;
+    cursor: pointer;
+}
+
+div.request_bar > input {
+    border: none;
+    padding-left: 15px;
+    background-color: var(--dark200);
+    width: 100%;
+    color: white;
+}
+
+div.request_bar > button {
+    background-color: var(--primary);
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 0px 8px 8px 0px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+div.request_bar > button:disabled{
+    background-color: var(--disabled);
+}

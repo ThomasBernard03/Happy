@@ -2,27 +2,41 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <!-- !! IMPORTANT !! -->
-    <!-- Content-Security-Policy no longer required. Will show warning in devtools. Can be ignored -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'"> -->
-    <title>Hello World!</title>
-    <style>
-      html { font-family: sans-serif; background: transparent; color: #9FEAF9; }
-      body { padding: 20px;user-select: none; -webkit-app-region:drag;padding: 20px; }
-    </style>
+    <title>Happy</title>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
 
-    <h1>Hello Electroan!</h1>
-    <p>Build cross-platform desktop apps with JavaScript, HTML, and CSS</p>
-
-    <script>
-      // You can also require other files to run in this process
-      require('app.js')
-
-      // new Notification('Hello', {
-      //   body : 'Notification body'
-      // })
-    </script>
+    <section class="menu"></section>
+    <section class="request">
+      <div class="request_bar">
+        <select>
+          <option>GET</option>
+          <option>POST</option>
+          <option>DELETE</option>
+          <option>PUT</option>
+        </select>
+        <input type="url" placeholder="https://your.request/api/1">
+        <button>Send</button>
+      </div>
+    </section>
+    <section class="result">
+      <pre class="result_body">
+        <code class="json">
+{
+  "Hello" : "world",
+  "code" : 1,
+  "value" : [
+    {
+      "name" : false
+    }
+  ]
+}</code>
+      </pre>
+    </section>
   </body>
 </html>
+<script src="../../assets/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<script>
+</script>
