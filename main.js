@@ -12,18 +12,18 @@ function createWindow () {
     width: 1000,
     height: 800,
     titleBarStyle: 'hiddenInset',
-    vibrancy : 'ultra-dark',
     webPreferences: {
       // --- !! IMPORTANT !! ---
       // Disable 'contextIsolation' to allow 'nodeIntegration'
       // 'contextIsolation' defaults to "true" as from Electron v12
       contextIsolation: false,
-      nodeIntegration: true
+      nodeIntegration: true,
+      enableRemoteModule: true
     }
   })
 
   // Load index.html into the new BrowserWindow
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('src/main/main.html')
 
   // Open DevTools - Remove for PRODUCTION!
   // mainWindow.webContents.openDevTools();
