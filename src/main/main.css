@@ -20,32 +20,38 @@ body {
     height: 100vh;
     width: 100vw;
     margin: 0 !important;
-    grid-template-columns: 300px 1fr 1fr;
+    grid-template-columns: 75px 300px 1fr 1fr;
 }
 
 section.menu, section.request, section.result {
     background-color: var(--dark100);
 }
 
-section.menu {
+section.teams {
     grid-row: 1/2;
     grid-column: 1;
+
+}
+
+section.menu {
+    grid-row: 1/2;
+    grid-column: 2;
 }
 
 section.request {
     grid-row: 1;
-    grid-column: 2;
+    grid-column: 3;
     padding: 20px;
 }
 
 section.result {
     grid-row: 1;
-    grid-column: 3;
+    grid-column: 4;
 }
 
 @media screen and (max-width: 1000px) {
     body {
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: 75px 300px 1fr;
     }
 
     section.menu {
@@ -54,7 +60,7 @@ section.result {
     
     section.result {
         grid-row: 2;
-        grid-column: 2;
+        grid-column: 3;
     }
 }
 

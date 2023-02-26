@@ -1,0 +1,34 @@
+section.teams {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+
+section.teams > article {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: border-radius 0.5s;
+    margin-top: 8px;
+}
+
+article.new_team {
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32pt;
+    vertical-align:baseline;
+    color: white;
+    line-height: 0px;
+}
+
+article.blue_team {
+    background-color: rgb(73, 73, 230);
+}
+
+section.teams > article:hover {
+    border-radius: 20px;
+}
