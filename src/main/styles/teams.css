@@ -14,7 +14,7 @@ section.teams > article {
     margin-top: 8px;
 }
 
-article.new_team {
+#new_team_button {
     background-color: var(--primary);
     display: flex;
     justify-content: center;

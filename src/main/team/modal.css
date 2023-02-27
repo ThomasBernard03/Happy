@@ -1,0 +1,42 @@
+*:focus{
+    outline-width: 0;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    height: 150px;
+    background-color: black;
+    background-image:url("../../../assets/deers.png");
+    background-size: cover;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+input {
+    padding: 8px 10px;
+    border:none;
+    background-color: #EAE6ED;
+}
+
+label {
+    text-transform: uppercase;
+}
+
+img {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    background-size: cover;
+    cursor: pointer;
+}
