@@ -1,0 +1,75 @@
+*:focus{
+    outline-width: 0;
+}
+
+* {
+    user-select: none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    min-height: 150px;
+    background-color: black;
+    background-image:url("../../../assets/deers.png");
+    background-size: cover;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px 20px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+}
+label {
+    text-transform: uppercase;
+    width: 100%;
+}
+
+input {
+    margin-top: 12px;
+    padding: 10px 10px;
+    border:none;
+    background-color: #EAE6ED;
+    width: 100%;
+    font-size: 12pt;
+}
+
+
+
+img {
+    width: 120px;
+    height: 120px;
+    border-radius: 80px;
+    background-size: cover;
+    cursor: pointer;
+    background-color: #EAE6ED;
+    padding: 5px;
+    margin-top: -60px;
+}
+
+section.buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+button {
+    border: none;
+    padding: 10px 40px;
+    cursor: pointer;
+    border-radius: 5px;
+}

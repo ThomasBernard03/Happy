@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Happy</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="styles/teams.css">
+  </head>
+  <body>
+    <section class="headers"></section>
+    <section id="teams_list" class="teams">
+      <article id="new_team_button">+</article>
+    </section>
+    <section class="menu"></section>
+    <section class="request">
+      <div class="request_bar">
+        <select>
+          <option>GET</option>
+          <option>POST</option>
+          <option>DELETE</option>
+          <option>PUT</option>
+        </select>
+        <input type="url" placeholder="https://your.request/api/1">
+        <button>Send</button>
+      </div>
+    </section>
+    <section class="result">
+      <pre class="result_body">
+        <code class="json">
+{
+  "Hello" : "world",
+  "code" : 1,
+  "value" : [
+    {
+      "name" : false
+    }
+  ]
+}</code>
+      </pre>
+    </section>
+  </body>
+</html>
+<script src="../../assets/highlight.min.js"></script>
+<script src="./app.js"></script>
+<script>hljs.highlightAll();</script>
