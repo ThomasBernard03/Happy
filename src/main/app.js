@@ -11,7 +11,6 @@ ipcRenderer.on('team-created', (e, team) => {
     console.log(team);
 })
 
-
 newTeamButton.addEventListener('click', e => {
 
     const child = new BrowserWindow(
@@ -29,6 +28,7 @@ newTeamButton.addEventListener('click', e => {
             }
         })
     child.loadFile('src/main/team/modal.html')
+
     // child.on('blur', e => {
     //     child.hide()
     // })

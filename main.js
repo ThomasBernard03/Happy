@@ -7,9 +7,10 @@ const windowStateKeeper = require('electron-window-state')
 let mainWindow
 
 ipcMain.on('new-team', (e, team) => {
-  console.log(team)
 
-  e.sender.send('team-created', {
+  console.log(mainWindow.webContents);
+
+  mainWindow.webContents.send('team-created', {
     id : 1,
     picture : team.picture,
     name : team.name
@@ -31,7 +32,7 @@ function createWindow () {
     height: state.height,
     minWidth: 450,
     minHeight: 300,
-    titleBarStyle: 'hiddenInset',
+    titleBarStyle: 'hidden',
     backgroundColor: '#1B1C21',
     webPreferences: {
       // --- !! IMPORTANT !! ---
@@ -42,6 +43,8 @@ function createWindow () {
       enableRemoteModule: true
     }
   })
+
+  mainWindow.webContents.openDevTools()
 
   // Load index.html into the new BrowserWindow
   mainWindow.loadFile('src/main/main.html')
