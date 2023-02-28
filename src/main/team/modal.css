@@ -2,6 +2,10 @@
     outline-width: 0;
 }
 
+* {
+    user-select: none;
+}
+
 html {
     height: 100%;
 }
@@ -29,16 +33,21 @@ main {
     gap: 10px;
     height: 100%;
 }
-
-input {
-    padding: 8px 10px;
-    border:none;
-    background-color: #EAE6ED;
-}
-
 label {
     text-transform: uppercase;
+    width: 100%;
 }
+
+input {
+    margin-top: 12px;
+    padding: 10px 10px;
+    border:none;
+    background-color: #EAE6ED;
+    width: 100%;
+    font-size: 12pt;
+}
+
+
 
 img {
     width: 120px;
