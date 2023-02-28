@@ -3,9 +3,13 @@
 // All of the Node.js APIs are available in this process.
 const dialog = require('electron').remote.dialog
 const BrowserWindow = require('electron').remote.BrowserWindow
-const { remote } = require('electron');
+const { remote, ipcRenderer } = require('electron')
 
 let newTeamButton = document.getElementById('new_team_button')
+
+ipcRenderer.on('team-created', (e, team) => {
+    console.log(team);
+})
 
 
 newTeamButton.addEventListener('click', e => {
