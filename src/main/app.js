@@ -6,10 +6,31 @@ const BrowserWindow = require('electron').remote.BrowserWindow
 const { remote, ipcRenderer } = require('electron')
 
 let newTeamButton = document.getElementById('new_team_button')
+let teamsList = document.getElementById('teams_list')
 
 ipcRenderer.on('team-created', (e, team) => {
-    console.log(team);
+    let teamArticle = document.createElement("article")
+    let image = document.createElement('img')
+    image.src = team.picture
+    teamArticle.appendChild(image)
+    teamArticle.style.backgroundImage = team.picture
+    teamsList.insertBefore(teamArticle, teamsList.firstChild)
 })
+
+ipcRenderer.on('teams', (e, teams) => {
+    console.log(teams)
+
+    teams.forEach(team => {
+        let teamArticle = document.createElement("article")
+        let image = document.createElement('img')
+        image.src = team.picture
+        teamArticle.appendChild(image)
+        teamsList.insertBefore(teamArticle, teamsList.firstChild)
+    });
+})
+
+ipcRenderer.send('get-teams')
+
 
 newTeamButton.addEventListener('click', e => {
 

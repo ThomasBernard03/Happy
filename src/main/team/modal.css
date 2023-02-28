@@ -23,7 +23,7 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -43,10 +43,12 @@ label {
 img {
     width: 120px;
     height: 120px;
-    border-radius: 60px;
+    border-radius: 80px;
     background-size: cover;
     cursor: pointer;
     background-color: #EAE6ED;
+    padding: 5px;
+    margin-top: -60px;
 }
 
 section.buttons {

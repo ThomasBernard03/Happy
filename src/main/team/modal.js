@@ -1,5 +1,6 @@
 const { remote } = require('electron');
 const dialog = require('electron').remote.dialog
+const nativeImage = require('electron').nativeImage
 const ipcRenderer = require('electron').ipcRenderer
 
 let teamImage = document.getElementById('team_image')
@@ -17,7 +18,11 @@ teamImage.addEventListener('click', e => {
         ]
     }).then( result => {
         if(!result.canceled){
+            // var image = nativeImage.createFromPath(result.filePaths[0])
+            // teamImage.src = image.toDataURL()
             teamImage.src = result.filePaths[0]
+
+            console.log(teamImage.src)
         }
     })
 })
