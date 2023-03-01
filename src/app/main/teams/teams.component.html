@@ -1,0 +1,8 @@
+<main>
+    <section *ngIf="teams">
+        <div *ngFor="let team of teams">
+            <img src="{{team.picture}}">
+        </div>
+    </section>
+    <div (click)="onNewTeamButtonClicked()" class="add_team_button">+</div>
+</main>

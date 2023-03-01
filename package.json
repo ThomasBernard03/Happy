@@ -1,34 +1,42 @@
 {
   "name": "happy",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "main.js",
-  "repository": "https://github.com/ThomasBernard03/Happy",
   "scripts": {
-    "start": "electron .",
-    "watch": "nodemon --exec electron .",
-    "build" : "electron-builder"
+    "start": "ng build --base-href ./ && electron .",
+    "watch": "nodemon --exec npm run start",
+    "build": "ng build"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^15.2.0",
+    "@angular/cdk": "~15.2.0",
+    "@angular/common": "^15.2.0",
+    "@angular/compiler": "^15.2.0",
+    "@angular/core": "^15.2.0",
+    "@angular/forms": "^15.2.0",
+    "@angular/material": "~15.2.0",
+    "@angular/platform-browser": "^15.2.0",
+    "@angular/platform-browser-dynamic": "^15.2.0",
+    "@angular/router": "^15.2.0",
+    "electron-window-state": "^5.0.3",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.12.0"
   },
   "devDependencies": {
-    "electron": "^9.0.0",
-    "electron-builder": "^23.6.0",
-    "nodemon": "^2.0.0"
-  },
-  "dependencies": {
-    "electron-window-state": "^5.0.3",
-    "image-to-base64": "2.2.0"
-  },
-  "build" : {
-    "appId" : "com.thomasBernard.happy",
-    "copyright" : "Copyright Thomas BERNARD",
-    "mac" : {
-      "category" : "public.app-category.productivity",
-      "target" : "dmg"
-    },
-    "win" : {
-      "target" : "zip"
-    },
-    "linux" : {
-      "category" : "Utility"
-    }
+    "@angular-devkit/build-angular": "^15.2.0",
+    "@angular/cli": "~15.2.0",
+    "@angular/compiler-cli": "^15.2.0",
+    "@types/jasmine": "~4.3.0",
+    "electron": "^23.1.1",
+    "jasmine-core": "~4.5.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "nodemon": "^2.0.0",
+    "typescript": "~4.9.4"
   }
 }
