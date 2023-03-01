@@ -1,7 +1,7 @@
 <main>
-    <section *ngIf="teams">
-        <div *ngFor="let team of teams">
-            <img src="{{team.picture}}">
+    <section *ngIf="projects">
+        <div (contextmenu)="onRightClick($event, project)" *ngFor="let project of projects">
+            <img src="{{project.picture}}">
         </div>
     </section>
     <div (click)="onNewTeamButtonClicked()" class="add_team_button">+</div>

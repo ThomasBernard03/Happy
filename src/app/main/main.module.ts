@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreateTeamDialogComponent } from './teams/create-team-dialog/create-team-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { RequestsComponent } from './requests/requests.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   declarations: [
     TeamsComponent,
     MainComponent,
-    CreateTeamDialogComponent
+    CreateTeamDialogComponent,
+    RequestsComponent
   ],
   imports: [
     CommonModule,

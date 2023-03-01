@@ -14,10 +14,10 @@ export class TeamsComponent implements OnInit {
   constructor(private teamService : TeamService, private dialog : MatDialog){
   }
 
-  teams! : Project[]
+  projects! : Project[]
 
   ngOnInit() {
-    this.teams = this.teamService.getTeams()
+    this.projects = this.teamService.getTeams()
   }
 
   onNewTeamButtonClicked(){
@@ -25,8 +25,13 @@ export class TeamsComponent implements OnInit {
 
     instance.afterClosed().subscribe(result => {
       if(result != undefined){
-        this.teams.push(result)
+        this.projects.push(result)
       }
     })
+  }
+
+  onRightClick(event : Event, project : Project){
+    console.log(event);
+    console.log(project);
   }
 }
