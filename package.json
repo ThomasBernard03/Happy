@@ -4,7 +4,8 @@
   "main": "main.js",
   "scripts": {
     "start": "ng build --base-href ./ && electron .",
-    "watch": "nodemon --exec npm run start"
+    "watch": "nodemon --exec npm run start",
+    "build": "ng build"
   },
   "private": true,
   "dependencies": {

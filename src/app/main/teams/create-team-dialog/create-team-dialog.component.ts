@@ -1,5 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Team } from 'src/models/team.interface';
+import { ElectronService } from 'src/providers/electron.service';
+import { TeamService } from 'src/providers/team.service';
 
 
 @Component({
@@ -11,8 +14,35 @@ export class CreateTeamDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<CreateTeamDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: string,
-  ){
+    private electronService: ElectronService,
+    private teamService : TeamService
+  ) {
+    this.electronService.ipcRenderer?.on("open-file-picker-result", (e, args) => {
+      this.teamImage = args.filePaths[0]
+    })
+  }
+
+  teamImage = "assets/empty_team_image.png"
+  teamName = ""
+
+
+  onImageClicked() {
+    const options = {
+      filters: [
+        { name: 'Images', extensions: ['png', 'jpg', 'jpeg', 'svg'] }
+      ]
+    }
+    this.electronService.ipcRenderer?.send("open-file-picker", options)
+  }
+
+  onCreateButtonClicked(){
+    const team : Team = {
+      id : 0,
+      name : this.teamName,
+      picture : this.teamImage
+    }
+
+    this.teamService.createTeam(team)
 
   }
 

@@ -5,6 +5,7 @@ import { MainComponent } from './main.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateTeamDialogComponent } from './teams/create-team-dialog/create-team-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [

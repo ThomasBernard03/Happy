@@ -4,7 +4,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 0;
+    padding: 10px 0;
 }
 
 div {
@@ -14,14 +14,32 @@ div {
     background-color: var(--primary);
     transition: border-radius 0.5s;
     cursor: pointer;
+
+}
+
+div.add_team_button {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24pt;
     color: white;
     line-height: 0px;
+    margin-top: 10px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
 }
 
 div:hover {
     border-radius: 20px;
+}
+
+div > img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
 }

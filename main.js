@@ -1,13 +1,13 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 const windowStateKeeper = require('electron-window-state')
 
 let mainWindow
 
 // Create a new BrowserWindow when `app` is ready
-function createWindow () {
+function createWindow() {
 
   let state = windowStateKeeper({
-    defaultWidth : 900,
+    defaultWidth: 900,
     defaultHeight: 600
   })
 
@@ -18,7 +18,7 @@ function createWindow () {
     height: state.height,
     minWidth: 450,
     minHeight: 300,
-    titleBarStyle: 'hidden',
+    titleBarStyle: 'default',
     backgroundColor: '#1B1C21',
     webPreferences: {
       // --- !! IMPORTANT !! ---
@@ -26,7 +26,7 @@ function createWindow () {
       // 'contextIsolation' defaults to "true" as from Electron v12
       contextIsolation: false,
       nodeIntegration: true,
-      enableRemoteModule: true
+      enableRemoteModule: false
     }
   })
 
@@ -41,7 +41,7 @@ function createWindow () {
   // mainWindow.webContents.openDevTools();
 
   // Listen for window being closed
-  mainWindow.on('closed',  () => {
+  mainWindow.on('closed', () => {
     mainWindow = null
   })
 
@@ -58,4 +58,12 @@ app.on('window-all-closed', () => {
 // When app icon is clicked and app is running, (macOS) recreate the BrowserWindow
 app.on('activate', () => {
   if (mainWindow === null) createWindow()
+})
+
+ipcMain.on("open-file-picker", (e, args) => {
+  dialog.showOpenDialog(args).then(result => {
+    if (!result.canceled) {
+      e.sender.send("open-file-picker-result", result)
+    }
+  })
 })
