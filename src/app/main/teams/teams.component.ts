@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { CreateTeamDialogComponent } from './create-team-dialog/create-team-dialog.component';
 import { TeamService } from 'src/providers/team.service';
-import { Team } from 'src/models/team.interface';
+import { Project } from 'src/models/project.interface';
 
 @Component({
   selector: 'app-teams',
@@ -14,7 +14,7 @@ export class TeamsComponent implements OnInit {
   constructor(private teamService : TeamService, private dialog : MatDialog){
   }
 
-  teams! : Team[]
+  teams! : Project[]
 
   ngOnInit() {
     this.teams = this.teamService.getTeams()

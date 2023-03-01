@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Team } from 'src/models/team.interface';
+import { Project } from 'src/models/project.interface';
 import { ElectronService } from './electron.service';
 
 @Injectable({
@@ -9,7 +9,7 @@ export class TeamService {
 
     constructor(private electronService : ElectronService){}
 
-    createTeam(team : Team) : Team{
+    createTeam(team : Project) : Project{
         const teams = this.getTeams();
 
         teams.push(team)
@@ -19,11 +19,11 @@ export class TeamService {
         return team
     }
 
-    getTeams() : Team[]{
+    getTeams() : Project[]{
         const rawData = localStorage.getItem("teams")
 
         if(rawData != null){
-            const teams : Team[] = JSON.parse(rawData)
+            const teams : Project[] = JSON.parse(rawData)
             return teams
         }
         else {

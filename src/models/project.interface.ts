@@ -1,4 +1,4 @@
-export interface Team {
+export interface Project {
     guid : string,
     name : string,
     picture : string

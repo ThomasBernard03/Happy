@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Team } from 'src/models/team.interface';
+import { Project } from 'src/models/project.interface';
 import { ElectronService } from 'src/providers/electron.service';
 import { TeamService } from 'src/providers/team.service';
 
@@ -37,7 +37,7 @@ export class CreateTeamDialogComponent {
 
   onCreateButtonClicked(){
 
-    const team : Team = {
+    const team : Project = {
       guid : crypto.randomUUID(),
       name : this.teamName,
       picture : this.teamImage
