@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { CreateTeamDialogComponent } from './create-team-dialog/create-team-dialog.component';
 import { TeamService } from 'src/providers/team.service';
 import { Project } from 'src/models/project.interface';
 
 @Component({
   selector: 'app-teams',
-  templateUrl: 'teams.component.html',
-  styleUrls: ['teams.component.scss']
+  templateUrl: 'projects.component.html',
+  styleUrls: ['projects.component.scss']
 })
-export class TeamsComponent implements OnInit {
+export class ProjectsComponent implements OnInit {
 
   constructor(private teamService : TeamService, private dialog : MatDialog){
   }
 
   projects! : Project[]
+
+  @Output() onProjectSelected = new EventEmitter<Project>()
 
   ngOnInit() {
     this.projects = this.teamService.getTeams()
@@ -33,5 +35,9 @@ export class TeamsComponent implements OnInit {
   onRightClick(event : Event, project : Project){
     console.log(event);
     console.log(project);
+  }
+
+  onProjectClick(project : Project){
+    this.onProjectSelected.emit(project)
   }
 }

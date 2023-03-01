@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TeamsComponent } from './teams/teams.component';
+import { ProjectsComponent } from './projects/projects.component';
 import { MainComponent } from './main.component';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateTeamDialogComponent } from './teams/create-team-dialog/create-team-dialog.component';
+import { CreateTeamDialogComponent } from './projects/create-team-dialog/create-team-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { RequestsComponent } from './requests/requests.component';
@@ -19,7 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    TeamsComponent,
+    ProjectsComponent,
     MainComponent,
     CreateTeamDialogComponent,
     RequestsComponent

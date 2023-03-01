@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Project } from 'src/models/project.interface';
 
 @Component({
@@ -8,6 +8,6 @@ import { Project } from 'src/models/project.interface';
 })
 export class RequestsComponent {
 
-  selectedProject? : Project
+  @Input() selectedProject? : Project
 
 }
