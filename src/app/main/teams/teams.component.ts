@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ElectronService } from 'src/providers/electron.service';
 
 @Component({
   selector: 'app-teams',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['teams.component.scss']
 })
 export class TeamsComponent {
+
+  constructor(private electronService : ElectronService){
+  }
 
 
   onNewTeamButtonClicked(){
