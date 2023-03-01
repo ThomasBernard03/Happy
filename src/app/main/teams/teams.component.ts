@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ElectronService } from 'src/providers/electron.service';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { CreateTeamDialogComponent } from './create-team-dialog/create-team-dialog.component';
 import { TeamService } from 'src/providers/team.service';
@@ -19,12 +18,15 @@ export class TeamsComponent implements OnInit {
 
   ngOnInit() {
     this.teams = this.teamService.getTeams()
-    console.log(this.teams);
-    
   }
 
   onNewTeamButtonClicked(){
-    this.dialog.open(CreateTeamDialogComponent)
-  }
+    const instance = this.dialog.open(CreateTeamDialogComponent)
 
+    instance.afterClosed().subscribe(result => {
+      if(result != undefined){
+        this.teams.push(result)
+      }
+    })
+  }
 }

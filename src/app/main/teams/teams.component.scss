@@ -14,7 +14,6 @@ div {
     background-color: var(--primary);
     transition: border-radius 0.5s;
     cursor: pointer;
-
 }
 
 div.add_team_button {
@@ -42,4 +41,9 @@ div > img {
     width: 60px;
     height: 60px;
     border-radius: 30px;
+    transition: border-radius 0.5s;
+}
+
+div > img:hover{
+    border-radius: 20px;
 }

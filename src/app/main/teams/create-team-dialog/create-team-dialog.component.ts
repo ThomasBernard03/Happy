@@ -36,14 +36,15 @@ export class CreateTeamDialogComponent {
   }
 
   onCreateButtonClicked(){
+
     const team : Team = {
-      id : 0,
+      guid : crypto.randomUUID(),
       name : this.teamName,
       picture : this.teamImage
     }
 
     this.teamService.createTeam(team)
-
+    this.dialogRef.close(team)
   }
 
 }
