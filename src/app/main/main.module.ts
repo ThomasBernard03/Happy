@@ -15,7 +15,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    TeamsComponent
+    TeamsComponent,
+    MainComponent
   ],
   imports: [
     CommonModule,
