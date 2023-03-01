@@ -1,35 +1,13 @@
-// Modules
-const {app, BrowserWindow, ipcMain} = require('electron')
+const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 const windowStateKeeper = require('electron-window-state')
-const fs = require('fs')
-const imageToBase64 = require('image-to-base64')
-const nativeImage = require('electron').nativeImage
 
-
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-ipcMain.on('new-team', (e, team) => {
-
-  addTeam(team)
-
-  mainWindow.webContents.send('team-created', {
-    id : 1,
-    picture : team.picture,
-    name : team.name
-  })
-})
-
-ipcMain.on('get-teams', (e, args) => {
-  e.sender.send('teams', getTeam())
-})
-
 // Create a new BrowserWindow when `app` is ready
-function createWindow () {
+function createWindow() {
 
   let state = windowStateKeeper({
-    defaultWidth : 900,
+    defaultWidth: 900,
     defaultHeight: 600
   })
 
@@ -40,7 +18,7 @@ function createWindow () {
     height: state.height,
     minWidth: 450,
     minHeight: 300,
-    titleBarStyle: 'hidden',
+    titleBarStyle: 'default',
     backgroundColor: '#1B1C21',
     webPreferences: {
       // --- !! IMPORTANT !! ---
@@ -48,14 +26,14 @@ function createWindow () {
       // 'contextIsolation' defaults to "true" as from Electron v12
       contextIsolation: false,
       nodeIntegration: true,
-      enableRemoteModule: true
+      enableRemoteModule: false
     }
   })
 
   mainWindow.webContents.openDevTools()
 
   // Load index.html into the new BrowserWindow
-  mainWindow.loadFile('src/main/main.html')
+  mainWindow.loadFile('dist/happy/index.html')
 
   state.manage(mainWindow)
 
@@ -63,14 +41,10 @@ function createWindow () {
   // mainWindow.webContents.openDevTools();
 
   // Listen for window being closed
-  mainWindow.on('closed',  () => {
+  mainWindow.on('closed', () => {
     mainWindow = null
   })
 
-
-  mainWindow.webContents.on('dom-ready', e => {
-
-  })
 }
 
 // Electron `app` is ready
@@ -86,36 +60,10 @@ app.on('activate', () => {
   if (mainWindow === null) createWindow()
 })
 
-
-function getTeam(){
-  let rawdata = fs.readFileSync('assets/teams.json')
-  let teams = JSON.parse(rawdata)
-
-  console.log(teams);
-
-  return teams
-}
-
-
-function addTeam(team){
-
-  let rawdata = fs.readFileSync('assets/teams.json')
-  let teams = JSON.parse(rawdata)
-
-  console.log(Math.max(...teams.map(x => x.id)))
-
-  console.log(team.picture)
-  var image = nativeImage.createFromPath(team.picture)
-  console.log(image);
-  console.log(image.getSize());
-  console.log(image.toDataURL());
-  
-  team = {...team, id : Math.max(...teams.map(x => x.id)) + 1}
-
-  teams.push(team)
-  rawdata = JSON.stringify(teams)
-
-  fs.writeFileSync("assets/teams.json", rawdata)
-
-  // console.log(teams);
-}
+ipcMain.on("open-file-picker", (e, args) => {
+  dialog.showOpenDialog(args).then(result => {
+    if (!result.canceled) {
+      e.sender.send("open-file-picker-result", result)
+    }
+  })
+})
