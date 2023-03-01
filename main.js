@@ -2,7 +2,6 @@
 const {app, BrowserWindow, ipcMain} = require('electron')
 const windowStateKeeper = require('electron-window-state')
 const fs = require('fs')
-const imageToBase64 = require('image-to-base64')
 const nativeImage = require('electron').nativeImage
 
 

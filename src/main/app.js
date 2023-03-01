@@ -14,7 +14,7 @@ ipcRenderer.on('team-created', (e, team) => {
     image.src = team.picture
     teamArticle.appendChild(image)
     teamArticle.style.backgroundImage = team.picture
-    teamsList.insertBefore(teamArticle, teamsList.firstChild)
+    teamsList.insertBefore(teamArticle, newTeamButton)
 })
 
 ipcRenderer.on('teams', (e, teams) => {
@@ -25,7 +25,7 @@ ipcRenderer.on('teams', (e, teams) => {
         let image = document.createElement('img')
         image.src = team.picture
         teamArticle.appendChild(image)
-        teamsList.insertBefore(teamArticle, teamsList.firstChild)
+        teamsList.insertBefore(teamArticle, newTeamButton)
     });
 })
 
