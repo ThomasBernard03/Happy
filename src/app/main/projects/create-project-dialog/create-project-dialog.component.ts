@@ -2,28 +2,28 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Project } from 'src/models/project.interface';
 import { ElectronService } from 'src/providers/electron.service';
-import { TeamService } from 'src/providers/team.service';
+import { ProjectService } from 'src/providers/project.service';
 
 
 @Component({
-  selector: 'app-create-team-dialog',
-  templateUrl: './create-team-dialog.component.html',
-  styleUrls: ['./create-team-dialog.component.scss']
+  selector: 'app-create-project-dialog',
+  templateUrl: 'create-project-dialog.component.html',
+  styleUrls: ['create-project-dialog.component.scss']
 })
-export class CreateTeamDialogComponent {
+export class CreateProjectDialogComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<CreateTeamDialogComponent>,
+    public dialogRef: MatDialogRef<CreateProjectDialogComponent>,
     private electronService: ElectronService,
-    private teamService : TeamService
+    private projectService : ProjectService
   ) {
     this.electronService.ipcRenderer?.on("open-file-picker-result", (e, args) => {
-      this.teamImage = args.filePaths[0]
+      this.projectImage = args.filePaths[0]
     })
   }
 
-  teamImage = "assets/empty_team_image.png"
-  teamName = ""
+  projectImage = "assets/empty_project_image.png"
+  projectName = ""
 
 
   onImageClicked() {
@@ -37,14 +37,14 @@ export class CreateTeamDialogComponent {
 
   onCreateButtonClicked(){
 
-    const team : Project = {
+    const project : Project = {
       guid : crypto.randomUUID(),
-      name : this.teamName,
-      picture : this.teamImage
+      name : this.projectName,
+      picture : this.projectImage
     }
 
-    this.teamService.createTeam(team)
-    this.dialogRef.close(team)
+    this.projectService.createProject(project)
+    this.dialogRef.close(project)
   }
 
 }

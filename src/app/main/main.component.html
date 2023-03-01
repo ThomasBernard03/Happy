@@ -1,6 +1,6 @@
 <main>
-    <section class="teams">
-        <app-teams (onProjectSelected)="onProjectSelected($event)"></app-teams>
+    <section class="projects">
+        <app-projects (onProjectSelected)="onProjectSelected($event)"></app-projects>
     </section>
     <section class="requests">
         <app-requests *ngIf="project" [selectedProject]="project" ></app-requests>

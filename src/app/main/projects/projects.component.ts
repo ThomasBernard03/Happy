@@ -1,17 +1,17 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateTeamDialogComponent } from './create-team-dialog/create-team-dialog.component';
-import { TeamService } from 'src/providers/team.service';
+import { CreateProjectDialogComponent } from './create-project-dialog/create-project-dialog.component';
+import { ProjectService } from 'src/providers/project.service';
 import { Project } from 'src/models/project.interface';
 
 @Component({
-  selector: 'app-teams',
+  selector: 'app-projects',
   templateUrl: 'projects.component.html',
   styleUrls: ['projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor(private teamService : TeamService, private dialog : MatDialog){
+  constructor(private projectService : ProjectService, private dialog : MatDialog){
   }
 
   projects! : Project[]
@@ -19,11 +19,11 @@ export class ProjectsComponent implements OnInit {
   @Output() onProjectSelected = new EventEmitter<Project>()
 
   ngOnInit() {
-    this.projects = this.teamService.getTeams()
+    this.projects = this.projectService.getProjects()
   }
 
-  onNewTeamButtonClicked(){
-    const instance = this.dialog.open(CreateTeamDialogComponent)
+  onNewProjectButtonClicked(){
+    const instance = this.dialog.open(CreateProjectDialogComponent)
 
     instance.afterClosed().subscribe(result => {
       if(result != undefined){

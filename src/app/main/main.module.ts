@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProjectsComponent } from './projects/projects.component';
 import { MainComponent } from './main.component';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateTeamDialogComponent } from './projects/create-team-dialog/create-team-dialog.component';
+import { CreateProjectDialogComponent } from './projects/create-project-dialog/create-project-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { RequestsComponent } from './requests/requests.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
   declarations: [
     ProjectsComponent,
     MainComponent,
-    CreateTeamDialogComponent,
+    CreateProjectDialogComponent,
     RequestsComponent
   ],
   imports: [
