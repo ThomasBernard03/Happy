@@ -5,8 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng build --base-href ./ && electron .",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "watch": "nodemon --exec npm run start",
     "test": "ng test"
   },
   "private": true,
@@ -35,6 +34,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.9.4"
+    "typescript": "~4.9.4",
+    "nodemon": "^2.0.0"
   }
 }

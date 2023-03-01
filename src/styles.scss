@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #319E73;
+    --dark100: #1B1C21;
+    --dark200: #232429;
+    --dark300: #2F3136;
+    --orange: #F8AA4C;
+    --red: #F87659;
+    --yellow: #EEE149;
+    --disabled: #C6C6C6;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dark100);
+}
+
+*:focus {
+    outline-width: 0;
+}
+
+* {
+    user-select: none;
+}
