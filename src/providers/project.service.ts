@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core'
 import { Project } from 'src/models/project.interface';
-import { ElectronService } from './electron.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProjectService {
 
-    constructor(private electronService : ElectronService){}
+    projects : Project[]
 
-    createProject(project : Project) : Project{
-        const projects = this.getProjects();
+    constructor(){
+        this.projects = this.getProjects()
+    }
 
-        projects.push(project)
+    saveProjects(){
+        localStorage.setItem("projects", JSON.stringify(this.projects))
+    }
 
-        localStorage.setItem("projects", JSON.stringify(projects))
+    addProject(project : Project) : Project{
+        this.projects.push(project)
 
         return project
     }
 
-    getProjects() : Project[]{
+    private getProjects() : Project[]{
         const rawData = localStorage.getItem("projects")
 
         if(rawData != null){

@@ -44,7 +44,7 @@ export class CreateProjectDialogComponent {
       picture : this.projectImage
     }
 
-    this.projectService.createProject(project)
+    this.projectService.addProject(project)
     this.dialogRef.close(project)
   }
 

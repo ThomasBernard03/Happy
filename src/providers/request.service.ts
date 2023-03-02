@@ -7,10 +7,17 @@ import { Request } from '../models/request.interface';
 })
 export class RequestService {
 
-    constructor(){}
+    requests : Request[]
 
-    createRequest(project : Project) : Request{
-        const requests = this.getAllRequests();
+    constructor(){
+        this.requests = this.getAllRequests()
+    }
+
+    saveRequests(){
+        localStorage.setItem("requests", JSON.stringify(this.requests))
+    }
+
+    addRequest(project : Project) : Request{
 
         const request : Request = {
             guid : crypto.randomUUID(),
@@ -21,9 +28,7 @@ export class RequestService {
             body : ""
         }
 
-        requests.push(request)
-
-        localStorage.setItem("requests", JSON.stringify(requests))
+        this.requests.push(request)
 
         return request
     }
@@ -41,14 +46,6 @@ export class RequestService {
     }
 
     getProjectRequests(project : Project) : Request[]{
-        const rawData = localStorage.getItem("requests")
-
-        if(rawData != null){
-            const requests : Request[] = JSON.parse(rawData)
-            return requests.filter(p => p.projectGuid == project.guid)
-        }
-        else {
-            return []
-        }
+        return this.requests.filter(r => r.projectGuid == project.guid)
     }
 }

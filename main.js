@@ -60,6 +60,11 @@ app.on('activate', () => {
   if (mainWindow === null) createWindow()
 })
 
+app.on('before-quit', e => {
+
+  mainWindow.webContents.send("application_will_quit")
+})
+
 ipcMain.on("open-file-picker", (e, args) => {
   dialog.showOpenDialog(args).then(result => {
     if (!result.canceled) {

@@ -33,7 +33,7 @@ export class RequestsComponent implements OnInit {
   }
 
   createRequest(){
-    const request = this.requestService.createRequest(this.project!)
+    const request = this.requestService.addRequest(this.project!)
     this.requests?.push(request)
   }
 

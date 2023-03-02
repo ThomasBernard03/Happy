@@ -19,16 +19,14 @@ export class ProjectsComponent implements OnInit {
   @Output() onProjectSelected = new EventEmitter<Project>()
 
   ngOnInit() {
-    this.projects = this.projectService.getProjects()
+    this.projects = this.projectService.projects
   }
 
   onNewProjectButtonClicked(){
     const instance = this.dialog.open(CreateProjectDialogComponent)
 
     instance.afterClosed().subscribe(result => {
-      if(result != undefined){
-        this.projects.push(result)
-      }
+      
     })
   }
 
