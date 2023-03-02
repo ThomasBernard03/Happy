@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TeamsComponent } from './teams/teams.component';
+import { ProjectsComponent } from './projects/projects.component';
 import { MainComponent } from './main.component';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateTeamDialogComponent } from './teams/create-team-dialog/create-team-dialog.component';
+import { CreateProjectDialogComponent } from './projects/create-project-dialog/create-project-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RequestsComponent } from './requests/requests.component';
 import { FormsModule } from '@angular/forms';
+import { RequestComponent } from './request/request.component';
 
 
 const routes: Routes = [
@@ -18,14 +20,18 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    TeamsComponent,
+    ProjectsComponent,
     MainComponent,
-    CreateTeamDialogComponent
+    CreateProjectDialogComponent,
+    RequestsComponent,
+    RequestComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
+
   ]
 })
 export class MainModule { }

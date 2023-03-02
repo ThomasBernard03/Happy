@@ -1,8 +1,8 @@
 <header>
 </header>
 <main>
-    <img (click)="onImageClicked()"  src="{{teamImage}}">
-    <input>
+    <img (click)="onImageClicked()"  src="{{projectImage}}">
+    <input [(ngModel)]="projectName" type="text">
     <section>
         <button>Close</button>
         <button (click)="onCreateButtonClicked()">Create</button>

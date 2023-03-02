@@ -1,0 +1,57 @@
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+
+    div.add_project_button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24pt;
+        color: white;
+        line-height: 0px;
+        margin-top: 10px;
+    }
+
+    div {
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        background-color: var(--primary);
+        transition: border-radius 0.5s;
+        cursor: pointer;
+    }
+
+    div:hover {
+        border-radius: 20px;
+    }
+    
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:10px;
+        
+        div > img {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            transition: border-radius 0.5s;
+        }
+        
+        div > img:hover{
+            border-radius: 20px;
+        }
+        
+        div.selected_true {
+            border-radius: 20px !important;
+        
+            img {
+                border-radius: 20px !important;
+            }
+        }
+    }
+}

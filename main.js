@@ -16,8 +16,8 @@ function createWindow() {
     y: state.y,
     width: state.width,
     height: state.height,
-    minWidth: 450,
-    minHeight: 300,
+    minWidth: 800,
+    minHeight: 500,
     titleBarStyle: 'default',
     backgroundColor: '#1B1C21',
     webPreferences: {
@@ -58,6 +58,11 @@ app.on('window-all-closed', () => {
 // When app icon is clicked and app is running, (macOS) recreate the BrowserWindow
 app.on('activate', () => {
   if (mainWindow === null) createWindow()
+})
+
+app.on('before-quit', e => {
+
+  mainWindow.webContents.send("application_will_quit")
 })
 
 ipcMain.on("open-file-picker", (e, args) => {
