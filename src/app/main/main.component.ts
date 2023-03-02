@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Project } from 'src/models/project.interface';
 import { RequestsComponent } from './requests/requests.component';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-main',
@@ -10,10 +11,10 @@ import { RequestsComponent } from './requests/requests.component';
 export class MainComponent {
     constructor() { }
 
-    project? : Project
+    projectSubject: Subject<Project> = new Subject<Project>();
 
-    onProjectSelected(project : Project){
-        this.project = project
+    onProjectSelected(project: Project) {
+        this.projectSubject.next(project);
     }
 
 }

@@ -5,8 +5,8 @@ import { MainComponent } from './main.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateProjectDialogComponent } from './projects/create-project-dialog/create-project-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
 import { RequestsComponent } from './requests/requests.component';
+import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -22,12 +22,14 @@ const routes: Routes = [
     ProjectsComponent,
     MainComponent,
     CreateProjectDialogComponent,
-    RequestsComponent
+    RequestsComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
+
   ]
 })
 export class MainModule { }

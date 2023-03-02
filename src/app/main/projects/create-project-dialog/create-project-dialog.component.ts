@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Project } from 'src/models/project.interface';
 import { ElectronService } from 'src/providers/electron.service';
 import { ProjectService } from 'src/providers/project.service';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({

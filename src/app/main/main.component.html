@@ -3,7 +3,7 @@
         <app-projects (onProjectSelected)="onProjectSelected($event)"></app-projects>
     </section>
     <section class="requests">
-        <app-requests *ngIf="project" [selectedProject]="project" ></app-requests>
+        <app-requests [project$]="projectSubject.asObservable()" ></app-requests>
     </section>
     <section class="request"></section>
     <section class="result"></section>

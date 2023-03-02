@@ -2,7 +2,7 @@
 </header>
 <main>
     <img (click)="onImageClicked()"  src="{{projectImage}}">
-    <input>
+    <input [(ngModel)]="projectName" type="text">
     <section>
         <button>Close</button>
         <button (click)="onCreateButtonClicked()">Create</button>

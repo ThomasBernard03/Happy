@@ -1,6 +1,13 @@
 <header>
-    <h3>{{selectedProject?.name}}</h3>
+    <h3>{{project?.name}}</h3>
+    <div>
+        <i class="fa-solid fa-gear"></i>
+        <i (click)="createRequest()" class="fa-solid fa-plus"></i>
+    </div>
 </header>
 <main>
-
+    <div *ngFor="let request of requests">
+        <h4 class="method_{{request.method}}">{{request.method}}</h4>
+        <h5>{{request.name}}</h5>
+    </div>
 </main>
