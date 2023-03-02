@@ -16,7 +16,7 @@ export class ProjectsComponent implements OnInit {
 
   projects! : Project[]
   selectedProject? : Project
-
+  
   @Output() onProjectSelected = new EventEmitter<Project>()
 
   ngOnInit() {
@@ -31,9 +31,8 @@ export class ProjectsComponent implements OnInit {
     })
   }
 
-  onRightClick(event : Event, project : Project){
-    console.log(event);
-    console.log(project);
+  onRightClick(event : MouseEvent, project : Project){
+
   }
 
   onProjectClick(project : Project){
