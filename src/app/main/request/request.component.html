@@ -1,6 +1,6 @@
-<main>
+<main *ngIf="request">
     <section class="request_bar">
-        <select>
+        <select [(ngModel)]="request.method" title="{{request.method}}" class="http_method_{{request.method}}">
             <option>GET</option>
             <option>POST</option>
             <option>PUT</option>

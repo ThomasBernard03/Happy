@@ -13,6 +13,7 @@ html, body {
     --dark200: #232429;
     --dark300: #2F3136;
     --orange: #F8AA4C;
+    --purple: #7A76B2;
     --red: #F87659;
     --yellow: #EEE149;
     --disabled: #C6C6C6;
@@ -35,3 +36,20 @@ html, body {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.http_method_GET {
+    color: var(--primary);
+}
+
+.http_method_POST {
+    color: var(--purple);
+}
+
+.http_method_PUT {
+    color: var(--orange);
+}
+
+.http_method_DELETE {
+    color: var(--red);
+}
