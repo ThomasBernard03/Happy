@@ -20,16 +20,17 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm install
           npm install -g @angular/cli
           npm install -g electron-builder
+          npm install
+
 
       - name: Build Angular App
-        run: ng build --prod
+        run: ng build
 
       - name: Build Electron App
         run: |
-          electron-builder --config electron-builder.yml
+          electron-builder -mwl
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
