@@ -29,6 +29,9 @@ header {
 
 main {
     margin-top: 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
 
     div {
         padding: 10px;
@@ -40,6 +43,10 @@ main {
 
     div:hover{
         background-color: var(--dark200);
+    }
+
+    div.selected_true {
+        background-color: var(--dark200) !important;
     }
 
     h4 {

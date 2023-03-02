@@ -22,6 +22,7 @@ export class RequestsComponent implements OnInit {
 
   project? : Project
   requests? : Request[]
+  selectedRequest? : Request
 
   ngOnInit() {
     this.eventsSubscription = this.project$?.subscribe(project => {
@@ -38,6 +39,7 @@ export class RequestsComponent implements OnInit {
   }
 
   onRequestClicked(request : Request){
+    this.selectedRequest = request
     this.onRequestSelected.emit(request)
   }
 }
