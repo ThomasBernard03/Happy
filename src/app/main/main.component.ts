@@ -14,7 +14,7 @@ import { ProjectService } from 'src/providers/project.service';
 export class MainComponent implements OnInit {
     constructor(private electronService : ElectronService, private requestService : RequestService, private projectService : ProjectService) { }
 
-    projectSubject: Subject<Project> = new Subject<Project>();
+    projectSubject: Subject<Project> = new Subject<Project>
     requestSubject : Subject<Request> = new Subject<Request>
 
 
