@@ -15,6 +15,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   projects! : Project[]
+  selectedProject? : Project
 
   @Output() onProjectSelected = new EventEmitter<Project>()
 
@@ -36,6 +37,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   onProjectClick(project : Project){
+    this.selectedProject = project
     this.onProjectSelected.emit(project)
   }
 }

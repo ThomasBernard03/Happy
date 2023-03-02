@@ -1,6 +1,6 @@
 <main>
     <section *ngIf="projects">
-        <div (contextmenu)="onRightClick($event, project)" (click)="onProjectClick(project)" *ngFor="let project of projects">
+        <div (contextmenu)="onRightClick($event, project)" (click)="onProjectClick(project)" *ngFor="let project of projects" class="selected_{{selectedProject == project}}">
             <img src="{{project.picture}}">
         </div>
     </section>

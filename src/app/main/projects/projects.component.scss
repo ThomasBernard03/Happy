@@ -47,3 +47,11 @@ div > img {
 div > img:hover{
     border-radius: 20px;
 }
+
+div.selected_true {
+    border-radius: 20px !important;
+
+    img {
+        border-radius: 20px !important;
+    }
+}
