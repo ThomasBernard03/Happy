@@ -7,6 +7,7 @@ import { CreateProjectDialogComponent } from './projects/create-project-dialog/c
 import { MatDialogModule } from '@angular/material/dialog';
 import { RequestsComponent } from './requests/requests.component';
 import { FormsModule } from '@angular/forms';
+import { RequestComponent } from './request/request.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
     MainComponent,
     CreateProjectDialogComponent,
     RequestsComponent,
+    RequestComponent,
   ],
   imports: [
     CommonModule,

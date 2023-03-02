@@ -3,8 +3,10 @@
         <app-projects (onProjectSelected)="onProjectSelected($event)"></app-projects>
     </section>
     <section class="requests">
-        <app-requests [project$]="projectSubject.asObservable()" ></app-requests>
+        <app-requests [project$]="projectSubject.asObservable()" (onRequestSelected)="onRequestSelected($event)" ></app-requests>
     </section>
-    <section class="request"></section>
+    <section class="request">
+        <app-request [request$]="requestSubject.asObservable()"></app-request>
+    </section>
     <section class="result"></section>
 </main>

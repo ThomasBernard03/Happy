@@ -6,7 +6,7 @@
     </div>
 </header>
 <main>
-    <div *ngFor="let request of requests">
+    <div *ngFor="let request of requests" (click)="onRequestClicked(request)">
         <h4 class="method_{{request.method}}">{{request.method}}</h4>
         <h5>{{request.name}}</h5>
     </div>

@@ -1,5 +1,5 @@
 header {
-    background-color: var(--dark100);
+    background-color: var(--dark200);
     display: flex;
     padding: 10px 20px;
     justify-content: space-between;
@@ -28,6 +28,7 @@ header {
 
 
 main {
+    margin-top: 1px;
 
     div {
         padding: 10px;
@@ -38,7 +39,7 @@ main {
     }
 
     div:hover{
-        background-color: var(--dark100);
+        background-color: var(--dark200);
     }
 
     h4 {

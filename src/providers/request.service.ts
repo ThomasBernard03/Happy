@@ -13,6 +13,7 @@ export class RequestService {
         const requests = this.getAllRequests();
 
         const request : Request = {
+            guid : crypto.randomUUID(),
             projectGuid : project.guid,
             name : "New request",
             method : "get",

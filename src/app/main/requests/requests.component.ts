@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Project } from 'src/models/project.interface';
 import { Observable, Subscription } from 'rxjs';
 import { RequestService } from 'src/providers/request.service';
@@ -18,6 +18,8 @@ export class RequestsComponent implements OnInit {
   private eventsSubscription? : Subscription;
   @Input() project$?: Observable<Project>
 
+  @Output() onRequestSelected = new EventEmitter<Request>()
+
   project? : Project
   requests? : Request[]
 
@@ -33,5 +35,9 @@ export class RequestsComponent implements OnInit {
   createRequest(){
     const request = this.requestService.createRequest(this.project!)
     this.requests?.push(request)
+  }
+
+  onRequestClicked(request : Request){
+    this.onRequestSelected.emit(request)
   }
 }
