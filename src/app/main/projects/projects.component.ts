@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateProjectDialogComponent } from './create-project-dialog/create-project-dialog.component';
 import { ProjectService } from 'src/providers/project.service';
 import { Project } from 'src/models/project.interface';
+import { ProjectContextMenuComponent } from './project-context-menu/project-context-menu.component';
 
 @Component({
   selector: 'app-projects',
@@ -11,8 +12,7 @@ import { Project } from 'src/models/project.interface';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor(private projectService : ProjectService, private dialog : MatDialog){
-  }
+  constructor(private projectService : ProjectService, private dialog : MatDialog){}
 
   projects! : Project[]
   selectedProject? : Project
@@ -20,7 +20,9 @@ export class ProjectsComponent implements OnInit {
   @Output() onProjectSelected = new EventEmitter<Project>()
 
   ngOnInit() {
-    this.projects = this.projectService.projects
+    this.projectService.getProjects().subscribe(projects => {
+      this.projects = projects
+    })
   }
 
   onNewProjectButtonClicked(){
@@ -32,7 +34,17 @@ export class ProjectsComponent implements OnInit {
   }
 
   onRightClick(event : MouseEvent, project : Project){
+    const instance = this.dialog.open(ProjectContextMenuComponent, {
+      data : project,
+      position : {
+        left : event.clientX + "px",
+        top : event.clientY + "px"
+      }
+    })
 
+    instance.afterClosed().subscribe(result => {
+
+    })
   }
 
   onProjectClick(project : Project){

@@ -8,6 +8,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RequestsComponent } from './requests/requests.component';
 import { FormsModule } from '@angular/forms';
 import { RequestComponent } from './request/request.component';
+import { ResultComponent } from './request/result/result.component';
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { ParametersComponent } from './request/parameters/parameters.component';
+import { RequestContextMenuComponent } from './requests/request-context-menu/request-context-menu.component';
+import { ProjectContextMenuComponent } from './projects/project-context-menu/project-context-menu.component';
 
 
 const routes: Routes = [
@@ -25,13 +30,26 @@ const routes: Routes = [
     CreateProjectDialogComponent,
     RequestsComponent,
     RequestComponent,
+    ResultComponent,
+    ParametersComponent,
+    RequestContextMenuComponent,
+    ProjectContextMenuComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    HighlightModule
 
+  ],
+  providers : [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        fullLibraryLoader: () => import('highlight.js')
+      }
+    }
   ]
 })
 export class MainModule { }

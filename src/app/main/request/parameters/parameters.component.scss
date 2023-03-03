@@ -1,0 +1,35 @@
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    height: 100%;
+
+    header {
+        display: flex;
+        gap: 1px;
+
+        div {
+            color: white;
+            padding: 10px;
+            flex-basis: 0;
+            flex-grow: 1;
+            cursor: pointer;
+            background-color: var(--dark200);
+            text-align: center;
+        }
+
+        div:first-child{
+            border-radius: 8px 0px 0px 0px;
+        }
+    
+        div:last-child{
+            border-radius: 0px 8px 0px 0px;
+        }
+    }
+
+    section {
+        background-color: var(--dark200);
+        flex-grow: 1;
+        border-radius: 0px 0px 8px 8px;
+    }
+}

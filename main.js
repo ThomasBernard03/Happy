@@ -33,7 +33,7 @@ function createWindow() {
   mainWindow.webContents.openDevTools()
 
   // Load index.html into the new BrowserWindow
-  mainWindow.loadFile('dist/happy/index.html')
+  mainWindow.loadFile('dist/index.html')
 
   state.manage(mainWindow)
 

@@ -1,0 +1,11 @@
+<main *ngIf="result">
+    <section class="badges">
+        <div>{{result.code}} {{result.status}}</div>
+    </section>
+
+    <section class="result">
+        <pre contenteditable="true">
+<code [highlight]="result!.body"></code>
+          </pre>
+    </section>
+</main>

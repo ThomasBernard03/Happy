@@ -1,12 +1,26 @@
 {
   "name": "happy",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "main.js",
+  "build": {
+    "appId": "com.thomasbernard.happy",
+    "productName": "Happy",
+    "files": [
+      "**/*",
+      "dist/**/*"
+    ],
+    "directories": {
+      "output": "release",
+      "buildResources": "dist"
+    }
+  },
+  "author": "Thomas Bernard",
+  "description": "Http client to test APIs",
   "scripts": {
     "start": "ng build --base-href ./ && electron .",
     "watch": "nodemon --exec npm run start",
-    "build": "ng build",
-    "angular" : "ng serve"
+    "build": "ng build && electron-builder build",
+    "angular": "ng serve"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +35,7 @@
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
     "electron-window-state": "^5.0.3",
+    "ngx-highlightjs": "^8.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

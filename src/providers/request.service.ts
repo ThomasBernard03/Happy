@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core'
+import { Observable, BehaviorSubject, map } from 'rxjs';
 import { Project } from 'src/models/project.interface';
 import { Request } from '../models/request.interface';
 
@@ -7,17 +8,19 @@ import { Request } from '../models/request.interface';
 })
 export class RequestService {
 
-    requests : Request[]
+    private requests: Request[] = [];
+    private requests$ = new BehaviorSubject<Request[]>([]);
 
     constructor(){
-        this.requests = this.getAllRequests()
+        this.requests = this.getAllRequestsFromLocalStorage()
+        this.requests$.next(this.requests)
     }
 
     saveRequests(){
         localStorage.setItem("requests", JSON.stringify(this.requests))
     }
 
-    addRequest(project : Project) : Request{
+    addRequest(project : Project){
 
         const request : Request = {
             guid : crypto.randomUUID(),
@@ -28,12 +31,24 @@ export class RequestService {
             body : ""
         }
 
-        this.requests.push(request)
-
-        return request
+        this.requests.push(request);
+        this.requests$.next(this.requests);
     }
 
-    private getAllRequests() : Request[]{
+    deleteRequest(request : Request){
+        const index = this.requests.indexOf(request)
+
+        this.requests.splice(index, 1)
+        this.requests$.next(this.requests)
+    }
+
+
+    getProjectRequests(project: Project): Observable<Request[]> {
+        return this.requests$.asObservable().pipe(map(x => x.filter(p => p.projectGuid == project.guid)));
+      }
+
+
+    private getAllRequestsFromLocalStorage() : Request[]{
         const rawData = localStorage.getItem("requests")
 
         if(rawData != null){
@@ -43,9 +58,5 @@ export class RequestService {
         else {
             return []
         }
-    }
-
-    getProjectRequests(project : Project) : Request[]{
-        return this.requests.filter(r => r.projectGuid == project.guid)
     }
 }
