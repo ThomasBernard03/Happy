@@ -22,7 +22,6 @@ export class RequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.request$?.subscribe(request => {
-      console.log(request);
       this.request = request
       this.result = undefined
     })

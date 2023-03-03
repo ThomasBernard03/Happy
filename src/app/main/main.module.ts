@@ -11,6 +11,7 @@ import { RequestComponent } from './request/request.component';
 import { ResultComponent } from './request/result/result.component';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { ParametersComponent } from './request/parameters/parameters.component';
+import { RequestContextMenuComponent } from './requests/request-context-menu/request-context-menu.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
     RequestsComponent,
     RequestComponent,
     ResultComponent,
-    ParametersComponent
+    ParametersComponent,
+    RequestContextMenuComponent
   ],
   imports: [
     CommonModule,

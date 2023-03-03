@@ -33,6 +33,11 @@ export class RequestService {
         return request
     }
 
+    deleteRequest(request : Request){
+        const index = this.requests.indexOf(request)
+        this.requests.splice(index, 1)
+    }
+
     private getAllRequests() : Request[]{
         const rawData = localStorage.getItem("requests")
 
