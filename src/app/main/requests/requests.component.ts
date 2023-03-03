@@ -30,7 +30,7 @@ export class RequestsComponent implements OnInit {
     this.eventsSubscription = this.project$?.subscribe(project => {
       this.project = project
       this.requestService.getProjectRequests(project).subscribe(result => {
-        this.requests = result.filter(x => x.projectGuid == project.guid)
+        this.requests = result
       })
       this.selectedRequest = undefined
       this.onRequestSelected.emit(undefined)

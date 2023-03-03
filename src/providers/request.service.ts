@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Observable, BehaviorSubject, filter } from 'rxjs';
+import { Observable, BehaviorSubject, map } from 'rxjs';
 import { Project } from 'src/models/project.interface';
 import { Request } from '../models/request.interface';
 
@@ -12,7 +12,8 @@ export class RequestService {
     private requests$ = new BehaviorSubject<Request[]>([]);
 
     constructor(){
-        this.requests$.next(this.getAllRequestsFromLocalStorage())
+        this.requests = this.getAllRequestsFromLocalStorage()
+        this.requests$.next(this.requests)
     }
 
     saveRequests(){
@@ -43,6 +44,12 @@ export class RequestService {
         this.requests$.next(this.requests)
     }
 
+
+    getProjectRequests(project: Project): Observable<Request[]> {
+        return this.requests$.asObservable().pipe(map(x => x.filter(p => p.projectGuid == project.guid)));
+      }
+
+
     private getAllRequestsFromLocalStorage() : Request[]{
         const rawData = localStorage.getItem("requests")
 
@@ -53,9 +60,5 @@ export class RequestService {
         else {
             return []
         }
-    }
-
-    getProjectRequests(project : Project) : Observable<Request[]>{
-        return this.requests$.asObservable()
     }
 }

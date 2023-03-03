@@ -16,15 +16,16 @@ export class RequestContextMenuComponent {
     private requestService : RequestService){}
 
     onRenameClicked(){
-
+      this.dialogRef.close()
     }
 
     onCopyClicked(){
-
+      this.dialogRef.close()
     }
 
     onDeleteClicked(){
       this.requestService.deleteRequest(this.data)
+      this.dialogRef.close()
     }
 
 }
