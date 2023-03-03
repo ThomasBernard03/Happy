@@ -9,3 +9,15 @@ section.badges {
         color: white;
     }
 }
+
+section.result {
+
+    overflow: auto;
+
+    pre {
+
+        code {
+            color: white;
+        }
+    }
+}

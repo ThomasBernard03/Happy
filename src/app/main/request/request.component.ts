@@ -14,7 +14,7 @@ export class RequestComponent implements OnInit {
 
   @Input() request$?: Observable<Request>
   request? : Request
-  result! : Result
+  result? : Result
 
   constructor(private httpService : HttpService){
 
@@ -24,6 +24,7 @@ export class RequestComponent implements OnInit {
     this.request$?.subscribe(request => {
       console.log(request);
       this.request = request
+      this.result = undefined
     })
   }
 
@@ -31,28 +32,30 @@ export class RequestComponent implements OnInit {
   onSendButtonClicked(){
     this.httpService.sendRequest(this.request!).subscribe(response => {
 
+      console.log(response);
+      
+
       this.result = {
         guid : crypto.randomUUID(),
         requestGuid : this.request!.guid,
         code : response.status,
         status : response.statusText,
-        body : JSON.stringify(response.body),
+        body : JSON.stringify(response.body, null, 2),
         headers : ""
       }
 
-      console.log(this.result);
     }, (e : HttpErrorResponse) => {
 
       this.result = {
         guid : crypto.randomUUID(),
         requestGuid : this.request!.guid,
         code : e.status,
-        status : e.statusText,
+        status : e.error,
         body : "",
         headers : ""
       }
 
-      console.log(this.result)
+      console.log(e)
     })
   }
 }
