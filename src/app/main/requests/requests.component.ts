@@ -48,11 +48,19 @@ export class RequestsComponent implements OnInit {
 
   onRightClick(event : MouseEvent, request : Request){
 
-    this.dialog.open(RequestContextMenuComponent, {
+    const instance = this.dialog.open(RequestContextMenuComponent, {
       data : request,
       position : {
         left : event.clientX + "px",
         top : event.clientY + "px"
+      }
+    })
+
+    instance.afterClosed().subscribe(result => {
+      // if request deleted
+      if(result){
+        this.selectedRequest = undefined
+        this.onRequestSelected.emit(undefined)
       }
     })
     

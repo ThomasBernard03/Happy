@@ -25,7 +25,7 @@ export class RequestContextMenuComponent {
 
     onDeleteClicked(){
       this.requestService.deleteRequest(this.data)
-      this.dialogRef.close()
+      this.dialogRef.close(true)
     }
 
 }
