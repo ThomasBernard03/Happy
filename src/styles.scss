@@ -17,6 +17,13 @@ html, body {
     --red: #F87659;
     --yellow: #EEE149;
     --disabled: #C6C6C6;
+
+    --json_ponctuation : white;
+    --json_attribute : #319E73;
+    --json_string : #EEE149;
+    --json_number : #7A76B2;
+    --json_keyword : #7A76B2;
+
 }
 
 ::-webkit-scrollbar {
@@ -52,4 +59,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .http_method_DELETE {
     color: var(--red);
+}
+
+
+.hljs-punctuation {
+    color: var(--json_ponctuation);
+}
+
+.hljs-attr {
+    color: var(--json_attribute);
+}
+
+.hljs-string {
+    color: var(--json_string);
+}
+
+.hljs-number {
+    color: var(--json_number);
+}
+
+.hljs-keyword {
+    color: var(--json_keyword);
 }

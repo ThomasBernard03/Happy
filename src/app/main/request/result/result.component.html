@@ -5,8 +5,8 @@
 
 
     <section class="result">
-        <pre>
-            <code [highlight]="result!.body"></code>
+        <pre *ngIf="result">
+<code [highlight]="result!.body"></code>
           </pre>
     </section>
 </main>
