@@ -18,7 +18,7 @@ export class RequestsComponent implements OnInit {
   private eventsSubscription? : Subscription;
   @Input() project$?: Observable<Project>
 
-  @Output() onRequestSelected = new EventEmitter<Request>()
+  @Output() onRequestSelected = new EventEmitter<Request | undefined>()
 
   project? : Project
   requests? : Request[]
@@ -28,8 +28,9 @@ export class RequestsComponent implements OnInit {
     this.eventsSubscription = this.project$?.subscribe(project => {
       console.log(project);
       this.project = project
-
       this.requests = this.requestService.getProjectRequests(project)
+      this.selectedRequest = undefined
+      this.onRequestSelected.emit(undefined)
     })
   }
 

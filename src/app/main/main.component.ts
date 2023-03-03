@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
     constructor(private electronService : ElectronService, private requestService : RequestService, private projectService : ProjectService) { }
 
     projectSubject: Subject<Project> = new Subject<Project>
-    requestSubject : Subject<Request> = new Subject<Request>
+    requestSubject : Subject<Request | undefined> = new Subject<Request | undefined>
 
 
     ngOnInit(): void {
@@ -30,7 +30,7 @@ export class MainComponent implements OnInit {
         this.projectSubject.next(project);
     }
 
-    onRequestSelected(request : Request){
+    onRequestSelected(request : Request | undefined){
         this.requestSubject.next(request)
     }
 }

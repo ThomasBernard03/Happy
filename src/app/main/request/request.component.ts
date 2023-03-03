@@ -12,7 +12,7 @@ import { Result } from 'src/models/result.interface';
 })
 export class RequestComponent implements OnInit {
 
-  @Input() request$?: Observable<Request>
+  @Input() request$?: Observable<Request | undefined>
   request? : Request
   result? : Result
 
