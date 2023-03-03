@@ -9,6 +9,7 @@ import { RequestsComponent } from './requests/requests.component';
 import { FormsModule } from '@angular/forms';
 import { RequestComponent } from './request/request.component';
 import { ResultComponent } from './request/result/result.component';
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 
 const routes: Routes = [
@@ -26,14 +27,23 @@ const routes: Routes = [
     CreateProjectDialogComponent,
     RequestsComponent,
     RequestComponent,
-    ResultComponent,
+    ResultComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    HighlightModule
 
+  ],
+  providers : [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        fullLibraryLoader: () => import('highlight.js')
+      }
+    }
   ]
 })
 export class MainModule { }

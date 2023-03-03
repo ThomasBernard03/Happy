@@ -1,1 +1,12 @@
-<p>{{result.body}}</p>
+<main>
+    <section class="badges">
+        <div>{{result?.code}} {{result?.status}}</div>
+    </section>
+
+
+    <section class="result">
+        <pre>
+            <code [highlight]="result!.body"></code>
+          </pre>
+    </section>
+</main>

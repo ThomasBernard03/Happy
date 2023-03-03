@@ -1,0 +1,11 @@
+section.badges {
+
+    display: flex;
+
+    div{
+        border-radius: 12px;
+        padding: 10px 20px;
+        background-color: var(--dark200);
+        color: white;
+    }
+}

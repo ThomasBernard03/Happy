@@ -1,14 +1,14 @@
 main {
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
     background-color: var(--dark300);
     gap: 1px;
     height: 100%;
+    width: 100%;
 
 
     section {
-        width: 100%;
         background-color: var(--dark100);
         padding: 20px;
     }
@@ -21,6 +21,7 @@ main {
     section.result {
         grid-column: 2;
         grid-row: 1/3;
+        overflow: auto;
     }
 
     @media screen and (max-width: 1000px) {

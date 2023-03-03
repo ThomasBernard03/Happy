@@ -8,6 +8,6 @@ import { Result } from 'src/models/result.interface';
 })
 export class ResultComponent {
 
-  @Input() result! : Result
+  @Input() result? : Result
 
 }
