@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core'
+import { Observable, BehaviorSubject, filter } from 'rxjs';
 import { Project } from 'src/models/project.interface';
 import { Request } from '../models/request.interface';
 
@@ -7,10 +8,11 @@ import { Request } from '../models/request.interface';
 })
 export class RequestService {
 
-    requests : Request[]
+    private requests: Request[] = [];
+    private requests$ = new BehaviorSubject<Request[]>([]);
 
     constructor(){
-        this.requests = this.getAllRequests()
+        this.requests$.next(this.getAllRequestsFromLocalStorage())
     }
 
     saveRequests(){
@@ -28,17 +30,20 @@ export class RequestService {
             body : ""
         }
 
-        this.requests.push(request)
+        this.requests.push(request);
+        this.requests$.next(this.requests);
 
         return request
     }
 
     deleteRequest(request : Request){
         const index = this.requests.indexOf(request)
+
         this.requests.splice(index, 1)
+        this.requests$.next(this.requests)
     }
 
-    private getAllRequests() : Request[]{
+    private getAllRequestsFromLocalStorage() : Request[]{
         const rawData = localStorage.getItem("requests")
 
         if(rawData != null){
@@ -50,7 +55,7 @@ export class RequestService {
         }
     }
 
-    getProjectRequests(project : Project) : Request[]{
-        return this.requests.filter(r => r.projectGuid == project.guid)
+    getProjectRequests(project : Project) : Observable<Request[]>{
+        return this.requests$.asObservable()
     }
 }

@@ -29,15 +29,16 @@ export class RequestsComponent implements OnInit {
   ngOnInit() {
     this.eventsSubscription = this.project$?.subscribe(project => {
       this.project = project
-      this.requests = this.requestService.getProjectRequests(project)
+      this.requestService.getProjectRequests(project).subscribe(result => {
+        this.requests = result.filter(x => x.projectGuid == project.guid)
+      })
       this.selectedRequest = undefined
       this.onRequestSelected.emit(undefined)
     })
   }
 
   createRequest(){
-    const request = this.requestService.addRequest(this.project!)
-    this.requests?.push(request)
+    this.requestService.addRequest(this.project!)
   }
 
   onRequestClicked(request : Request){
