@@ -1,25 +1,32 @@
-section.badges {
-
+main {
     display: flex;
+    flex-direction: column;
 
-    div{
-        border-radius: 12px;
-        padding: 10px 20px;
-        background-color: var(--dark200);
-        color: white;
-    }
-}
+    section.badges {
 
-section.result {
-
-    height: 300px;
-    width: 300px;
-    overflow: auto;
-
-    pre {
-
-        code {
+        display: flex;
+    
+        div{
+            border-radius: 12px;
+            padding: 10px 20px;
+            background-color: var(--dark200);
             color: white;
+        }
+    }
+    
+    section.result {
+
+        background-color: var(--dark200);
+        flex-grow: 1;
+        overflow: auto;
+        height: 200px;
+        width: 200px;
+    
+        pre {
+    
+            code {
+                color: white;
+            }
         }
     }
 }

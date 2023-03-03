@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { RequestComponent } from './request/request.component';
 import { ResultComponent } from './request/result/result.component';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { ParametersComponent } from './request/parameters/parameters.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
     CreateProjectDialogComponent,
     RequestsComponent,
     RequestComponent,
-    ResultComponent
+    ResultComponent,
+    ParametersComponent
   ],
   imports: [
     CommonModule,
