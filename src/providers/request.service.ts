@@ -20,7 +20,7 @@ export class RequestService {
         localStorage.setItem("requests", JSON.stringify(this.requests))
     }
 
-    addRequest(project : Project) : Request{
+    addRequest(project : Project){
 
         const request : Request = {
             guid : crypto.randomUUID(),
@@ -33,8 +33,6 @@ export class RequestService {
 
         this.requests.push(request);
         this.requests$.next(this.requests);
-
-        return request
     }
 
     deleteRequest(request : Request){

@@ -63,7 +63,5 @@ export class RequestsComponent implements OnInit {
         this.onRequestSelected.emit(undefined)
       }
     })
-    
-    
   }
 }
