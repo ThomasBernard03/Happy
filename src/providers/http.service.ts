@@ -12,6 +12,12 @@ export class HttpService {
     }
 
     sendRequest(request : Request){
-        return this.httpClient.get<HttpResponse<any>>(request.url, {observe : 'response'})
+
+        if(request.method == "POST"){
+            return this.httpClient.post<HttpResponse<any>>(request.url, request.body, {observe : 'response'})
+        }
+        else {
+            return this.httpClient.get<HttpResponse<any>>(request.url, {observe : 'response'})
+        }
     }
 }

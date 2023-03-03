@@ -1,11 +1,10 @@
-<main>
+<main *ngIf="result">
     <section class="badges">
-        <div>{{result?.code}} {{result?.status}}</div>
+        <div>{{result.code}} {{result.status}}</div>
     </section>
 
-
     <section class="result">
-        <pre *ngIf="result" contenteditable="true">
+        <pre contenteditable="true">
 <code [highlight]="result!.body"></code>
           </pre>
     </section>
