@@ -81,6 +81,7 @@ export class RequestsComponent implements OnInit {
   }
 
   onRightClick(event: MouseEvent, request: Request) {
+    this.onRequestClicked(request)
 
     const instance = this.dialog.open(RequestContextMenuComponent, {
       data: request,
@@ -97,8 +98,7 @@ export class RequestsComponent implements OnInit {
         this.onRequestSelected.emit(undefined)
       }
       else if (result == DialogResult.Rename) {
-        console.log("rename");
-
+        this.onDoubleClick(request)
       }
     })
   }
