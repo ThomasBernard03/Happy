@@ -5,8 +5,8 @@
         <i (click)="createRequest()" class="fa-solid fa-plus"></i>
     </div>
 </header>
-<main>
-    <div *ngFor="let request of requests" (click)="onRequestClicked(request)" class="selected_{{selectedRequest == request}}" (contextmenu)="onRightClick($event, request)">
+<main id="requests_list">
+    <div *ngFor="let request of requests" (click)="onRequestClicked(request)" (dblclick)="onDoubleClick(request)" class="selected_{{selectedRequest == request}}" (contextmenu)="onRightClick($event, request)" >
         <h4 class="http_method_{{request.method}}">{{request.method}}</h4>
         <h5>{{request.name}}</h5>
     </div>
