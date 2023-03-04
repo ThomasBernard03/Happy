@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Observable, BehaviorSubject, map } from 'rxjs';
+import { RequestMethod } from 'src/models/enums/request-method';
 import { Project } from 'src/models/project.interface';
 import { Request } from '../models/request.interface';
 
@@ -26,7 +27,7 @@ export class RequestService {
             guid : crypto.randomUUID(),
             projectGuid : project.guid,
             name : "New request",
-            method : "GET",
+            method : RequestMethod.Get,
             url : "",
             body : ""
         }
