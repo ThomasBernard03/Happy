@@ -46,6 +46,12 @@ export class RequestsComponent implements OnInit {
     const span = div!.getElementsByTagName("h5")[0]
     span.contentEditable = "true"
 
+    const range = document.createRange()
+    range.selectNodeContents(span)
+    const selection = window.getSelection();
+    selection!.removeAllRanges();
+    selection!.addRange(range);
+
     span?.addEventListener("keydown", e => {
       if (e.key === "Enter") {
         span.contentEditable = "false"
