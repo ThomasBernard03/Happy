@@ -5,6 +5,6 @@ export interface Result {
     status : string
     body : string
     headers : Map<string, string[]>,
-    date : Date,
+    date : number,
     time : number
 }

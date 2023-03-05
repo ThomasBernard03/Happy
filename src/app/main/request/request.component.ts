@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Request } from 'src/models/request.interface';
 import { HttpService } from 'src/providers/http.service';
-import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Result } from 'src/models/result.interface';
+import { HttpErrorResponse } from '@angular/common/http';
 import { ElectronService } from 'src/providers/electron.service';
 
 @Component({
@@ -15,14 +14,12 @@ export class RequestComponent implements OnInit {
 
   @Input() request$?: Observable<Request | undefined>
   request? : Request
-  result? : Result
 
   constructor(private httpService : HttpService, private electronService : ElectronService){}
 
   ngOnInit(): void {
     this.request$?.subscribe(request => {
       this.request = request
-      this.result = undefined
     })
 
 
@@ -32,14 +29,14 @@ export class RequestComponent implements OnInit {
   }
 
   onSendButtonClicked(){
-    this.result = {
+    this.request!.result = {
       guid : crypto.randomUUID(),
       requestGuid : this.request!.guid,
       code : 0,
       status : "",
       body : "",
       headers : new Map(),
-      date : new Date(),
+      date : new Date().getMilliseconds(),
       time : 0
     }
 
@@ -47,24 +44,21 @@ export class RequestComponent implements OnInit {
 
       response.headers.keys()
 
-      this.result!.code = response.status
-      this.result!.status = response.statusText
-      this.result!.body = JSON.stringify(response.body, null, 2),
-      this.result!.headers = response.headers["headers"]
-      this.result!.time = new Date().getMilliseconds() - this.result!.date.getMilliseconds()
-
-
-      console.log(this.result?.headers);
+      this.request!.result!.code = response.status
+      this.request!.result!.status = response.statusText
+      this.request!.result!.body = JSON.stringify(response.body, null, 2),
+      this.request!.result!.headers = response.headers["headers"]
+      this.request!.result!.time = new Date().getMilliseconds() - this.request!.result!.date
       
 
     }, (e : HttpErrorResponse) => {
 
       e.headers.keys()
 
-      this.result!.code = e.status
-      this.result!.status = e.error
-      this.result!.headers = e.headers["headers"]
-      this.result!.time = new Date().getMilliseconds() - this.result!.date.getMilliseconds()
+      this.request!.result!.code = e.status
+      this.request!.result!.status = e.error
+      this.request!.result!.headers = e.headers["headers"]
+      this.request!.result!.time = new Date().getMilliseconds() - this.request!.result!.date
 
       console.log(e)
     })
