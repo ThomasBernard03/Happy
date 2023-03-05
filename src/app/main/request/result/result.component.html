@@ -1,6 +1,6 @@
 <main>
     <section class="badges" *ngIf="result">
-        <div>{{result.code}} {{result.status}}</div>
+        <div class="result_type_{{result.code.toString()[0]}}">{{result.code}} {{result.status}}</div>
         <div>{{result.time}} ms</div>
         <div>{{result.date}}</div>
     </section>

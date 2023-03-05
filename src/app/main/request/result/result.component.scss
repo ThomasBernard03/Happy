@@ -17,6 +17,21 @@ main {
             background-color: var(--dark200);
             color: white;
         }
+
+        div.result_type_2 {
+            // For 4xx errors
+            background-color: var(--primary);
+        }
+
+        div.result_type_4 {
+            // For 4xx errors
+            background-color: var(--orange);
+        }
+
+        div.result_type_5 {
+            // For 4xx errors
+            background-color: var(--red);
+        }
     }
     
     section.result {
