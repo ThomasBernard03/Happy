@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog, clipboard } = require('electron')
 const windowStateKeeper = require('electron-window-state')
 
 let mainWindow
@@ -74,4 +74,8 @@ ipcMain.on("open-file-picker", (e, args) => {
       e.sender.send("open-file-picker-result", result)
     }
   })
+})
+
+ipcMain.on("add-clipboard", (e, args) => {
+  clipboard.writeText(args)
 })

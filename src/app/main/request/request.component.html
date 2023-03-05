@@ -11,7 +11,7 @@
             <button (click)="onSendButtonClicked()">Send</button>
         </div>
 
-        <app-parameters class="parameters"></app-parameters>
+        <app-parameters [request]="request" class="parameters"></app-parameters>
     </section>
 
     <section class="result">

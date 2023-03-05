@@ -6,6 +6,7 @@ import { Request } from 'src/models/request.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestContextMenuComponent } from './request-context-menu/request-context-menu.component';
 import { DialogResult } from 'src/models/enums/dialog-result';
+import { ElectronService } from 'src/providers/electron.service';
 
 @Component({
   selector: 'app-requests',
@@ -14,13 +15,9 @@ import { DialogResult } from 'src/models/enums/dialog-result';
 })
 export class RequestsComponent implements OnInit {
 
-  constructor(private requestService: RequestService, private dialog: MatDialog) {
+  constructor(private requestService: RequestService, private dialog: MatDialog, private electronService : ElectronService) {}
 
-  }
-
-  private eventsSubscription?: Subscription;
   @Input() project$?: Observable<Project>
-
   @Output() onRequestSelected = new EventEmitter<Request | undefined>()
 
   project?: Project
@@ -28,7 +25,7 @@ export class RequestsComponent implements OnInit {
   selectedRequest?: Request
 
   ngOnInit() {
-    this.eventsSubscription = this.project$?.subscribe(project => {
+    this.project$?.subscribe(project => {
       this.project = project
       this.requestService.getProjectRequests(project).subscribe(result => {
         this.requests = result
@@ -94,11 +91,15 @@ export class RequestsComponent implements OnInit {
     instance.afterClosed().subscribe(result => {
       // if request deleted
       if (result == DialogResult.Delete) {
+        this.requestService.deleteRequest(this.selectedRequest!)
         this.selectedRequest = undefined
         this.onRequestSelected.emit(undefined)
       }
       else if (result == DialogResult.Rename) {
         this.onDoubleClick(request)
+      }
+      else if (result == DialogResult.Copy){
+        this.electronService.ipcRenderer?.send("add-clipboard", JSON.stringify(this.selectedRequest, null, 2))
       }
     })
   }

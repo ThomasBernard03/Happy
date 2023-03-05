@@ -32,4 +32,8 @@ main {
         flex-grow: 1;
         border-radius: 0px 0px 8px 8px;
     }
+
+    #request_auth_content, #request_headers_content, #request_notes_content {
+        display: none;
+    }
 }

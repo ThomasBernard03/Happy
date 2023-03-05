@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Request } from 'src/models/request.interface';
-import { RequestService } from 'src/providers/request.service';
 import { DialogResult } from 'src/models/enums/dialog-result';
 
 @Component({
@@ -13,8 +12,7 @@ export class RequestContextMenuComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Request,
-    public dialogRef: MatDialogRef<RequestContextMenuComponent>,
-    private requestService : RequestService){}
+    public dialogRef: MatDialogRef<RequestContextMenuComponent>){}
 
     onRenameClicked(){
       this.dialogRef.close(DialogResult.Rename)
@@ -25,7 +23,6 @@ export class RequestContextMenuComponent {
     }
 
     onDeleteClicked(){
-      this.requestService.deleteRequest(this.data)
       this.dialogRef.close(DialogResult.Delete)
     }
 }
