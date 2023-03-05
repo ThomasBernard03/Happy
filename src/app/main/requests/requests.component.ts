@@ -73,6 +73,7 @@ export class RequestsComponent implements OnInit {
   }
 
   onRequestClicked(request: Request) {
+    this.electronService.ipcRenderer?.send("request-selected", request)
     this.selectedRequest = request
     this.onRequestSelected.emit(request)
   }

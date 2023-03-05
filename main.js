@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog, clipboard } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog, clipboard, TouchBar } = require('electron')
 const windowStateKeeper = require('electron-window-state')
 
 let mainWindow
@@ -78,4 +78,56 @@ ipcMain.on("open-file-picker", (e, args) => {
 
 ipcMain.on("add-clipboard", (e, args) => {
   clipboard.writeText(args)
+})
+
+
+ipcMain.on("request-selected", (e, request) => {
+
+  var color = "#319E73"
+
+  switch(request.method){
+    case "POST" : 
+      color = "#7A76B2"
+      break
+    case "PUT" :
+      color = "#EEE149"
+      break
+    case "DELETE" :
+      color = "#F87659"
+  }
+
+  const methodLabel = new TouchBar.TouchBarLabel({
+    label : request.method,
+    textColor : color
+  })
+  
+  const urlLabel = new TouchBar.TouchBarLabel({
+    label : request.url
+  })
+  
+  
+  const spacer = new TouchBar.TouchBarSpacer({
+    size : "flexible"
+  })
+  
+  const sendButton = new TouchBar.TouchBarButton({
+    label : "SEND",
+    backgroundColor : "#319E73",
+    click : () => {
+      e.sender.send("send-request")
+    }
+  })
+  
+  const touchBar = new TouchBar({
+    items : [
+      methodLabel,
+      urlLabel,
+      spacer,
+      sendButton
+    ]
+  })
+
+  if(process.platform === "darwin"){
+    mainWindow.setTouchBar(touchBar)
+  }
 })

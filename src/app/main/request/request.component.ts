@@ -4,6 +4,7 @@ import { Request } from 'src/models/request.interface';
 import { HttpService } from 'src/providers/http.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Result } from 'src/models/result.interface';
+import { ElectronService } from 'src/providers/electron.service';
 
 @Component({
   selector: 'app-request',
@@ -16,17 +17,19 @@ export class RequestComponent implements OnInit {
   request? : Request
   result? : Result
 
-  constructor(private httpService : HttpService){
-
-  }
+  constructor(private httpService : HttpService, private electronService : ElectronService){}
 
   ngOnInit(): void {
     this.request$?.subscribe(request => {
       this.request = request
       this.result = undefined
     })
-  }
 
+
+    this.electronService.ipcRenderer?.on("send-request", (e, args) => {
+      this.onSendButtonClicked()
+    })
+  }
 
   onSendButtonClicked(){
     this.result = {
