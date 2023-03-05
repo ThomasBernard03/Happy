@@ -5,18 +5,27 @@
         <div>{{result.date.toDateString()}}</div>
     </section>
 
-    <section class="result" *ngIf="result">
+    <section class="result">
         <header>
             <div id="result_body_tab">Body</div>
             <div id="result_headers_tab">Headers</div>
         </header>
         <section id="result_body_content">
         <pre contenteditable="true">
-<code [highlight]="result!.body"></code>
+<code *ngIf="result?.body" [highlight]="result!.body"></code>
           </pre>
         </section>
         <section id="result_headers_content">
-
+            <table *ngIf="result?.headers">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                <tr *ngFor="let header of result!.headers.entries()">
+                    <td>{{header[0]}}</td>
+                    <td>{{header[1]}}</td>
+                </tr>
+            </table>
         </section>
     </section>
 </main>

@@ -4,7 +4,7 @@ export interface Result {
     code : number
     status : string
     body : string
-    headers : string,
+    headers : Map<string, string[]>,
     date : Date,
     time : number
 }
