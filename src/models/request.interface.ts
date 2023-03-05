@@ -6,5 +6,5 @@ export interface Request {
     name : string
     method : RequestMethod
     url : string
-    body : string
+    body : string,
 }

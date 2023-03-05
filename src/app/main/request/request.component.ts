@@ -29,30 +29,33 @@ export class RequestComponent implements OnInit {
 
 
   onSendButtonClicked(){
+    this.result = {
+      guid : crypto.randomUUID(),
+      requestGuid : this.request!.guid,
+      code : 0,
+      status : "",
+      body : "",
+      headers : "",
+      date : new Date(),
+      time : 0
+    }
+
     this.httpService.sendRequest(this.request!).subscribe(response => {
 
       console.log(response);
-      
 
-      this.result = {
-        guid : crypto.randomUUID(),
-        requestGuid : this.request!.guid,
-        code : response.status,
-        status : response.statusText,
-        body : JSON.stringify(response.body, null, 2),
-        headers : ""
-      }
+      this.result!.code = response.status
+      this.result!.status = response.statusText
+      this.result!.body = JSON.stringify(response.body, null, 2),
+      this.result!.headers = ""
+      this.result!.time = new Date().getMilliseconds() - this.result!.date.getMilliseconds()
 
     }, (e : HttpErrorResponse) => {
 
-      this.result = {
-        guid : crypto.randomUUID(),
-        requestGuid : this.request!.guid,
-        code : e.status,
-        status : e.error,
-        body : "",
-        headers : ""
-      }
+      this.result!.code = e.status
+      this.result!.status = e.error
+      this.result!.headers = ""
+      this.result!.time = new Date().getMilliseconds() - this.result!.date.getMilliseconds()
 
       console.log(e)
     })

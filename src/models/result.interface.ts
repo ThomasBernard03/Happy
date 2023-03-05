@@ -4,5 +4,7 @@ export interface Result {
     code : number
     status : string
     body : string
-    headers : string
+    headers : string,
+    date : Date,
+    time : number
 }

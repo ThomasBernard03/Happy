@@ -5,6 +5,7 @@ main {
     section.badges {
 
         display: flex;
+        gap: 10px;
     
         div{
             border-radius: 12px;
@@ -21,6 +22,7 @@ main {
         overflow: auto;
         height: 200px;
         width: 200px;
+        margin-top: 20px;
     
         pre {
     

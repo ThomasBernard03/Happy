@@ -45,6 +45,10 @@ function createWindow() {
     mainWindow = null
   })
 
+  mainWindow.on('close', e => {
+    app.quit()
+  })
+
 }
 
 // Electron `app` is ready
@@ -61,7 +65,6 @@ app.on('activate', () => {
 })
 
 app.on('before-quit', e => {
-
   mainWindow.webContents.send("application_will_quit")
 })
 
