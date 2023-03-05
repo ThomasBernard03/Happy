@@ -30,8 +30,6 @@ function createWindow() {
     }
   })
 
-  mainWindow.webContents.openDevTools()
-
   // Load index.html into the new BrowserWindow
   mainWindow.loadFile('dist/index.html')
 
