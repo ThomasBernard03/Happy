@@ -6,7 +6,7 @@
     "appId": "com.thomasbernard.happy",
     "productName": "Happy",
     "files": [
-      "**/*",
+      "main.js",
       "dist/**/*"
     ],
     "directories": {
@@ -19,7 +19,7 @@
   "scripts": {
     "start": "ng build --base-href ./ && electron .",
     "watch": "nodemon --exec npm run start",
-    "build": "ng build && electron-builder build",
+    "build": "ng build --base-href ./ && electron-builder -mwl",
     "angular": "ng serve"
   },
   "private": true,
@@ -44,6 +44,7 @@
     "@angular/router": "^15.2.0",
     "@types/jasmine": "~4.3.0",
     "electron": "^23.1.1",
+    "electron-builder": "^23.6.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
