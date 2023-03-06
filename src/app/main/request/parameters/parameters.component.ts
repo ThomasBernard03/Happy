@@ -1,14 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
 import { Request } from 'src/models/request.interface';
+import * as ace from "ace-builds";
 
 @Component({
   selector: 'app-parameters',
   templateUrl: './parameters.component.html',
   styleUrls: ['./parameters.component.scss']
 })
-export class ParametersComponent implements OnInit {
+export class ParametersComponent implements OnInit, AfterViewInit {
 
   @Input() request! : Request
+
+  ngAfterViewInit(): void {
+    ace.config.set('basePath', 'https://unpkg.com/ace-builds@1.4.12/src-noconflict');
+    const aceEditor = ace.edit(document.getElementById("request_body_content")!);
+    aceEditor.session.setMode('ace/mode/json');
+    aceEditor.setTheme('ace/theme/twilight');
+  }
 
   ngOnInit(): void {
 
