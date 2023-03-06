@@ -1,3 +1,0 @@
-{
-    "ignore": ["assets/*", ".angular/*", ".vscode/*", "dist"]
-}

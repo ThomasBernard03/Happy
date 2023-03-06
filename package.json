@@ -7,10 +7,7 @@
     "productName": "Happy",
     "files": [
       "**/*",
-      "dist/**/*",
-      "!release/**",
-      "!nodes_modules",
-      "!.angular"
+      "dist/**/*"
     ],
     "directories": {
       "output": "release",
