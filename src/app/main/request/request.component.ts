@@ -51,6 +51,7 @@ export class RequestComponent implements OnInit {
       this.request!.result!.headers = response.headers["headers"]
       this.request!.result!.time = new Date().getUTCMilliseconds() - this.request!.result!.date
       
+      this.requestService.selectedRequest$.next(this.request)
 
     }, (e : HttpErrorResponse) => {
 
@@ -62,6 +63,7 @@ export class RequestComponent implements OnInit {
       this.request!.result!.time = new Date().getUTCMilliseconds() - this.request!.result!.date
 
       console.log(e)
+      this.requestService.selectedRequest$.next(this.request)
     })
   }
 }
