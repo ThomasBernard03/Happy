@@ -4,6 +4,7 @@ import { Request } from 'src/models/request.interface';
 import { HttpService } from 'src/providers/http.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ElectronService } from 'src/providers/electron.service';
+import { RequestService } from 'src/providers/request.service';
 
 @Component({
   selector: 'app-request',
@@ -12,17 +13,17 @@ import { ElectronService } from 'src/providers/electron.service';
 })
 export class RequestComponent implements OnInit {
 
-  @Input() request$?: Observable<Request | undefined>
-  request? : Request
+  request : Request | null = null
 
-  constructor(private httpService : HttpService, private electronService : ElectronService){}
+  constructor(private httpService : HttpService, private requestService : RequestService, private electronService : ElectronService){}
 
   ngOnInit(): void {
-    this.request$?.subscribe(request => {
+
+    this.requestService.selectedRequest$.asObservable().subscribe(request => {
       this.request = request
     })
 
-
+    // For touchbar
     this.electronService.ipcRenderer?.on("send-request", (e, args) => {
       this.onSendButtonClicked()
     })

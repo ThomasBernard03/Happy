@@ -1,12 +1,13 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Project } from 'src/models/project.interface';
-import { elementAt, Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { RequestService } from 'src/providers/request.service';
 import { Request } from 'src/models/request.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestContextMenuComponent } from './request-context-menu/request-context-menu.component';
 import { DialogResult } from 'src/models/enums/dialog-result';
 import { ElectronService } from 'src/providers/electron.service';
+import { ProjectService } from 'src/providers/project.service';
 
 @Component({
   selector: 'app-requests',
@@ -15,23 +16,26 @@ import { ElectronService } from 'src/providers/electron.service';
 })
 export class RequestsComponent implements OnInit {
 
-  constructor(private requestService: RequestService, private dialog: MatDialog, private electronService : ElectronService) {}
+  constructor(private requestService: RequestService, private projectService : ProjectService, private dialog: MatDialog, private electronService : ElectronService) {}
 
-  @Input() project$?: Observable<Project>
-  @Output() onRequestSelected = new EventEmitter<Request | undefined>()
-
-  project?: Project
+  project : Project | null = null
   requests?: Request[]
-  selectedRequest?: Request
+  selectedRequest : Request | null = null
 
   ngOnInit() {
-    this.project$?.subscribe(project => {
+    this.projectService.selectedProject.asObservable().subscribe(project => {
       this.project = project
-      this.requestService.getProjectRequests(project).subscribe(result => {
-        this.requests = result
-      })
-      this.selectedRequest = undefined
-      this.onRequestSelected.emit(undefined)
+      this.requestService.selectedRequest$.next(null)
+
+      if(project != null){
+        this.requestService.getProjectRequests(project).subscribe(result => {
+          this.requests = result
+        })
+      }
+    })
+
+    this.requestService.selectedRequest$.asObservable().subscribe(request => {
+      this.selectedRequest = request
     })
   }
 
@@ -74,8 +78,7 @@ export class RequestsComponent implements OnInit {
 
   onRequestClicked(request: Request) {
     this.electronService.ipcRenderer?.send("request-selected", request)
-    this.selectedRequest = request
-    this.onRequestSelected.emit(request)
+    this.requestService.selectedRequest$.next(request)
   }
 
   onRightClick(event: MouseEvent, request: Request) {
@@ -93,8 +96,7 @@ export class RequestsComponent implements OnInit {
       // if request deleted
       if (result == DialogResult.Delete) {
         this.requestService.deleteRequest(this.selectedRequest!)
-        this.selectedRequest = undefined
-        this.onRequestSelected.emit(undefined)
+        this.selectedRequest = null
       }
       else if (result == DialogResult.Rename) {
         this.onDoubleClick(request)

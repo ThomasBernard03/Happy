@@ -12,6 +12,8 @@ export class RequestService {
     private requests: Request[] = [];
     private requests$ = new BehaviorSubject<Request[]>([]);
 
+    selectedRequest$ = new BehaviorSubject<Request | null>(null);
+
     constructor() {
         this.requests = this.getAllRequestsFromLocalStorage()
         this.requests$.next(this.requests)

@@ -9,6 +9,7 @@ export class ProjectService {
 
     private projects : Project[]
     private projects$ = new BehaviorSubject<Project[]>([]);
+    selectedProject = new BehaviorSubject<Project | null>(null)
 
     constructor(){
         this.projects = this.getAllProjectsFromLocalStorage()

@@ -1,16 +1,34 @@
-import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Result } from 'src/models/result.interface';
 import * as ace from "ace-builds";
+import { RequestService } from 'src/providers/request.service';
 
 @Component({
   selector: 'app-result',
   templateUrl: 'result.component.html',
   styleUrls: ['result.component.scss']
 })
-export class ResultComponent implements OnInit, AfterViewInit {
+export class ResultComponent implements OnInit {
+
+  constructor(private requestService : RequestService){}
+
+  result : Result | null = null
 
 
   ngOnInit(): void {
+
+    this.requestService.selectedRequest$.subscribe(request => {
+      if(request?.result){
+        this.result = request?.result
+
+        ace.config.set('basePath', 'https://unpkg.com/ace-builds@1.4.12/src-noconflict');
+        const aceEditor = ace.edit(document.getElementById("result_body_content")!);
+        aceEditor.session.setMode('ace/mode/json');
+        aceEditor.setTheme('ace/theme/twilight');
+        aceEditor.setValue(this.result!.body!)
+      }
+    })
+
     const bodyTab = document.getElementById("result_body_tab")
     const headersTab = document.getElementById("result_headers_tab")
 
@@ -30,15 +48,4 @@ export class ResultComponent implements OnInit, AfterViewInit {
       headersContent!.style.display = "flex"
     })
   }
-
-  ngAfterViewInit(): void {
-    ace.config.set('basePath', 'https://unpkg.com/ace-builds@1.4.12/src-noconflict');
-    const aceEditor = ace.edit(document.getElementById("result_body_content")!);
-    aceEditor.session.setMode('ace/mode/json');
-    aceEditor.setTheme('ace/theme/twilight');
-    aceEditor.setValue(this.result!.body!)
-  }
-
-  @Input() result? : Result
-
 }
