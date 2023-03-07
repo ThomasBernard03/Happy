@@ -6,7 +6,7 @@
     "appId": "com.thomasbernard.happy",
     "productName": "Happy",
     "files": [
-      "**/*",
+      "main.js",
       "dist/**/*"
     ],
     "directories": {
@@ -19,33 +19,32 @@
   "scripts": {
     "start": "ng build --base-href ./ && electron .",
     "watch": "nodemon --exec npm run start",
-    "build": "ng build && electron-builder build",
+    "build": "ng build --base-href ./ && electron-builder -mwl",
     "angular": "ng serve"
   },
   "private": true,
   "dependencies": {
+    "ace-builds": "^1.15.3",
+    "electron-window-state": "^5.0.3",
+    "rxjs": "~7.8.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^15.2.0",
     "@angular/animations": "^15.2.0",
     "@angular/cdk": "~15.2.0",
+    "@angular/cli": "~15.2.0",
     "@angular/common": "^15.2.0",
     "@angular/compiler": "^15.2.0",
+    "@angular/compiler-cli": "^15.2.0",
     "@angular/core": "^15.2.0",
     "@angular/forms": "^15.2.0",
     "@angular/material": "~15.2.0",
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
-    "electron-window-state": "^5.0.3",
-    "ngx-highlightjs": "^8.0.0",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.12.0"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^15.2.0",
-    "@angular/cli": "~15.2.0",
-    "@angular/compiler-cli": "^15.2.0",
     "@types/jasmine": "~4.3.0",
     "electron": "^23.1.1",
+    "electron-builder": "^23.6.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -53,6 +52,8 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "nodemon": "^2.0.0",
-    "typescript": "~4.9.4"
+    "tslib": "^2.3.0",
+    "typescript": "~4.9.4",
+    "zone.js": "~0.12.0"
   }
 }

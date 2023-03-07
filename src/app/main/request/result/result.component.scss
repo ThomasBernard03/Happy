@@ -1,10 +1,15 @@
 main {
     display: flex;
     flex-direction: column;
+    background-color: var(--dark100);
+    height: calc(100% - 40px);
+    width: calc(100% - 40px);
+    padding: 20px;
 
     section.badges {
 
         display: flex;
+        gap: 10px;
     
         div{
             border-radius: 12px;
@@ -12,21 +17,88 @@ main {
             background-color: var(--dark200);
             color: white;
         }
+
+        div.result_type_2 {
+            // For 4xx errors
+            background-color: var(--primary);
+        }
+
+        div.result_type_4 {
+            // For 4xx errors
+            background-color: var(--orange);
+        }
+
+        div.result_type_5 {
+            // For 4xx errors
+            background-color: var(--red);
+        }
     }
     
     section.result {
 
-        background-color: var(--dark200);
+        background-color: var(--dark300);
         flex-grow: 1;
-        overflow: auto;
-        height: 200px;
-        width: 200px;
+        margin-top: 20px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+
+        header {
+            display: flex;
+            gap: 1px;
+    
+            div {
+                color: var(--white);
+                padding: 10px;
+                flex-basis: 0;
+                flex-grow: 1;
+                cursor: pointer;
+                background-color: var(--dark200);
+                text-align: center;
+            }
+    
+            div:first-child{
+                border-radius: 8px 0px 0px 0px;
+            }
+        
+            div:last-child{
+                border-radius: 0px 8px 0px 0px;
+            }
+        }
+
+        section {
+            background-color: var(--dark200);
+            flex-grow: 1;
+            overflow: auto;
+            padding: 5px;
+            border-radius: 0 0 8px 8px;
+        }
     
         pre {
+            width: 10px;
+            height: 10px;
     
             code {
                 color: white;
             }
         }
+    }
+}
+
+#result_headers_content {
+    display: none;
+    flex-grow: 1;
+    overflow: auto;
+    width: 400px;
+    height: 200px;
+    
+
+    td {
+        color: white;
+    }
+
+    th {
+        width: 50%;
     }
 }

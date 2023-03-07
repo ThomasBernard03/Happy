@@ -19,6 +19,8 @@ html, body {
     --light-grey: #bcbcbc;
     --yellow: #EEE149;
     --disabled: #C6C6C6;
+    --text-dark : #333333;
+    --white : #FFFFFF;
 
     --json_ponctuation : white;
     --json_attribute : #319E73;
@@ -30,6 +32,11 @@ html, body {
 
 ::-webkit-scrollbar {
     width: 3px;
+    height: 3px;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -43,9 +50,11 @@ html, body {
 * {
     user-select: none;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+html, body
+{
+    height: 100%;
+    margin: 0;
+}
 
 .http_method_GET {
     color: var(--primary);

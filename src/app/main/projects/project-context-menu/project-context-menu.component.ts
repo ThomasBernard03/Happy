@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProjectService } from 'src/providers/project.service';
 import { Project } from 'src/models/project.interface';
+import { RequestService } from 'src/providers/request.service';
 
 @Component({
   selector: 'app-project-context-menu',
@@ -13,7 +14,7 @@ export class ProjectContextMenuComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Project,
     public dialogRef: MatDialogRef<ProjectContextMenuComponent>,
-    private projectService : ProjectService){}
+    private projectService : ProjectService, private requestService : RequestService){}
 
     onRenameClicked(){
       this.dialogRef.close()
@@ -24,6 +25,7 @@ export class ProjectContextMenuComponent {
     }
 
     onDeleteClicked(){
+      this.requestService.deleteProjectRequests(this.data)
       this.projectService.deleteProject(this.data)
 
       this.dialogRef.close(true)

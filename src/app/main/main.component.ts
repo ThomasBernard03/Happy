@@ -25,12 +25,4 @@ export class MainComponent implements OnInit {
             this.requestService.saveRequests()
         })
     }
-
-    onProjectSelected(project: Project) {
-        this.projectSubject.next(project);
-    }
-
-    onRequestSelected(request : Request | undefined){
-        this.requestSubject.next(request)
-    }
 }

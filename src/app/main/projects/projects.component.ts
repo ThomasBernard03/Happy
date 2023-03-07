@@ -15,13 +15,15 @@ export class ProjectsComponent implements OnInit {
   constructor(private projectService : ProjectService, private dialog : MatDialog){}
 
   projects! : Project[]
-  selectedProject? : Project
+  selectedProject : Project | null = null
   
-  @Output() onProjectSelected = new EventEmitter<Project>()
-
   ngOnInit() {
     this.projectService.getProjects().subscribe(projects => {
       this.projects = projects
+    })
+
+    this.projectService.selectedProject.asObservable().subscribe(project => {
+      this.selectedProject = project
     })
   }
 
@@ -48,7 +50,6 @@ export class ProjectsComponent implements OnInit {
   }
 
   onProjectClick(project : Project){
-    this.selectedProject = project
-    this.onProjectSelected.emit(project)
+    this.projectService.selectedProject.next(project)
   }
 }
