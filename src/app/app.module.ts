@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CodemirrorModule } from '@ctrl/ngx-codemirror';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    CodemirrorModule
+    CodemirrorModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,19 +11,7 @@
             <div id="result_headers_tab">Headers</div>
         </header>
         <section id="result_body_content">
-            <ngx-codemirror *ngIf="result"
-            [(ngModel)]="result.body" [options]="{
-                lineNumbers: true,
-                theme: 'material',
-                height : 'auto',
-                mode: {
-                    name : 'javascript',
-                    json : true,
-                    statementIndent: 2
-                },
-                lineWrapping:true
-            }">
-            </ngx-codemirror>
+            <app-code-editor [(content)]="result!.body"></app-code-editor>
         </section>
         <section id="result_headers_content">
             <!-- <table *ngIf="result?.headers">

@@ -1,0 +1,13 @@
+<ngx-codemirror
+[(ngModel)]="content" [options]="{
+    lineNumbers: true,
+    theme: 'material',
+    height : 'auto',
+    mode: {
+        name : 'javascript',
+        json : true,
+        statementIndent: 2
+    },
+    lineWrapping:true
+}">
+</ngx-codemirror>
