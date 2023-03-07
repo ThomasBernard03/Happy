@@ -1,0 +1,72 @@
+main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 1px;
+    background-color: var(--dark300);
+    flex-direction: row;
+
+
+    section {
+        background-color: var(--dark100);
+        padding: 20px;
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+
+    .result {
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+
+    section.request {
+        display: flex;
+        flex-direction: column;
+
+        div.request_bar {
+            display: flex;
+            background-color: var(--dark300);
+            border-radius: 8px;
+
+            select {
+                border-radius: 8px 0 0 8px;
+                border : none;
+                background-color: var(--dark200);
+                cursor: pointer;
+                padding: 10px;
+            }
+
+            input{
+                border: none;
+                padding: 10px;
+                background-color: var(--dark200);
+                width:100%;
+                color: white;
+            }
+
+            button {
+                border:none;
+                background-color: var(--primary);
+                border-radius: 0 8px 8px 0;
+                color: white;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+        }
+
+
+        .parameters {
+            flex-grow: 1;
+            background-color: var(--dark300);
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        flex-direction: column;
+
+    }
+}

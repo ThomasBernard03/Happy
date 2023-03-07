@@ -1,0 +1,18 @@
+<main *ngIf="request">
+    <section class="request">
+        <div class="request_bar">
+            <select [(ngModel)]="request.method" title="{{request.method}}" class="http_method_{{request.method}}">
+                <option>GET</option>
+                <option>POST</option>
+                <option>PUT</option>
+                <option>DELETE</option>
+            </select>
+            <input [(ngModel)]="request.url" type="url" placeholder="http://your.url.com">
+            <button (click)="onSendButtonClicked()">Send</button>
+        </div>
+
+        <app-parameters class="parameters"></app-parameters>
+    </section>
+
+    <app-result class="result"></app-result>
+</main>

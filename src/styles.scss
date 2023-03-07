@@ -13,13 +13,30 @@ html, body {
     --dark200: #232429;
     --dark300: #2F3136;
     --orange: #F8AA4C;
+    --purple: #7A76B2;
     --red: #F87659;
+    --white: #FFFFFF;
+    --light-grey: #bcbcbc;
     --yellow: #EEE149;
     --disabled: #C6C6C6;
+    --text-dark : #333333;
+    --white : #FFFFFF;
+
+    --json_ponctuation : white;
+    --json_attribute : #319E73;
+    --json_string : #EEE149;
+    --json_number : #7A76B2;
+    --json_keyword : #7A76B2;
+
 }
 
 ::-webkit-scrollbar {
     width: 3px;
+    height: 3px;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -33,5 +50,45 @@ html, body {
 * {
     user-select: none;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body
+{
+    height: 100%;
+    margin: 0;
+}
+
+.http_method_GET {
+    color: var(--primary);
+}
+
+.http_method_POST {
+    color: var(--purple);
+}
+
+.http_method_PUT {
+    color: var(--orange);
+}
+
+.http_method_DELETE {
+    color: var(--red);
+}
+
+
+.hljs-punctuation {
+    color: var(--json_ponctuation);
+}
+
+.hljs-attr {
+    color: var(--json_attribute);
+}
+
+.hljs-string {
+    color: var(--json_string);
+}
+
+.hljs-number {
+    color: var(--json_number);
+}
+
+.hljs-keyword {
+    color: var(--json_keyword);
+}
