@@ -18,6 +18,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Build app
         run: npm run build
