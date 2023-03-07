@@ -12,6 +12,7 @@ export class ResultComponent implements OnInit {
   constructor(private requestService : RequestService){}
 
   result : Result | null = null
+  formatedDate = ""
 
 
   ngOnInit(): void {
@@ -19,6 +20,8 @@ export class ResultComponent implements OnInit {
     this.requestService.selectedRequest$.subscribe(request => {
       if(request?.result){
         this.result = request?.result
+
+        this.formatedDate = new Date(request.result?.date).toDateString()
       }
     })
 

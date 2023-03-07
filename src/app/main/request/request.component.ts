@@ -37,7 +37,7 @@ export class RequestComponent implements OnInit {
       status : "",
       body : "",
       headers : new Map(),
-      date : new Date().getUTCMilliseconds(),
+      date : new Date().getTime(),
       time : 0
     }
 
@@ -49,7 +49,7 @@ export class RequestComponent implements OnInit {
       this.request!.result!.status = response.statusText
       this.request!.result!.body = JSON.stringify(response.body, null, 2),
       this.request!.result!.headers = response.headers["headers"]
-      this.request!.result!.time = new Date().getUTCMilliseconds() - this.request!.result!.date
+      this.request!.result!.time = new Date().getTime() - this.request!.result!.date
       
       this.requestService.selectedRequest$.next(this.request)
 
@@ -60,7 +60,7 @@ export class RequestComponent implements OnInit {
       this.request!.result!.code = e.status
       this.request!.result!.status = e.error
       this.request!.result!.headers = e.headers["headers"]
-      this.request!.result!.time = new Date().getUTCMilliseconds() - this.request!.result!.date
+      this.request!.result!.time = new Date().getTime() - this.request!.result!.date
 
       console.log(e)
       this.requestService.selectedRequest$.next(this.request)
