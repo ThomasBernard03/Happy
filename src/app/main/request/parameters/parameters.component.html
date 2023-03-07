@@ -6,6 +6,19 @@
         <div id="request_notes">Notes</div>
     </header>
     <section id="request_body_content">
+        <ngx-codemirror *ngIf="request"
+        [(ngModel)]="request.body" [options]="{
+            lineNumbers: true,
+            theme: 'material',
+            height : 'auto',
+            mode: {
+                name : 'javascript',
+                json : true,
+                statementIndent: 2
+            },
+            lineWrapping:true
+        }">
+        </ngx-codemirror>
     </section>
 
     <section id="request_auth_content">
@@ -19,4 +32,4 @@
     <section id="request_notes_content">
         <h1>Hello from notes</h1>
     </section>
-</main>   
+</main>

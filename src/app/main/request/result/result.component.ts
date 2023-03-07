@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Result } from 'src/models/result.interface';
-import * as ace from "ace-builds";
 import { RequestService } from 'src/providers/request.service';
 
 @Component({
@@ -20,12 +19,6 @@ export class ResultComponent implements OnInit {
     this.requestService.selectedRequest$.subscribe(request => {
       if(request?.result){
         this.result = request?.result
-
-        ace.config.set('basePath', 'https://unpkg.com/ace-builds@1.4.12/src-noconflict');
-        const aceEditor = ace.edit(document.getElementById("result_body_content")!);
-        aceEditor.session.setMode('ace/mode/json');
-        aceEditor.setTheme('ace/theme/twilight');
-        aceEditor.setValue(this.result!.body!)
       }
     })
 

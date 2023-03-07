@@ -13,6 +13,7 @@ import { ParametersComponent } from './request/parameters/parameters.component';
 import { RequestContextMenuComponent } from './requests/request-context-menu/request-context-menu.component';
 import { ProjectContextMenuComponent } from './projects/project-context-menu/project-context-menu.component';
 import { TeamSettingsComponent } from './requests/team-settings/team-settings.component';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatDialogModule,
     FormsModule,
+    CodemirrorModule
 
   ],
   providers : []

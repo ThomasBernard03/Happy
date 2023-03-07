@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
-import * as ace from "ace-builds";
+import { Component, Input, OnInit } from '@angular/core';
 import { RequestService } from 'src/providers/request.service';
 import { Request } from 'src/models/request.interface';
 
@@ -14,10 +13,6 @@ export class ParametersComponent implements OnInit {
 
   constructor(private requestService : RequestService){}
 
-  ngAfterViewInit(): void {
-
-  }
-
   ngOnInit(): void {
 
     this.requestService.selectedRequest$.asObservable().subscribe(request => {
@@ -25,14 +20,6 @@ export class ParametersComponent implements OnInit {
       console.log(request);
       
       this.request = request
-
-      if(request != null){
-        ace.config.set('basePath', 'https://unpkg.com/ace-builds@1.4.12/src-noconflict');
-        const aceEditor = ace.edit(document.getElementById("request_body_content")!);
-        aceEditor.session.setMode('ace/mode/json');
-        aceEditor.setTheme('ace/theme/twilight');
-        aceEditor.setValue(request.body)
-      }
     })
 
     const bodyTab = document.getElementById("request_body_tab")
