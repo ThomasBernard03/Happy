@@ -1,22 +1,29 @@
-# name of your github action
-name: CI
-# this will help you specify where to run 
+name: Build Angular/Electron app
 
 on:
   push:
     branches:
       - main
-      
-# this is where the magic happens, each job happens in parallel btw
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  build_on_mac:
-    runs-on: macOS-latest
+  build:
+    runs-on: macos-latest
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-        
-    - uses: actions/setup-node@master
-      with:
-        node-version: 10.16
-    - name: see directory
-      run: ls
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app
+        run: npm run build
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: built-files
+          path: release/
