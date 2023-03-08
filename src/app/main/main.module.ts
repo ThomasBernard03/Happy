@@ -11,7 +11,6 @@ import { RequestComponent } from './request/request.component';
 import { ResultComponent } from './request/result/result.component';
 import { ParametersComponent } from './request/parameters/parameters.component';
 import { RequestContextMenuComponent } from './requests/request-context-menu/request-context-menu.component';
-import { ProjectContextMenuComponent } from './projects/project-context-menu/project-context-menu.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProjectSettingsComponent } from './requests/project-settings/project-settings.component';
 
@@ -34,7 +33,6 @@ const routes: Routes = [
     ResultComponent,
     ParametersComponent,
     RequestContextMenuComponent,
-    ProjectContextMenuComponent,
     ProjectSettingsComponent,
   ],
   imports: [
