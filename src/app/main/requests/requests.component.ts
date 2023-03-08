@@ -8,6 +8,7 @@ import { RequestContextMenuComponent } from './request-context-menu/request-cont
 import { DialogResult } from 'src/models/enums/dialog-result';
 import { ElectronService } from 'src/providers/electron.service';
 import { ProjectService } from 'src/providers/project.service';
+import { ProjectSettingsComponent } from './project-settings/project-settings.component';
 
 @Component({
   selector: 'app-requests',
@@ -16,7 +17,11 @@ import { ProjectService } from 'src/providers/project.service';
 })
 export class RequestsComponent implements OnInit {
 
-  constructor(private requestService: RequestService, private projectService : ProjectService, private dialog: MatDialog, private electronService : ElectronService) {}
+  constructor(
+    private requestService: RequestService,
+    private projectService : ProjectService,
+    private dialog: MatDialog,
+    private electronService : ElectronService) {}
 
   project : Project | null = null
   requests?: Request[]
@@ -24,6 +29,10 @@ export class RequestsComponent implements OnInit {
 
   ngOnInit() {
     this.projectService.selectedProject.asObservable().subscribe(project => {
+      console.log("Selected project : ")
+      console.log(project)
+      
+      
       this.project = project
       this.requestService.selectedRequest$.next(null)
 
@@ -32,9 +41,16 @@ export class RequestsComponent implements OnInit {
           this.requests = result
         })
       }
+      else {
+        this.requests = undefined
+      }
     })
 
     this.requestService.selectedRequest$.asObservable().subscribe(request => {
+      console.log("Selected request : ")
+      console.log(request)
+      
+      
       this.selectedRequest = request
     })
   }
@@ -76,8 +92,14 @@ export class RequestsComponent implements OnInit {
     this.requestService.addRequest(this.project!)
   }
 
+  projectSettings(){
+    const instance = this.dialog.open(ProjectSettingsComponent, {
+      data : this.project
+    })
+  }
+
   onRequestClicked(request: Request) {
-    this.electronService.ipcRenderer?.send("request-selected", request)
+    // this.electronService.ipcRenderer?.send("request-selected", request)
     this.requestService.selectedRequest$.next(request)
   }
 

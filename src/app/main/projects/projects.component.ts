@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateProjectDialogComponent } from './create-project-dialog/create-project-dialog.component';
 import { ProjectService } from 'src/providers/project.service';
 import { Project } from 'src/models/project.interface';
-import { ProjectContextMenuComponent } from './project-context-menu/project-context-menu.component';
 
 @Component({
   selector: 'app-projects',
@@ -32,20 +31,6 @@ export class ProjectsComponent implements OnInit {
 
     instance.afterClosed().subscribe(result => {
       
-    })
-  }
-
-  onRightClick(event : MouseEvent, project : Project){
-    const instance = this.dialog.open(ProjectContextMenuComponent, {
-      data : project,
-      position : {
-        left : event.clientX + "px",
-        top : event.clientY + "px"
-      }
-    })
-
-    instance.afterClosed().subscribe(result => {
-
     })
   }
 
