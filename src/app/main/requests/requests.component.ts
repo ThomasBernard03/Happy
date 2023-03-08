@@ -99,7 +99,7 @@ export class RequestsComponent implements OnInit {
   }
 
   onRequestClicked(request: Request) {
-    this.electronService.ipcRenderer?.send("request-selected", request)
+    // this.electronService.ipcRenderer?.send("request-selected", request)
     this.requestService.selectedRequest$.next(request)
   }
 

@@ -7,7 +7,7 @@ import { Component, Input, DoCheck, Output, EventEmitter } from '@angular/core';
 })
 export class CodeEditorComponent implements DoCheck {
 
-  @Input() content? : string
+  @Input() content! : string
   @Output() contentChange = new EventEmitter()
 
   ngDoCheck() : void {

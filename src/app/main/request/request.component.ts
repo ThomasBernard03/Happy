@@ -28,9 +28,9 @@ export class RequestComponent implements OnInit {
     })
 
     // For touchbar
-    this.electronService.ipcRenderer?.on("send-request", (e, args) => {
-      this.onSendButtonClicked()
-    })
+    // this.electronService.ipcRenderer?.on("send-request", (e, args) => {
+    //   this.onSendButtonClicked()
+    // })
   }
 
   onSendButtonClicked(){

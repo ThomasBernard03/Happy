@@ -1,4 +1,4 @@
-<main>
+<main *ngIf="request">
     <header>
         <div id="request_body_tab">Body</div>
         <div id="request_auth">Auth</div>
@@ -6,7 +6,7 @@
         <div id="request_notes">Notes</div>
     </header>
     <section id="request_body_content">
-        <app-code-editor [(content)]="request!.body"></app-code-editor>
+        <app-code-editor [(content)]="request.body"></app-code-editor>
     </section>
 
     <section id="request_auth_content">
