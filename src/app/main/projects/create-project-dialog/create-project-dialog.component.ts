@@ -14,7 +14,7 @@ export class CreateProjectDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<CreateProjectDialogComponent>,
     private electronService: ElectronService,
-    private projectService : ProjectService
+    private projectService: ProjectService
   ) {
     this.electronService.ipcRenderer?.on("open-file-picker-result", (e, args) => {
       this.projectImage = args.filePaths[0]
@@ -23,6 +23,8 @@ export class CreateProjectDialogComponent {
 
   projectImage = "assets/empty_project_image.png"
   projectName = ""
+  isFormValid = false
+  errorMessage = ""
 
 
   onImageClicked() {
@@ -34,12 +36,29 @@ export class CreateProjectDialogComponent {
     this.electronService.ipcRenderer?.send("open-file-picker", options)
   }
 
-  onCreateButtonClicked(){
+  onProjectNameChange(name : string) {
 
-    const project : Project = {
-      guid : crypto.randomUUID(),
-      name : this.projectName,
-      picture : this.projectImage
+    console.log(name);
+    
+    this.errorMessage = ""
+    if(name.trim().length <= 0){
+      this.isFormValid = false
+    } 
+    else if(!this.projectService.isProjectNameUnique(this.projectName)){
+      this.errorMessage = "You already have a project with this name !"
+      this.isFormValid = false
+    }
+    else {
+      this.isFormValid = true
+    }
+  }
+
+  onCreateButtonClicked() {
+
+    const project: Project = {
+      guid: crypto.randomUUID(),
+      name: this.projectName,
+      picture: this.projectImage
     }
 
     this.projectService.addProject(project)

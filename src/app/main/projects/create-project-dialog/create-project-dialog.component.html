@@ -2,9 +2,12 @@
 </header>
 <main>
     <img (click)="onImageClicked()"  src="{{projectImage}}">
-    <input [(ngModel)]="projectName" type="text">
+
     <section>
-        <button>Close</button>
-        <button (click)="onCreateButtonClicked()">Create</button>
+        <h2>Enter the name of your project : </h2>
+        <span>{{errorMessage}}</span>
+        <input [(ngModel)]="projectName" (ngModelChange)="onProjectNameChange($event)" type="text">
     </section>
+
+    <button (click)="onCreateButtonClicked()" [disabled]="!isFormValid">Create</button>
 </main>

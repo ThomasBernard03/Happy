@@ -5,6 +5,7 @@ header {
     justify-content: space-between;
     height: 40px;
     align-items: center;
+    -webkit-app-region: drag;
 
 
     h3 {
@@ -22,6 +23,7 @@ header {
             color: white;
             font-size: 16pt;
             cursor: pointer;
+            -webkit-app-region: no-drag;
         }
     }
 }

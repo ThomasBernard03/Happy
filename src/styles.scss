@@ -10,6 +10,8 @@ html, body {
 
 :root {
     --primary: #319E73;
+    --primary_disabled: #8bdaba;
+
     --dark100: #1B1C21;
     --dark200: #232429;
     --dark300: #2F3136;
@@ -72,24 +74,3 @@ html, body
 .http_method_DELETE {
     color: var(--red);
 }
-
-
-// .json-punctuation {
-//     color: var(--json_ponctuation);
-// }
-
-// .json-attr {
-//     color: var(--json_attribute);
-// }
-
-// .json-string {
-//     color: var(--json_string);
-// }
-
-// .json-number {
-//     color: var(--json_number);
-// }
-
-// .json-keyword {
-//     color: var(--json_keyword);
-// }

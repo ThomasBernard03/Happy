@@ -16,6 +16,17 @@ export class ProjectService {
         this.projects$.next(this.projects)
     }
 
+
+    // Return false if a project already have this name
+    isProjectNameUnique(name: string): boolean {
+        // Check if a project with the given name already exists
+        const existingProject = this.projects.find(project => project.name === name);
+        if (existingProject) {
+            return false;
+        }
+        return true
+    }
+
     saveProjects(){
         localStorage.setItem("projects", JSON.stringify(this.projects))
     }
