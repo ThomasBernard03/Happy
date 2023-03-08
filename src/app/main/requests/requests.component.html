@@ -1,7 +1,7 @@
 <header *ngIf="project">
     <h3>{{project.name}}</h3>
     <div>
-        <i class="fa-solid fa-gear"></i>
+        <i (click)="projectSettings()" class="fa-solid fa-gear"></i>
         <i (click)="createRequest()" class="fa-solid fa-plus"></i>
     </div>
 </header>

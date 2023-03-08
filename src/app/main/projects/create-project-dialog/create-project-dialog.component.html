@@ -6,7 +6,7 @@
     <section>
         <h2>Enter the name of your project : </h2>
         <span>{{errorMessage}}</span>
-        <input [(ngModel)]="projectName" (ngModelChange)="onProjectNameChange($event)" type="text">
+        <input [(ngModel)]="projectName" id="create-project-name-input" type="text">
     </section>
 
     <button (click)="onCreateButtonClicked()" [disabled]="!isFormValid">Create</button>

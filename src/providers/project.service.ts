@@ -21,6 +21,7 @@ export class ProjectService {
     isProjectNameUnique(name: string): boolean {
         // Check if a project with the given name already exists
         const existingProject = this.projects.find(project => project.name === name);
+
         if (existingProject) {
             return false;
         }

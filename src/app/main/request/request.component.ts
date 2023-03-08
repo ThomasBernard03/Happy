@@ -20,6 +20,10 @@ export class RequestComponent implements OnInit {
   ngOnInit(): void {
 
     this.requestService.selectedRequest$.asObservable().subscribe(request => {
+      console.log("Request received :");
+      console.log(request);
+      
+      
       this.request = request
     })
 

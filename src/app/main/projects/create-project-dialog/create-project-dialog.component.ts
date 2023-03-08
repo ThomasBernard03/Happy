@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Project } from 'src/models/project.interface';
 import { ElectronService } from 'src/providers/electron.service';
@@ -9,7 +9,12 @@ import { ProjectService } from 'src/providers/project.service';
   templateUrl: 'create-project-dialog.component.html',
   styleUrls: ['create-project-dialog.component.scss']
 })
-export class CreateProjectDialogComponent {
+export class CreateProjectDialogComponent implements OnInit {
+
+  projectImage = "assets/empty_project_image.png"
+  projectName = ""
+  isFormValid = false
+  errorMessage = ""
 
   constructor(
     public dialogRef: MatDialogRef<CreateProjectDialogComponent>,
@@ -21,10 +26,13 @@ export class CreateProjectDialogComponent {
     })
   }
 
-  projectImage = "assets/empty_project_image.png"
-  projectName = ""
-  isFormValid = false
-  errorMessage = ""
+
+  ngOnInit(): void {
+    const input = document.getElementById("create-project-name-input")
+    input?.addEventListener("keyup", e => {
+      this.onProjectNameChange()
+    })
+  }
 
 
   onImageClicked() {
@@ -36,12 +44,12 @@ export class CreateProjectDialogComponent {
     this.electronService.ipcRenderer?.send("open-file-picker", options)
   }
 
-  onProjectNameChange(name : string) {
+  onProjectNameChange() {
 
     console.log(name);
     
     this.errorMessage = ""
-    if(name.trim().length <= 0){
+    if(this.projectName.trim().length <= 0){
       this.isFormValid = false
     } 
     else if(!this.projectService.isProjectNameUnique(this.projectName)){
