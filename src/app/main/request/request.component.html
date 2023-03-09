@@ -14,5 +14,6 @@
         <app-parameters class="parameters"></app-parameters>
     </section>
 
-    <app-result class="result"></app-result>
+    <app-loading-view *ngIf="isSendingRequest"></app-loading-view>
+    <app-result *ngIf="!isSendingRequest" class="result"></app-result>
 </main>
