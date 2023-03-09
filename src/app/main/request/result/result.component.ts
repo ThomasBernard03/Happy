@@ -32,25 +32,9 @@ export class ResultComponent implements OnInit {
 
         this.formatedDate = day + '/' + month + '/' + year + ' ' + hours + ':' + minutes + ':' + seconds;
       }
+      else {
+        this.result = null
+      }
     })
-
-    // const bodyTab = document.getElementById("result_body_tab")
-    // const headersTab = document.getElementById("result_headers_tab")
-
-    // const bodyContent = document.getElementById("result_body_content")
-    // const headersContent = document.getElementById("result_headers_content")
-
-
-    // bodyTab?.addEventListener("click", e => {
-
-    //   bodyContent!.style.display = "flex"
-    //   headersContent!.style.display = "none"
-    // })
-
-
-    // headersTab?.addEventListener("click", e => {
-    //   bodyContent!.style.display = "none"
-    //   headersContent!.style.display = "flex"
-    // })
   }
 }

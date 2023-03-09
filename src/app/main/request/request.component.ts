@@ -26,14 +26,10 @@ export class RequestComponent implements OnInit {
       
       this.request = request
     })
-
-    // For touchbar
-    // this.electronService.ipcRenderer?.on("send-request", (e, args) => {
-    //   this.onSendButtonClicked()
-    // })
   }
 
   onSendButtonClicked(){
+
     this.request!.result = {
       guid : crypto.randomUUID(),
       requestGuid : this.request!.guid,
