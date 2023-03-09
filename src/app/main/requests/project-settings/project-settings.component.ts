@@ -27,19 +27,14 @@ export class ProjectSettingsComponent implements OnInit {
       this.picture = this.data.picture
       this.guid = this.data.guid
 
-      this.electronService.ipcRenderer?.on("open-file-picker-result", (e, args) => {
-        this.picture = args.filePaths[0]
+      this.electronService.ipcRenderer?.on("open-image-picker-result", (e, image) => {
+        this.picture = image
       })
     }
 
 
     onImageClicked() {
-      const options = {
-        filters: [
-          { name: 'Images', extensions: ['png', 'jpg', 'jpeg', 'svg'] }
-        ]
-      }
-      this.electronService.ipcRenderer?.send("open-file-picker", options)
+      this.electronService.ipcRenderer?.send("open-image-picker")
     }
 
 
