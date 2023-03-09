@@ -8,6 +8,12 @@ html, body {
     padding: 0;
 }
 
+.cm-editor {
+    width: 0;
+    flex-grow: 1;
+}
+
+
 :root {
     --primary: #319E73;
     --primary_disabled: #8bdaba;
