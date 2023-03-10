@@ -15,7 +15,7 @@ export class RequestComponent implements OnInit {
 
   request: Request | null = null
 
-  isSendingRequest = true
+  isSendingRequest = false
 
   constructor(private httpService: HttpService, private requestService: RequestService, private electronService: ElectronService) { }
 
