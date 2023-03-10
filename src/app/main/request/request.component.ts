@@ -15,7 +15,7 @@ export class RequestComponent implements OnInit {
 
   request: Request | null = null
 
-  isSendingRequest = true
+  isSendingRequest = false
 
   constructor(private httpService: HttpService, private requestService: RequestService, private electronService: ElectronService) { }
 
@@ -42,7 +42,8 @@ export class RequestComponent implements OnInit {
       body: "",
       headers: new Map(),
       date: new Date().getTime(),
-      time: 0
+      time: 0,
+      tab : "Body"
     }
 
     this.httpService.sendRequest(this.request!).subscribe(response => {
@@ -52,7 +53,7 @@ export class RequestComponent implements OnInit {
       this.request!.result!.code = response.status
       this.request!.result!.status = response.statusText
       this.request!.result!.body = JSON.stringify(response.body, null, 2),
-        this.request!.result!.headers = response.headers["headers"]
+      this.request!.result!.headers = response.headers["headers"].entries()
       this.request!.result!.time = new Date().getTime() - this.request!.result!.date
 
       this.requestService.selectedRequest$.next(this.request)

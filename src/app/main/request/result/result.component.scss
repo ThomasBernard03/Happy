@@ -41,6 +41,40 @@ main {
         display: flex;
         flex-direction: column;
         gap: 1px;
+        
+
+
+        section.headers {
+            overflow: auto;
+            flex-grow: 1;
+            flex-basis: 0;
+
+            table {
+                width: 100%;
+
+                tr {
+                    height: 40px;
+                    overflow: auto;
+                    color: var(--white);
+
+                    td {
+                        height: 60px;
+                        width: 50%;
+                        word-wrap: break-word;
+                        white-space: pre-wrap;
+                        word-break: break-word;
+                        padding: none;
+                        user-select: all;
+                    }
+                }
+
+                tr:nth-child(odd){
+                    background-color: var(--dark100);
+                }
+            }
+
+
+        }
 
         header {
             display: flex;
@@ -70,15 +104,6 @@ main {
             flex-grow: 1;
             overflow: auto;
             border-radius: 0 0 8px 8px;
-        }
-    
-        pre {
-            width: 10px;
-            height: 10px;
-    
-            code {
-                color: white;
-            }
         }
     }
 }
