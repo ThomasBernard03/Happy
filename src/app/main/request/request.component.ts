@@ -13,32 +13,36 @@ import { RequestService } from 'src/providers/request.service';
 })
 export class RequestComponent implements OnInit {
 
-  request : Request | null = null
+  request: Request | null = null
 
-  constructor(private httpService : HttpService, private requestService : RequestService, private electronService : ElectronService){}
+  isSendingRequest = true
+
+  constructor(private httpService: HttpService, private requestService: RequestService, private electronService: ElectronService) { }
 
   ngOnInit(): void {
 
     this.requestService.selectedRequest$.asObservable().subscribe(request => {
-      this.request = request
-    })
+      console.log("Request received :");
+      console.log(request);
 
-    // For touchbar
-    this.electronService.ipcRenderer?.on("send-request", (e, args) => {
-      this.onSendButtonClicked()
+
+      this.request = request
     })
   }
 
-  onSendButtonClicked(){
+  onSendButtonClicked() {
+
+    this.isSendingRequest = true
+
     this.request!.result = {
-      guid : crypto.randomUUID(),
-      requestGuid : this.request!.guid,
-      code : 0,
-      status : "",
-      body : "",
-      headers : new Map(),
-      date : new Date().getUTCMilliseconds(),
-      time : 0
+      guid: crypto.randomUUID(),
+      requestGuid: this.request!.guid,
+      code: 0,
+      status: "",
+      body: "",
+      headers: new Map(),
+      date: new Date().getTime(),
+      time: 0
     }
 
     this.httpService.sendRequest(this.request!).subscribe(response => {
@@ -48,22 +52,24 @@ export class RequestComponent implements OnInit {
       this.request!.result!.code = response.status
       this.request!.result!.status = response.statusText
       this.request!.result!.body = JSON.stringify(response.body, null, 2),
-      this.request!.result!.headers = response.headers["headers"]
-      this.request!.result!.time = new Date().getUTCMilliseconds() - this.request!.result!.date
-      
-      this.requestService.selectedRequest$.next(this.request)
+        this.request!.result!.headers = response.headers["headers"]
+      this.request!.result!.time = new Date().getTime() - this.request!.result!.date
 
-    }, (e : HttpErrorResponse) => {
+      this.requestService.selectedRequest$.next(this.request)
+      this.isSendingRequest = false
+
+    }, (e: HttpErrorResponse) => {
 
       e.headers.keys()
 
       this.request!.result!.code = e.status
       this.request!.result!.status = e.error
       this.request!.result!.headers = e.headers["headers"]
-      this.request!.result!.time = new Date().getUTCMilliseconds() - this.request!.result!.date
+      this.request!.result!.time = new Date().getTime() - this.request!.result!.date
 
       console.log(e)
       this.requestService.selectedRequest$.next(this.request)
+      this.isSendingRequest = false
     })
   }
 }

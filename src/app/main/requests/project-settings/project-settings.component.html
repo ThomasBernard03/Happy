@@ -1,0 +1,21 @@
+<header>
+</header>
+<main>
+    <img (click)="onImageClicked()" src="{{picture}}">
+
+    <section>
+        <h4>Project id : </h4>
+        <input [(ngModel)]="guid" id="create-project-name-input" type="text" class="guid_input" readonly>
+
+        <hr>
+
+        <h4>Project name : </h4>
+        <input [(ngModel)]="name" id="create-project-name-input" type="text">
+
+    </section>
+
+    <div class="buttons">
+        <button (click)="onDelete()" class="delete_button">Delete</button>
+        <button (click)="onSave()">Save</button>
+    </div>
+</main>

@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("./assets/code_mirror.css");
+  
 
 html, body {
     height: 100%;
@@ -7,8 +8,16 @@ html, body {
     padding: 0;
 }
 
+.cm-editor {
+    width: 0;
+    flex-grow: 1;
+}
+
+
 :root {
     --primary: #319E73;
+    --primary_disabled: #8bdaba;
+
     --dark100: #1B1C21;
     --dark200: #232429;
     --dark300: #2F3136;
@@ -70,25 +79,4 @@ html, body
 
 .http_method_DELETE {
     color: var(--red);
-}
-
-
-.hljs-punctuation {
-    color: var(--json_ponctuation);
-}
-
-.hljs-attr {
-    color: var(--json_attribute);
-}
-
-.hljs-string {
-    color: var(--json_string);
-}
-
-.hljs-number {
-    color: var(--json_number);
-}
-
-.hljs-keyword {
-    color: var(--json_keyword);
 }

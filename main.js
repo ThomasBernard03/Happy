@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog, clipboard, TouchBar } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog, clipboard, TouchBar, nativeImage } = require('electron')
 const windowStateKeeper = require('electron-window-state')
 
 let mainWindow
@@ -18,7 +18,7 @@ function createWindow() {
     height: state.height,
     minWidth: 800,
     minHeight: 500,
-    titleBarStyle: 'default',
+    titleBarStyle: 'hidden',
     backgroundColor: '#1B1C21',
     webPreferences: {
       // --- !! IMPORTANT !! ---
@@ -66,66 +66,24 @@ app.on('before-quit', e => {
   mainWindow.webContents.send("application_will_quit")
 })
 
-ipcMain.on("open-file-picker", (e, args) => {
-  dialog.showOpenDialog(args).then(result => {
+
+// Open a file picker and return image result in base 64
+ipcMain.on("open-image-picker", (e, args) => {
+
+  const options = {
+    filters: [
+      { name: 'Images', extensions: ['png', 'jpg', 'jpeg', 'svg'] }
+    ]
+  }
+
+  dialog.showOpenDialog(options).then(result => {
     if (!result.canceled) {
-      e.sender.send("open-file-picker-result", result)
+      const natImage = nativeImage.createFromPath(result.filePaths[0])
+      e.sender.send("open-image-picker-result", natImage.toDataURL())
     }
   })
 })
 
 ipcMain.on("add-clipboard", (e, args) => {
   clipboard.writeText(args)
-})
-
-
-ipcMain.on("request-selected", (e, request) => {
-
-  var color = "#319E73"
-
-  switch(request.method){
-    case "POST" : 
-      color = "#7A76B2"
-      break
-    case "PUT" :
-      color = "#EEE149"
-      break
-    case "DELETE" :
-      color = "#F87659"
-  }
-
-  const methodLabel = new TouchBar.TouchBarLabel({
-    label : request.method,
-    textColor : color
-  })
-  
-  const urlLabel = new TouchBar.TouchBarLabel({
-    label : request.url
-  })
-  
-  
-  const spacer = new TouchBar.TouchBarSpacer({
-    size : "flexible"
-  })
-  
-  const sendButton = new TouchBar.TouchBarButton({
-    label : "SEND",
-    backgroundColor : "#319E73",
-    click : () => {
-      e.sender.send("send-request")
-    }
-  })
-  
-  const touchBar = new TouchBar({
-    items : [
-      methodLabel,
-      urlLabel,
-      spacer,
-      sendButton
-    ]
-  })
-
-  if(process.platform === "darwin"){
-    mainWindow.setTouchBar(touchBar)
-  }
 })

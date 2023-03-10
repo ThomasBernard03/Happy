@@ -1,31 +1,20 @@
 <main>
+    <app-happy-loader *ngIf="!result"></app-happy-loader>
+
+
     <section class="badges" *ngIf="result">
         <div class="result_type_{{result.code.toString()[0]}}">{{result.code}} {{result.status}}</div>
         <div>{{result.time}} ms</div>
-        <div>{{result.date}}</div>
+        <div>{{formatedDate}}</div>
     </section>
 
-    <section class="result">
+    <section class="result" *ngIf="result">
         <header>
             <div id="result_body_tab">Body</div>
             <div id="result_headers_tab">Headers</div>
         </header>
-        <section id="result_body_content" *ngIf="result" [(ngModel)]="result!.body">
-        <!-- <pre contenteditable="true">
-<code *ngIf="result?.body" [highlight]="result!.body"></code>
-          </pre> -->
-        </section>
-        <section id="result_headers_content">
-            <!-- <table *ngIf="result?.headers">
-                <tr>
-                    <th>Key</th>
-                    <th>Value</th>
-                </tr>
-                 <tr *ngFor="let header of result?.headers?.entries()">
-                    <td>{{header[0]}}</td>
-                    <td>{{header[1]}}</td>
-                </tr> 
-            </table> -->
+        <section id="result_body_content">
+            <app-code-editor [(content)]="result!.body" [readonly]="true"></app-code-editor>
         </section>
     </section>
 </main>
