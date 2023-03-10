@@ -14,7 +14,6 @@ export class ResultComponent implements OnInit {
   result: Result | null = null
   formatedDate = ""
 
-
   ngOnInit(): void {
 
     this.requestService.selectedRequest$.subscribe(request => {
@@ -36,5 +35,15 @@ export class ResultComponent implements OnInit {
         this.result = null
       }
     })
+  }
+
+
+
+  onBodyClicked(){
+    this.result!.tab = "Body"
+  }
+
+  onHeadersClicked(){
+    this.result!.tab = "Headers"
   }
 }

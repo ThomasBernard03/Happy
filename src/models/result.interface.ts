@@ -7,4 +7,5 @@ export interface Result {
     headers : Map<string, string[]>,
     date : number,
     time : number
+    tab : "Body" | "Headers"
 }
