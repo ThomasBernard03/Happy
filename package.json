@@ -10,9 +10,7 @@
       "dist/**/*"
     ],
     "directories": {
-      "output": "release",
-      "buildResources": "dist"
-    }
+      "output": "release"    }
   },
   "author": "Thomas Bernard",
   "description": "Http client to test APIs",
