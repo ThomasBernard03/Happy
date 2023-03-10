@@ -53,7 +53,7 @@ export class RequestComponent implements OnInit {
       this.request!.result!.code = response.status
       this.request!.result!.status = response.statusText
       this.request!.result!.body = JSON.stringify(response.body, null, 2),
-        this.request!.result!.headers = response.headers["headers"]
+      this.request!.result!.headers = response.headers["headers"].entries()
       this.request!.result!.time = new Date().getTime() - this.request!.result!.date
 
       this.requestService.selectedRequest$.next(this.request)
