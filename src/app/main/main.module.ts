@@ -13,6 +13,7 @@ import { ParametersComponent } from './request/parameters/parameters.component';
 import { RequestContextMenuComponent } from './requests/request-context-menu/request-context-menu.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProjectSettingsComponent } from './requests/project-settings/project-settings.component';
+import { LoadingViewComponent } from './request/loading-view/loading-view.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
     ParametersComponent,
     RequestContextMenuComponent,
     ProjectSettingsComponent,
+    LoadingViewComponent,
   ],
   imports: [
     CommonModule,

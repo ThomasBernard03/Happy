@@ -2,9 +2,7 @@ main {
     display: flex;
     flex-direction: column;
     background-color: var(--dark100);
-    height: calc(100% - 40px);
-    width: calc(100% - 40px);
-    padding: 20px;
+    height: 100%;
 
     section.badges {
 
@@ -82,23 +80,6 @@ main {
                 color: white;
             }
         }
-    }
-}
-
-#result_headers_content {
-    display: none;
-    flex-grow: 1;
-    overflow: auto;
-    width: 400px;
-    height: 200px;
-    
-
-    td {
-        color: white;
-    }
-
-    th {
-        width: 50%;
     }
 }
 

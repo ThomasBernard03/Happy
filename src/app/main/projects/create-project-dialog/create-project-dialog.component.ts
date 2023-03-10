@@ -21,8 +21,8 @@ export class CreateProjectDialogComponent implements OnInit {
     private electronService: ElectronService,
     private projectService: ProjectService
   ) {
-    this.electronService.ipcRenderer?.on("open-file-picker-result", (e, args) => {
-      this.projectImage = args.filePaths[0]
+    this.electronService.ipcRenderer?.on("open-image-picker-result", (e, image) => {
+      this.projectImage = image
     })
   }
 
@@ -36,12 +36,7 @@ export class CreateProjectDialogComponent implements OnInit {
 
 
   onImageClicked() {
-    const options = {
-      filters: [
-        { name: 'Images', extensions: ['png', 'jpg', 'jpeg', 'svg'] }
-      ]
-    }
-    this.electronService.ipcRenderer?.send("open-file-picker", options)
+    this.electronService.ipcRenderer?.send("open-image-picker")
   }
 
   onProjectNameChange() {

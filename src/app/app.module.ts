@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { SharedModule } from './shared/shared.module';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+
 
 
 @NgModule({
@@ -20,9 +23,17 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     HttpClientModule,
     CodemirrorModule,
-    SharedModule
+    SharedModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+// Note we need a separate function as it's required
+// by the AOT compiler.
+export function playerFactory() {
+  return player;
+}

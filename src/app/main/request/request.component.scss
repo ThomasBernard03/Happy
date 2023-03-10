@@ -12,11 +12,9 @@ main {
         padding: 20px;
         flex-grow: 1;
         flex-basis: 0;
-    }
-
-    .result {
-        flex-grow: 1;
-        flex-basis: 0;
+        min-width: calc(50% - 40px);
+        max-width: calc(50% - 40px);
+        width: calc(50% - 40px);
     }
 
     section.request {
@@ -61,12 +59,5 @@ main {
             margin-top: 20px;
             border-radius: 8px;
         }
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    main {
-        flex-direction: column;
-
     }
 }
