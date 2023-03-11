@@ -1,0 +1,14 @@
+div {
+    background-color: var(--dark100);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--light-grey);
+}
+
+div:hover {
+    background-color: #1c1d22;
+}

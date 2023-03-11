@@ -11,7 +11,8 @@
 
     <section *ngIf="tab == 'Headers'" class="headers-content" >
         <div>
-            <i (click)="onAddHeader()" class="fa-solid fa-plus"></i>
+            <app-button text="Add" icon="fa-solid fa-plus" (onButtonClicked)="onAddHeader()"></app-button>
+            <app-button text="Clear" icon="fa-solid fa-trash" (onButtonClicked)="onClearHeaders()"></app-button>
         </div>
         <app-headers [(headers)]="request.headers" [readonly]="false"></app-headers>
     </section>

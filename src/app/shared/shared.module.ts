@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HappyLoaderComponent } from './happy-loader/happy-loader.component';
 import { LottieModule } from 'ngx-lottie';
 import { HeadersComponent } from './headers/headers.component';
+import { ButtonComponent } from './button/button.component';
 
 
 
@@ -13,7 +14,8 @@ import { HeadersComponent } from './headers/headers.component';
   declarations: [
     CodeEditorComponent,
     HappyLoaderComponent,
-    HeadersComponent
+    HeadersComponent,
+    ButtonComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { HeadersComponent } from './headers/headers.component';
   exports : [
     CodeEditorComponent,
     HappyLoaderComponent,
-    HeadersComponent
+    HeadersComponent,
+    ButtonComponent
   ]
 })
 export class SharedModule { }

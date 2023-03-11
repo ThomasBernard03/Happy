@@ -31,9 +31,11 @@ export class ParametersComponent implements OnInit {
     })
 
     console.log(this.request?.headers);
-    
   }
 
+  onClearHeaders(){
+    this.request!.headers = []
+  }
 
   onBodyClicked(){
     this.tab = "Body"
