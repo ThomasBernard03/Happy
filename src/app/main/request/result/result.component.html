@@ -13,11 +13,11 @@
             <div (click)="onBodyClicked()" id="result_body_tab">Body</div>
             <div (click)="onHeadersClicked()" id="result_headers_tab">Headers</div>
         </header>
-        <section id="result_body_content" *ngIf="result.tab == 'Body'">
+        <section id="result_body_content" *ngIf="tab == 'Body'">
             <app-code-editor [(content)]="result!.body" [readonly]="true"></app-code-editor>
         </section>
 
-        <section *ngIf="result.tab == 'Headers'" class="headers">
+        <section *ngIf="tab == 'Headers'" class="headers">
             <table *ngIf="result.headers">
                 <tr *ngFor="let header of result.headers">
                     <td>

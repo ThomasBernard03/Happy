@@ -9,5 +9,4 @@ export interface Result {
     headers : Array<Header>,
     date : number,
     time : number
-    tab : "Body" | "Headers"
 }

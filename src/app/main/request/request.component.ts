@@ -42,8 +42,7 @@ export class RequestComponent implements OnInit {
       body: "",
       headers: new Array(),
       date: new Date().getTime(),
-      time: 0,
-      tab : "Body"
+      time: 0
     }
 
     this.httpService.sendRequest(this.request!).subscribe(response => {
