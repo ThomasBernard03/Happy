@@ -1,23 +1,19 @@
 <main *ngIf="request">
     <header>
-        <div id="request_body_tab">Body</div>
-        <div id="request_auth">Auth</div>
-        <div id="request_headers">Headers</div>
-        <div id="request_notes">Notes</div>
+        <div (click)="onBodyClicked()">Body</div>
+        <div (click)="onHeadersClicked()">Headers</div>
+        <div (click)="onNotesClicked()">Notes</div>
     </header>
-    <section id="request_body_content">
+
+    <section id="request-body-content" *ngIf="tab == 'Body'">
         <app-code-editor [(content)]="request.body"></app-code-editor>
     </section>
 
-    <section id="request_auth_content">
-        <h1>Hello from auth</h1>
-    </section>
-
-    <section id="request_headers_content">
+    <section *ngIf="tab == 'Headers'">
         <h1>Hello from headers</h1>
     </section>
 
-    <section id="request_notes_content">
+    <section *ngIf="tab == 'Notes'">
         <h1>Hello from notes</h1>
     </section>
 </main>

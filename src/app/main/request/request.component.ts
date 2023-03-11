@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Request } from 'src/models/request.interface';
 import { HttpService } from 'src/providers/http.service';
 import { HttpErrorResponse } from '@angular/common/http';
