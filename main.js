@@ -56,9 +56,9 @@ function createWindow() {
   })
   settingsWindow.loadURL(`file://${__dirname}/dist/index.html#/settings`)
 
-  settingsWindow.on("blur", e => {
-    settingsWindow.hide()
-  })
+  // settingsWindow.on("blur", e => {
+  //   settingsWindow.hide()
+  // })
 }
 
 
