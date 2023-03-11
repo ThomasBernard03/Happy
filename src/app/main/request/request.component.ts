@@ -5,6 +5,7 @@ import { HttpService } from 'src/providers/http.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ElectronService } from 'src/providers/electron.service';
 import { RequestService } from 'src/providers/request.service';
+import { Header } from 'src/models/header.interface';
 
 @Component({
   selector: 'app-request',
@@ -23,9 +24,8 @@ export class RequestComponent implements OnInit {
 
     this.requestService.selectedRequest$.asObservable().subscribe(request => {
       console.log("Request received :");
-      console.log(request);
-
-
+      console.log(this.request);
+      
       this.request = request
     })
   }
@@ -40,7 +40,7 @@ export class RequestComponent implements OnInit {
       code: 0,
       status: "",
       body: "",
-      headers: new Map(),
+      headers: new Array(),
       date: new Date().getTime(),
       time: 0,
       tab : "Body"
@@ -53,11 +53,25 @@ export class RequestComponent implements OnInit {
       this.request!.result!.code = response.status
       this.request!.result!.status = response.statusText
       this.request!.result!.body = JSON.stringify(response.body, null, 2),
-      this.request!.result!.headers = response.headers["headers"].entries()
       this.request!.result!.time = new Date().getTime() - this.request!.result!.date
 
       this.requestService.selectedRequest$.next(this.request)
       this.isSendingRequest = false
+
+      const responseHeaders = Array.from(response.headers["headers"].entries())
+
+
+      this.request!.result!.headers =responseHeaders.map( x => {
+
+        var val = x as [string, string[]]
+
+        var header : Header = {
+          key : val[0],
+          value : val[1][0]
+        }
+
+        return header
+      })
 
     }, (e: HttpErrorResponse) => {
 
@@ -65,7 +79,7 @@ export class RequestComponent implements OnInit {
 
       this.request!.result!.code = e.status
       this.request!.result!.status = e.error
-      this.request!.result!.headers = e.headers["headers"]
+      this.request!.result!.headers = e.headers["headers"].entries()
       this.request!.result!.time = new Date().getTime() - this.request!.result!.date
 
       console.log(e)

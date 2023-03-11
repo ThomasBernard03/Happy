@@ -1,10 +1,12 @@
+import { Header } from "./header.interface"
+
 export interface Result {
     guid : string
     requestGuid : string
     code : number
     status : string
     body : string
-    headers : Map<string, string[]>,
+    headers : Array<Header>,
     date : number,
     time : number
     tab : "Body" | "Headers"

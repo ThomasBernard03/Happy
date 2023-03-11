@@ -21,10 +21,10 @@
             <table *ngIf="result.headers">
                 <tr *ngFor="let header of result.headers">
                     <td>
-                        {{header[0]}}
+                        {{header.key}}
                     </td>
                     <td>
-                        {{header[1][0]}}
+                        {{header.value}}
                     </td>
                 </tr>
             </table>
