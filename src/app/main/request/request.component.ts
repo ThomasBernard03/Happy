@@ -55,12 +55,7 @@ export class RequestComponent implements OnInit {
       this.request!.result!.body = JSON.stringify(response.body, null, 2),
       this.request!.result!.time = new Date().getTime() - this.request!.result!.date
 
-      this.requestService.selectedRequest$.next(this.request)
-      this.isSendingRequest = false
-
       const responseHeaders = Array.from(response.headers["headers"].entries())
-
-
       this.request!.result!.headers =responseHeaders.map( x => {
 
         var val = x as [string, string[]]
@@ -73,14 +68,31 @@ export class RequestComponent implements OnInit {
         return header
       })
 
+      this.requestService.selectedRequest$.next(this.request)
+      this.isSendingRequest = false
+
     }, (e: HttpErrorResponse) => {
 
       e.headers.keys()
 
       this.request!.result!.code = e.status
       this.request!.result!.status = e.error
-      this.request!.result!.headers = e.headers["headers"].entries()
       this.request!.result!.time = new Date().getTime() - this.request!.result!.date
+
+
+      const responseHeaders = Array.from(e.headers["headers"].entries())
+      this.request!.result!.headers = responseHeaders.map( x => {
+
+        var val = x as [string, string[]]
+
+        var header : Header = {
+          key : val[0],
+          value : val[1][0]
+        }
+
+        return header
+      })
+
 
       console.log(e)
       this.requestService.selectedRequest$.next(this.request)
