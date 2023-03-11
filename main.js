@@ -31,25 +31,12 @@ function createWindow() {
     }
   })
 
-  settingsWindow = new BrowserWindow({
-    modal : true,
-    show : false,
-    parent : mainWindow
-  })
+  mainWindow.loadURL(`file://${__dirname}/dist/index.html`)
+  state.manage(mainWindow)
 
-
-  
-  settingsWindow.loadURL(`file://${__dirname}/dist/index.html#/settings`)
 
   //appMenu()
 
-  // Load index.html into the new BrowserWindow
-  mainWindow.loadURL(`file://${__dirname}/dist/index.html`)
-
-  state.manage(mainWindow)
-
-  // Open DevTools - Remove for PRODUCTION!
-  // mainWindow.webContents.openDevTools();
 
   // Listen for window being closed
   mainWindow.on('closed', () => {
@@ -59,11 +46,28 @@ function createWindow() {
   mainWindow.on('close', e => {
     app.quit()
   })
+
+
+
+  settingsWindow = new BrowserWindow({
+    modal : true,
+    show : false,
+    parent : mainWindow
+  })
+  settingsWindow.loadURL(`file://${__dirname}/dist/index.html#/settings`)
+
+  settingsWindow.on("blur", e => {
+    settingsWindow.hide()
+  })
 }
 
 
 ipcMain.on("open-settings", (e, args) => {
   settingsWindow.show()
+})
+
+ipcMain.on("close-settings", (e, args) => {
+  settingsWindow.hide()
 })
 
 // Electron `app` is ready
