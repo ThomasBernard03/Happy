@@ -1,3 +1,15 @@
+@media (max-width: 1000px) {
+    main {
+        flex-direction: column !important;
+    }
+
+    section {
+        min-width: calc(100% - 40px)!important;
+        max-width: calc(100% - 40px)!important;
+        width: calc(100% - 40px)!important;
+    }
+}
+
 main {
     display: flex;
     width: 100%;
@@ -17,6 +29,7 @@ main {
         width: calc(50% - 40px);
     }
 
+
     section.request {
         display: flex;
         flex-direction: column;
@@ -28,22 +41,22 @@ main {
 
             select {
                 border-radius: 8px 0 0 8px;
-                border : none;
+                border: none;
                 background-color: var(--dark200);
                 cursor: pointer;
                 padding: 10px;
             }
 
-            input{
+            input {
                 border: none;
                 padding: 10px;
                 background-color: var(--dark200);
-                width:100%;
+                width: 100%;
                 color: white;
             }
 
             button {
-                border:none;
+                border: none;
                 background-color: var(--primary);
                 border-radius: 0 8px 8px 0;
                 color: white;
