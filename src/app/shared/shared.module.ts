@@ -5,13 +5,15 @@ import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { FormsModule } from '@angular/forms';
 import { HappyLoaderComponent } from './happy-loader/happy-loader.component';
 import { LottieModule } from 'ngx-lottie';
+import { HeadersComponent } from './headers/headers.component';
 
 
 
 @NgModule({
   declarations: [
     CodeEditorComponent,
-    HappyLoaderComponent
+    HappyLoaderComponent,
+    HeadersComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,9 @@ import { LottieModule } from 'ngx-lottie';
     LottieModule
   ],
   exports : [
-    CodeEditorComponent, HappyLoaderComponent
+    CodeEditorComponent,
+    HappyLoaderComponent,
+    HeadersComponent
   ]
 })
 export class SharedModule { }

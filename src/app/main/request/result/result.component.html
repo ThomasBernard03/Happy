@@ -18,16 +18,7 @@
         </section>
 
         <section *ngIf="tab == 'Headers'" class="headers">
-            <table *ngIf="result.headers">
-                <tr *ngFor="let header of result.headers">
-                    <td>
-                        {{header.key}}
-                    </td>
-                    <td>
-                        {{header.value}}
-                    </td>
-                </tr>
-            </table>
+            <app-headers [(headers)]="result.headers" [readonly]="true"></app-headers>
         </section>
     </section>
 </main>

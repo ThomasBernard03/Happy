@@ -9,8 +9,11 @@
         <app-code-editor [(content)]="request.body"></app-code-editor>
     </section>
 
-    <section *ngIf="tab == 'Headers'">
-        <h1>Hello from headers</h1>
+    <section *ngIf="tab == 'Headers'" class="headers-content" >
+        <div>
+            <i (click)="onAddHeader()" class="fa-solid fa-plus"></i>
+        </div>
+        <app-headers [(headers)]="request.headers" [readonly]="false"></app-headers>
     </section>
 
     <section *ngIf="tab == 'Notes'">

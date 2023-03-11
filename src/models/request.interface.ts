@@ -1,4 +1,5 @@
 import { RequestMethod } from "./enums/request-method"
+import { Header } from "./header.interface"
 import { Result } from "./result.interface"
 
 export interface Request {
@@ -8,5 +9,6 @@ export interface Request {
     method : RequestMethod
     url : string
     body : string,
+    headers : Header[]
     result? : Result
 }

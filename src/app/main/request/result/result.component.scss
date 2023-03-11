@@ -48,32 +48,6 @@ main {
             overflow: auto;
             flex-grow: 1;
             flex-basis: 0;
-
-            table {
-                width: 100%;
-
-                tr {
-                    height: 40px;
-                    overflow: auto;
-                    color: var(--white);
-
-                    td {
-                        height: 60px;
-                        width: 50%;
-                        word-wrap: break-word;
-                        white-space: pre-wrap;
-                        word-break: break-word;
-                        padding: none;
-                        user-select: all;
-                    }
-                }
-
-                tr:nth-child(odd){
-                    background-color: var(--dark100);
-                }
-            }
-
-
         }
 
         header {

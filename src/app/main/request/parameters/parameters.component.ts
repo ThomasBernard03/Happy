@@ -24,6 +24,16 @@ export class ParametersComponent implements OnInit {
     })
   }
 
+  onAddHeader(){
+    this.request?.headers.push({
+      key : "Your key",
+      value : "Your value"
+    })
+
+    console.log(this.request?.headers);
+    
+  }
+
 
   onBodyClicked(){
     this.tab = "Body"

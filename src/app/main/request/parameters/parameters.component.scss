@@ -32,8 +32,20 @@ main {
         flex-grow: 1;
         border-radius: 0px 0px 8px 8px;
     }
+
+    .headers-content{
+        overflow: auto;
+        flex-basis: 0;
+    }
 }
 
 #request-body-content {
     height: 200px;
+}
+
+i {
+    color: white;
+    font-size: 16pt;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
 }
