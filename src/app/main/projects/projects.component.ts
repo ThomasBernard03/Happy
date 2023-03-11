@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateProjectDialogComponent } from './create-project-dialog/create-project-dialog.component';
 import { ProjectService } from 'src/providers/project.service';
 import { Project } from 'src/models/project.interface';
+import { ElectronService } from 'src/providers/electron.service';
 
 @Component({
   selector: 'app-projects',
@@ -11,7 +12,7 @@ import { Project } from 'src/models/project.interface';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor(private projectService : ProjectService, private dialog : MatDialog){}
+  constructor(private projectService : ProjectService, private dialog : MatDialog, private electronService : ElectronService){}
 
   projects! : Project[]
   selectedProject : Project | null = null
@@ -30,8 +31,11 @@ export class ProjectsComponent implements OnInit {
     const instance = this.dialog.open(CreateProjectDialogComponent)
 
     instance.afterClosed().subscribe(result => {
-      
     })
+  }
+
+  onSettingsButtonClicked(){
+    this.electronService.ipcRenderer?.send("open-settings")
   }
 
   onProjectClick(project : Project){

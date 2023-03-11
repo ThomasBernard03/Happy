@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain, dialog, clipboard, TouchBar, nativeImage } 
 const windowStateKeeper = require('electron-window-state')
 const appMenu = require('./menu')
 
-let mainWindow
+let mainWindow, settingsWindow
 
 // Create a new BrowserWindow when `app` is ready
 function createWindow() {
@@ -31,10 +31,20 @@ function createWindow() {
     }
   })
 
+  settingsWindow = new BrowserWindow({
+    modal : true,
+    show : false,
+    parent : mainWindow
+  })
+
+
+  
+  settingsWindow.loadURL(`file://${__dirname}/dist/index.html#/settings`)
+
   //appMenu()
 
   // Load index.html into the new BrowserWindow
-  mainWindow.loadFile('dist/index.html')
+  mainWindow.loadURL(`file://${__dirname}/dist/index.html`)
 
   state.manage(mainWindow)
 
@@ -50,6 +60,11 @@ function createWindow() {
     app.quit()
   })
 }
+
+
+ipcMain.on("open-settings", (e, args) => {
+  settingsWindow.show()
+})
 
 // Electron `app` is ready
 app.on('ready', createWindow)

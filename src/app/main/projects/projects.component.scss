@@ -7,11 +7,11 @@ main {
     height: calc(100% - 30px);
     overflow: auto;
 
-    div.add_project_button {
+    div.add_project_button, div.settings_button {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 24pt;
+        font-size: 18pt;
         color: white;
         line-height: 0px;
         margin-top: 10px;
