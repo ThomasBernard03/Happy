@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain, dialog, clipboard, TouchBar, nativeImage } = require('electron')
 const windowStateKeeper = require('electron-window-state')
+const appMenu = require('./menu')
 
 let mainWindow
 
@@ -30,6 +31,8 @@ function createWindow() {
     }
   })
 
+  //appMenu()
+
   // Load index.html into the new BrowserWindow
   mainWindow.loadFile('dist/index.html')
 
@@ -46,7 +49,6 @@ function createWindow() {
   mainWindow.on('close', e => {
     app.quit()
   })
-
 }
 
 // Electron `app` is ready
