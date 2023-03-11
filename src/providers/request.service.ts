@@ -31,7 +31,8 @@ export class RequestService {
             name: "New request",
             method: RequestMethod.Get,
             url: "",
-            body: ""
+            body: "",
+            headers : []
         }
 
         this.requests.push(request);

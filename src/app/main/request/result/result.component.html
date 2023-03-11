@@ -10,11 +10,15 @@
 
     <section class="result" *ngIf="result">
         <header>
-            <div id="result_body_tab">Body</div>
-            <div id="result_headers_tab">Headers</div>
+            <div (click)="onBodyClicked()" id="result_body_tab">Body</div>
+            <div (click)="onHeadersClicked()" id="result_headers_tab">Headers</div>
         </header>
-        <section id="result_body_content">
+        <section id="result_body_content" *ngIf="tab == 'Body'">
             <app-code-editor [(content)]="result!.body" [readonly]="true"></app-code-editor>
+        </section>
+
+        <section *ngIf="tab == 'Headers'" class="headers">
+            <app-headers [(headers)]="result.headers" [readonly]="true"></app-headers>
         </section>
     </section>
 </main>

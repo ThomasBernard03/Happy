@@ -33,11 +33,26 @@ main {
         border-radius: 0px 0px 8px 8px;
     }
 
-    #request_auth_content, #request_headers_content, #request_notes_content {
-        display: none;
+    .headers-content{
+        overflow: auto;
+        flex-basis: 0;
+
+        div {
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
     }
 }
 
-#request_body_content {
+#request-body-content {
     height: 200px;
+}
+
+i {
+    color: white;
+    font-size: 16pt;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
 }

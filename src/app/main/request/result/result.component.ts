@@ -13,7 +13,7 @@ export class ResultComponent implements OnInit {
 
   result: Result | null = null
   formatedDate = ""
-
+  tab = "Body"
 
   ngOnInit(): void {
 
@@ -36,5 +36,15 @@ export class ResultComponent implements OnInit {
         this.result = null
       }
     })
+  }
+
+
+
+  onBodyClicked(){
+    this.tab = "Body"
+  }
+
+  onHeadersClicked(){
+    this.tab = "Headers"
   }
 }

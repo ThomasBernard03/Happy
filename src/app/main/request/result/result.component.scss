@@ -41,6 +41,14 @@ main {
         display: flex;
         flex-direction: column;
         gap: 1px;
+        
+
+
+        section.headers {
+            overflow: auto;
+            flex-grow: 1;
+            flex-basis: 0;
+        }
 
         header {
             display: flex;
@@ -70,15 +78,6 @@ main {
             flex-grow: 1;
             overflow: auto;
             border-radius: 0 0 8px 8px;
-        }
-    
-        pre {
-            width: 10px;
-            height: 10px;
-    
-            code {
-                color: white;
-            }
         }
     }
 }

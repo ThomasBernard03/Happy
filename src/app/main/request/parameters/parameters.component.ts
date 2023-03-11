@@ -10,6 +10,7 @@ import { Request } from 'src/models/request.interface';
 export class ParametersComponent implements OnInit {
 
   request : Request | null = null
+  tab = "Body"
 
   constructor(private requestService : RequestService){}
 
@@ -21,45 +22,30 @@ export class ParametersComponent implements OnInit {
       
       this.request = request
     })
+  }
 
-    // const bodyTab = document.getElementById("request_body_tab")
-    // const authTab = document.getElementById("request_auth")
-    // const headersTab = document.getElementById("request_headers")
-    // const notesTab = document.getElementById("request_notes")
+  onAddHeader(){
+    this.request?.headers.push({
+      key : "Your key",
+      value : "Your value"
+    })
 
-    // const bodyContent = document.getElementById("request_body_content")
-    // const authContent = document.getElementById("request_auth_content")
-    // const headersContent = document.getElementById("request_headers_content")
-    // const notesContent = document.getElementById("request_notes_content")
+    console.log(this.request?.headers);
+  }
 
+  onClearHeaders(){
+    this.request!.headers = []
+  }
 
-    // bodyTab?.addEventListener("click", e => {
-    //   bodyContent!.style.display = "flex"
-    //   authContent!.style.display = "none"
-    //   headersContent!.style.display = "none"
-    //   notesContent!.style.display = "none"
-    // })
+  onBodyClicked(){
+    this.tab = "Body"
+  }
 
+  onHeadersClicked(){
+    this.tab = "Headers"
+  }
 
-    // authTab?.addEventListener("click", e => {
-    //   bodyContent!.style.display = "none"
-    //   authContent!.style.display = "flex"
-    //   headersContent!.style.display = "none"
-    //   notesContent!.style.display = "none"
-    // })
-
-    // headersTab?.addEventListener("click", e => {
-    //   bodyContent!.style.display = "none"
-    //   authContent!.style.display = "none"
-    //   headersContent!.style.display = "flex"
-    //   notesContent!.style.display = "none"
-    // })
-
-    // notesTab?.addEventListener("click", e => {
-    //   bodyContent!.style.display = "none"
-    //   authContent!.style.display = "none"
-    //   headersContent!.style.display = "none"
-    //   notesContent!.style.display = "flex"
-    // })
+  onNotesClicked(){
+    this.tab = "Notes"
   }
 }

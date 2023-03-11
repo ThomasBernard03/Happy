@@ -12,6 +12,12 @@
     font-size: 10pt;
 }
 
+.CodeMirror * {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
 /* PADDING */
 
 .CodeMirror-lines {
