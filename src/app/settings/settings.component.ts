@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ElectronService } from 'src/providers/electron.service';
 
 @Component({
@@ -6,10 +6,17 @@ import { ElectronService } from 'src/providers/electron.service';
     templateUrl: 'settings.component.html',
     styleUrls: ['settings.component.scss']
 })
-export class SettingsComponent {
-
+export class SettingsComponent implements OnInit {
 
     constructor(private electronService : ElectronService){}
+
+    ngOnInit(): void {
+        this.electronService.ipcRenderer?.on("on-login", (e, args) => {
+            console.log(e);
+            console.log(args);
+        })
+    }
+
 
 
     closeSettings(){        

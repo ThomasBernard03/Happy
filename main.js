@@ -19,8 +19,8 @@ function createWindow() {
     y: state.y,
     width: state.width,
     height: state.height,
-    minWidth: 800,
-    minHeight: 500,
+    minWidth: 900,
+    minHeight: 600,
     titleBarStyle: 'hidden',
     backgroundColor: '#1B1C21',
     webPreferences: {
@@ -74,11 +74,13 @@ function createWindow() {
 
 app.setAsDefaultProtocolClient('happy');
 
-app.on('open-url', function (event, url) {
-  event.preventDefault();
-  deeplinkingUrl = url;
 
-  console.log(deeplinkingUrl);
+app.on('open-url', function (event, url) {
+  event.preventDefault()
+  deeplinkingUrl = url
+
+  console.log(deeplinkingUrl)
+  settingsWindow.webContents.send('on-login', deeplinkingUrl)
 });
 
 ipcMain.on("open-settings", (e, args) => {

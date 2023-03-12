@@ -1,6 +1,6 @@
 {
   "name": "Happy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "main.js",
   "description": "Http client to test APIs",
   "repository": "https://github.com/ThomasBernard03/Happy",
