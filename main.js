@@ -10,8 +10,8 @@ let deeplinkingUrl
 function createWindow() {
 
   let state = windowStateKeeper({
-    defaultWidth: 900,
-    defaultHeight: 600
+    defaultWidth: 950,
+    defaultHeight: 650
   })
 
   mainWindow = new BrowserWindow({
@@ -19,8 +19,8 @@ function createWindow() {
     y: state.y,
     width: state.width,
     height: state.height,
-    minWidth: 900,
-    minHeight: 600,
+    minWidth: 950,
+    minHeight: 650,
     titleBarStyle: 'hidden',
     backgroundColor: '#1B1C21',
     webPreferences: {
