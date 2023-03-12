@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path : 'settings',
-    component : SettingsComponent
+    loadChildren : () => import('./settings/settings.module').then(x => x.SettingsModule)
   }
 ];
 

@@ -52,7 +52,16 @@ function createWindow() {
   settingsWindow = new BrowserWindow({
     modal : true,
     show : false,
-    parent : mainWindow
+    parent : mainWindow,
+    resizable : false,
+    webPreferences: {
+      // --- !! IMPORTANT !! ---
+      // Disable 'contextIsolation' to allow 'nodeIntegration'
+      // 'contextIsolation' defaults to "true" as from Electron v12
+      contextIsolation: false,
+      nodeIntegration: true,
+      enableRemoteModule: false
+    }
   })
   settingsWindow.loadURL(`file://${__dirname}/dist/index.html#/settings`)
 
