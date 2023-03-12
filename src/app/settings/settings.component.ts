@@ -16,4 +16,9 @@ export class SettingsComponent {
         this.electronService.ipcRenderer?.send("close-settings")
     }
 
+    onLoginWithGithub(){
+        this.electronService.shell?.openExternal("https://github.com/login/oauth/authorize?scope=user:email&client_id=31cd5198b88069a6c76d")
+        // this.electronService.shell?.openExternal("https://github.com/")
+    }
+
 }

@@ -3,6 +3,8 @@ const windowStateKeeper = require('electron-window-state')
 const appMenu = require('./menu')
 
 let mainWindow, settingsWindow
+let deeplinkingUrl
+
 
 // Create a new BrowserWindow when `app` is ready
 function createWindow() {
@@ -70,6 +72,14 @@ function createWindow() {
   // })
 }
 
+app.setAsDefaultProtocolClient('happy');
+
+app.on('open-url', function (event, url) {
+  event.preventDefault();
+  deeplinkingUrl = url;
+
+  console.log(deeplinkingUrl);
+});
 
 ipcMain.on("open-settings", (e, args) => {
   settingsWindow.show()
@@ -78,6 +88,7 @@ ipcMain.on("open-settings", (e, args) => {
 ipcMain.on("close-settings", (e, args) => {
   settingsWindow.hide()
 })
+
 
 // Electron `app` is ready
 app.on('ready', createWindow)

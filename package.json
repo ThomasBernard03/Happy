@@ -5,6 +5,14 @@
   "description": "Http client to test APIs",
   "repository": "https://github.com/ThomasBernard03/Happy",
   "build": {
+    "protocols": [
+      {
+        "name": "happy",
+        "schemes": [
+          "happy"
+        ]
+      }
+    ],
     "appId": "com.thomasbernard.happy",
     "productName": "Happy",
     "files": [
