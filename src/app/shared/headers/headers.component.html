@@ -1,6 +1,10 @@
 <table *ngIf="headers">
     <tr *ngFor="let header of headers">
-        <td>{{header.key}}</td>
-        <td>{{header.value}}</td>
+        <td>
+            <input [readOnly]="readonly" type="text" [(ngModel)]="header.key">
+        </td>
+        <td>
+            <input [readOnly]="readonly" type="text" [(ngModel)]="header.value">
+        </td>
     </tr>
 </table>

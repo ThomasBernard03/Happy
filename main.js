@@ -1,14 +1,17 @@
 const { app, BrowserWindow, ipcMain, dialog, clipboard, TouchBar, nativeImage } = require('electron')
 const windowStateKeeper = require('electron-window-state')
+const appMenu = require('./menu')
 
-let mainWindow
+let mainWindow, settingsWindow
+let deeplinkingUrl
+
 
 // Create a new BrowserWindow when `app` is ready
 function createWindow() {
 
   let state = windowStateKeeper({
-    defaultWidth: 900,
-    defaultHeight: 600
+    defaultWidth: 950,
+    defaultHeight: 650
   })
 
   mainWindow = new BrowserWindow({
@@ -16,8 +19,8 @@ function createWindow() {
     y: state.y,
     width: state.width,
     height: state.height,
-    minWidth: 800,
-    minHeight: 500,
+    minWidth: 950,
+    minHeight: 650,
     titleBarStyle: 'hidden',
     backgroundColor: '#1B1C21',
     webPreferences: {
@@ -30,13 +33,12 @@ function createWindow() {
     }
   })
 
-  // Load index.html into the new BrowserWindow
-  mainWindow.loadFile('dist/index.html')
-
+  mainWindow.loadURL(`file://${__dirname}/dist/index.html`)
   state.manage(mainWindow)
 
-  // Open DevTools - Remove for PRODUCTION!
-  // mainWindow.webContents.openDevTools();
+
+  //appMenu()
+
 
   // Listen for window being closed
   mainWindow.on('closed', () => {
@@ -47,7 +49,48 @@ function createWindow() {
     app.quit()
   })
 
+
+
+  settingsWindow = new BrowserWindow({
+    modal : true,
+    show : false,
+    parent : mainWindow,
+    resizable : false,
+    webPreferences: {
+      // --- !! IMPORTANT !! ---
+      // Disable 'contextIsolation' to allow 'nodeIntegration'
+      // 'contextIsolation' defaults to "true" as from Electron v12
+      contextIsolation: false,
+      nodeIntegration: true,
+      enableRemoteModule: false
+    }
+  })
+  settingsWindow.loadURL(`file://${__dirname}/dist/index.html#/settings`)
+
+  // settingsWindow.on("blur", e => {
+  //   settingsWindow.hide()
+  // })
 }
+
+app.setAsDefaultProtocolClient('happy');
+
+
+app.on('open-url', function (event, url) {
+  event.preventDefault()
+  deeplinkingUrl = url
+
+  console.log(deeplinkingUrl)
+  settingsWindow.webContents.send('on-login', deeplinkingUrl)
+});
+
+ipcMain.on("open-settings", (e, args) => {
+  settingsWindow.show()
+})
+
+ipcMain.on("close-settings", (e, args) => {
+  settingsWindow.hide()
+})
+
 
 // Electron `app` is ready
 app.on('ready', createWindow)

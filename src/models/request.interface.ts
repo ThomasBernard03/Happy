@@ -9,6 +9,7 @@ export interface Request {
     method : RequestMethod
     url : string
     body : string,
-    headers : Header[]
+    headers : Header[],
+    notes : string,
     result? : Result
 }

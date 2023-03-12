@@ -1,0 +1,18 @@
+main {
+    padding: 20px;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+
+        i {
+            cursor: pointer;
+        }
+    }
+
+
+    section {
+        display: flex;
+        align-items: start;
+    }
+}
