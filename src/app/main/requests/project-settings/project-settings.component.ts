@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Project } from 'src/models/project.interface';
+import { DeviceService } from 'src/providers/device.service';
 import { ElectronService } from 'src/providers/electron.service';
 import { ProjectService } from 'src/providers/project.service';
 
@@ -17,7 +18,7 @@ export class ProjectSettingsComponent implements OnInit {
 
   constructor(
     private projectService : ProjectService,
-    private electronService : ElectronService,
+    private deviceService : DeviceService,
     @Inject(MAT_DIALOG_DATA) public data: Project,
     public dialogRef: MatDialogRef<ProjectSettingsComponent>){}
 
@@ -26,15 +27,13 @@ export class ProjectSettingsComponent implements OnInit {
       this.name = this.data.name
       this.picture = this.data.picture
       this.guid = this.data.guid
-
-      this.electronService.ipcRenderer?.on("open-image-picker-result", (e, image) => {
-        this.picture = image
-      })
     }
 
 
     onImageClicked() {
-      this.electronService.ipcRenderer?.send("open-image-picker")
+      this.deviceService.openImagePicker(image => {
+        this.picture = image
+      })
     }
 
 

@@ -111,18 +111,11 @@ app.on('before-quit', e => {
 
 
 // Open a file picker and return image result in base 64
-ipcMain.on("open-image-picker", (e, args) => {
-
-  const options = {
-    filters: [
-      { name: 'Images', extensions: ['png', 'jpg', 'jpeg', 'svg'] }
-    ]
-  }
+ipcMain.on("open-file-picker", (e, options) => {
 
   dialog.showOpenDialog(options).then(result => {
     if (!result.canceled) {
-      const natImage = nativeImage.createFromPath(result.filePaths[0])
-      e.sender.send("open-image-picker-result", natImage.toDataURL())
+      e.sender.send("open-file-picker-result", result.filePaths)
     }
   })
 })

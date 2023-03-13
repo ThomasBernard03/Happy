@@ -6,9 +6,9 @@ import { Request } from 'src/models/request.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestContextMenuComponent } from './request-context-menu/request-context-menu.component';
 import { DialogResult } from 'src/models/enums/dialog-result';
-import { ElectronService } from 'src/providers/electron.service';
 import { ProjectService } from 'src/providers/project.service';
 import { ProjectSettingsComponent } from './project-settings/project-settings.component';
+import { DeviceService } from 'src/providers/device.service';
 
 @Component({
   selector: 'app-requests',
@@ -21,7 +21,7 @@ export class RequestsComponent implements OnInit {
     private requestService: RequestService,
     private projectService : ProjectService,
     private dialog: MatDialog,
-    private electronService : ElectronService) {}
+    private deviceService : DeviceService) {}
 
   project : Project | null = null
   requests?: Request[]
@@ -124,7 +124,7 @@ export class RequestsComponent implements OnInit {
         this.onDoubleClick(request)
       }
       else if (result == DialogResult.Copy){
-        this.electronService.ipcRenderer?.send("add-clipboard", JSON.stringify(this.selectedRequest, null, 2))
+        this.deviceService.addToClipboard(JSON.stringify(this.selectedRequest, null, 2))
       }
     })
   }
