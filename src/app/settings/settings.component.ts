@@ -1,31 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ElectronService } from 'src/providers/electron.service';
+import { OAuthService } from 'src/providers/oauth.service';
 
 @Component({
     selector: 'app-settings',
     templateUrl: 'settings.component.html',
     styleUrls: ['settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent {
 
-    constructor(private electronService : ElectronService){}
-
-    ngOnInit(): void {
-        this.electronService.ipcRenderer?.on("on-login", (e, args) => {
-            console.log(e);
-            console.log(args);
-        })
-    }
-
-
+    constructor(private electronService : ElectronService, private oauthService : OAuthService){}
 
     closeSettings(){        
         this.electronService.ipcRenderer?.send("close-settings")
     }
 
     onLoginWithGithub(){
-        this.electronService.shell?.openExternal("https://github.com/login/oauth/authorize?scope=user:email&client_id=31cd5198b88069a6c76d")
-        // this.electronService.shell?.openExternal("https://github.com/")
+        this.oauthService.getGrantCode()
     }
 
 }

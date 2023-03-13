@@ -1,7 +1,7 @@
 <main>
     <section *ngIf="projects">
         <div (click)="onProjectClick(project)" *ngFor="let project of projects" class="selected_{{selectedProject == project}}">
-            <img src="{{project.picture}}">
+            <img draggable="false" src="{{project.picture}}">
         </div>
     </section>
     <div (click)="onNewProjectButtonClicked()" class="add_project_button"><i class="fa-solid fa-plus"></i></div>

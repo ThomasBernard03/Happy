@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Project } from 'src/models/project.interface';
+import { DeviceService } from 'src/providers/device.service';
 import { ElectronService } from 'src/providers/electron.service';
 import { ProjectService } from 'src/providers/project.service';
 
@@ -18,13 +19,9 @@ export class CreateProjectDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<CreateProjectDialogComponent>,
-    private electronService: ElectronService,
-    private projectService: ProjectService
-  ) {
-    this.electronService.ipcRenderer?.on("open-image-picker-result", (e, image) => {
-      this.projectImage = image
-    })
-  }
+    private projectService: ProjectService,
+    private deviceService : DeviceService
+  ) {}
 
 
   ngOnInit(): void {
@@ -36,7 +33,9 @@ export class CreateProjectDialogComponent implements OnInit {
 
 
   onImageClicked() {
-    this.electronService.ipcRenderer?.send("open-image-picker")
+    this.deviceService.openImagePicker(image => {
+      this.projectImage = image
+    })
   }
 
   onProjectNameChange() {

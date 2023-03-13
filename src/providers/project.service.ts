@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { Project } from 'src/models/project.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ElectronService } from './electron.service';
 
 @Injectable({
     providedIn: 'root'
@@ -11,9 +12,15 @@ export class ProjectService {
     private projects$ = new BehaviorSubject<Project[]>([]);
     selectedProject = new BehaviorSubject<Project | null>(null)
 
-    constructor(){
+    constructor(private electronService : ElectronService){
         this.projects = this.getAllProjectsFromLocalStorage()
         this.projects$.next(this.projects)
+
+
+        this.electronService.ipcRenderer?.once("application_will_quit", (e, args) => {
+            console.log("saving projects...");
+            this.saveProjects()
+        })
     }
 
 
