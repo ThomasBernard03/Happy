@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Request } from 'src/models/request.interface';
 import { HttpService } from 'src/providers/http.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ElectronService } from 'src/providers/electron.service';
 import { RequestService } from 'src/providers/request.service';
 import { Header } from 'src/models/header.interface';
 
@@ -17,7 +16,7 @@ export class RequestComponent implements OnInit {
 
   isSendingRequest = false
 
-  constructor(private httpService: HttpService, private requestService: RequestService, private electronService: ElectronService) { }
+  constructor(private httpService: HttpService, private requestService: RequestService) { }
 
   ngOnInit(): void {
 
