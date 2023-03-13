@@ -74,7 +74,7 @@ export class RequestComponent implements OnInit {
       e.headers.keys()
 
       this.request!.result!.code = e.status
-      this.request!.result!.body = e.error
+      this.request!.result!.body = JSON.stringify(e.error, null, 2)
       this.request!.result!.time = new Date().getTime() - this.request!.result!.date
 
 
