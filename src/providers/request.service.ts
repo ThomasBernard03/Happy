@@ -3,6 +3,7 @@ import { Observable, BehaviorSubject, map } from 'rxjs';
 import { RequestMethod } from 'src/models/enums/request-method';
 import { Project } from 'src/models/project.interface';
 import { Request } from '../models/request.interface';
+import { ElectronService } from './electron.service';
 
 @Injectable({
     providedIn: 'root'
@@ -14,9 +15,14 @@ export class RequestService {
 
     selectedRequest$ = new BehaviorSubject<Request | null>(null);
 
-    constructor() {
+    constructor(private electronService : ElectronService) {
         this.requests = this.getAllRequestsFromLocalStorage()
         this.requests$.next(this.requests)
+
+        this.electronService.ipcRenderer?.once("application_will_quit", (e, args) => {
+            console.log("saving requests...");
+            this.saveRequests()
+        })
     }
 
     saveRequests() {
