@@ -5,6 +5,11 @@ main {
     height: calc(100% - 40px) ;
     padding: 20px;
 
+
+    .no-result {
+        height: 100%;
+    }
+
     section.badges {
 
         display: flex;

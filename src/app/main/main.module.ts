@@ -15,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ProjectSettingsComponent } from './requests/project-settings/project-settings.component';
 import { LoadingViewComponent } from './request/loading-view/loading-view.component';
 import { RequestBarComponent } from './request/request-bar/request-bar.component';
+import { NoResultComponent } from './result/no-result/no-result.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
     ProjectSettingsComponent,
     LoadingViewComponent,
     RequestBarComponent,
+    NoResultComponent,
   ],
   imports: [
     CommonModule,
