@@ -1,0 +1,14 @@
+section {
+    div {
+        cursor: pointer;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        width: 60px;
+    }
+
+    div:hover{
+        background-color: var(--light-grey);
+    }
+}
