@@ -1,21 +1,6 @@
 <main *ngIf="request">
     <section class="request">
-        <div class="request_bar">
-            <select [(ngModel)]="request.method" title="{{request.method}}" class="http_method_{{request.method}}">
-                <option>GET</option>
-                <option>POST</option>
-                <option>PUT</option>
-                <option>DELETE</option>
-            </select>
-            <input [(ngModel)]="request.url" type="url" placeholder="http://your.url.com">
-            <button (click)="onSendButtonClicked()">Send</button>
-        </div>
-
+        <app-request-bar [method]="request.method" [url]="request.url" (onSendRequest)="onSendButtonClicked($event)"></app-request-bar>
         <app-parameters class="parameters"></app-parameters>
-    </section>
-
-    <section class="result">
-        <app-loading-view *ngIf="isSendingRequest"></app-loading-view>
-        <app-result *ngIf="!isSendingRequest"></app-result>
     </section>
 </main>

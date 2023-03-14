@@ -1,6 +1,5 @@
 <main>
-    <app-happy-loader *ngIf="!result"></app-happy-loader>
-
+    <app-no-result class="no-result" *ngIf="!result"></app-no-result>
 
     <section class="badges" *ngIf="result">
         <div class="result_type_{{result.code.toString()[0]}}">{{result.code}} {{result.status}}</div>
