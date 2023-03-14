@@ -36,7 +36,7 @@ export class RequestBarComponent {
     })
 
     instance.afterClosed().subscribe(method => {
-      if(method){
+      if(method && method != this.method){
         this.method = method
         this.methodChange.next(this.method)
       }
