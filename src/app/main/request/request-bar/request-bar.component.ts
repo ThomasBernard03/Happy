@@ -13,6 +13,8 @@ export class RequestBarComponent {
   constructor(private dialog : MatDialog){}
 
   @Input() method = RequestMethod.Get
+  @Output() methodChange = new EventEmitter()
+
   @Input() url = ""
   @Output() onSendRequest = new EventEmitter()
 
@@ -36,6 +38,7 @@ export class RequestBarComponent {
     instance.afterClosed().subscribe(method => {
       if(method){
         this.method = method
+        this.methodChange.next(this.method)
       }
     })
   }
