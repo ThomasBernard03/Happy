@@ -24,9 +24,6 @@ main {
         padding: 20px;
         flex-grow: 1;
         flex-basis: 0;
-        min-width: calc(50% - 40px);
-        max-width: calc(50% - 40px);
-        width: calc(50% - 40px);
     }
 
 
@@ -34,37 +31,6 @@ main {
         display: flex;
         flex-direction: column;
 
-        div.request_bar {
-            display: flex;
-            background-color: var(--dark300);
-            border-radius: 8px;
-            height: 40px;
-
-            select {
-                border-radius: 8px 0 0 8px;
-                border: none;
-                background-color: var(--dark200);
-                cursor: pointer;
-                padding: 10px;
-            }
-
-            input {
-                border: none;
-                padding: 10px;
-                background-color: var(--dark200);
-                width: 100%;
-                color: white;
-            }
-
-            button {
-                border: none;
-                background-color: var(--primary);
-                border-radius: 0 8px 8px 0;
-                color: white;
-                padding: 10px 20px;
-                cursor: pointer;
-            }
-        }
 
 
         .parameters {

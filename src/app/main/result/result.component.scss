@@ -2,7 +2,8 @@ main {
     display: flex;
     flex-direction: column;
     background-color: var(--dark100);
-    height: 100%;
+    height: calc(100% - 40px) ;
+    padding: 20px;
 
     section.badges {
 

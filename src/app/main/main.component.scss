@@ -5,11 +5,7 @@ main {
     display: grid;
     gap: 1px;
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 75px 250px 1fr;
-}
-
-section {
-    background-color: var(--dark100);
+    grid-template-columns: 75px 250px 1fr 1fr;
 }
 
 .projects {
@@ -18,12 +14,20 @@ section {
     background-color: var(--dark100);
 }
 
-section.requests {
+.requests {
     grid-row : 1/3;
     grid-column : 2;
+    background-color: var(--dark100);
 }
 
-section.request {
+.request {
+    background-color: var(--dark100);
     grid-row : 1/3;
     grid-column : 3;
+}
+
+.result {
+    background-color: var(--dark100);
+    grid-row : 1/3;
+    grid-column : 4;
 }

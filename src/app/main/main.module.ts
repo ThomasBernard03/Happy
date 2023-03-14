@@ -8,12 +8,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RequestsComponent } from './requests/requests.component';
 import { FormsModule } from '@angular/forms';
 import { RequestComponent } from './request/request.component';
-import { ResultComponent } from './request/result/result.component';
+import { ResultComponent } from './result/result.component';
 import { ParametersComponent } from './request/parameters/parameters.component';
 import { RequestContextMenuComponent } from './requests/request-context-menu/request-context-menu.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProjectSettingsComponent } from './requests/project-settings/project-settings.component';
 import { LoadingViewComponent } from './request/loading-view/loading-view.component';
+import { RequestBarComponent } from './request/request-bar/request-bar.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
     RequestContextMenuComponent,
     ProjectSettingsComponent,
     LoadingViewComponent,
+    RequestBarComponent,
   ],
   imports: [
     CommonModule,
