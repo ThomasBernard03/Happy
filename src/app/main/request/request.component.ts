@@ -4,6 +4,7 @@ import { HttpService } from 'src/providers/http.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RequestService } from 'src/providers/request.service';
 import { Header } from 'src/models/header.interface';
+import { RequestMethod } from 'src/models/enums/request-method'
 
 @Component({
   selector: 'app-request',
@@ -28,9 +29,12 @@ export class RequestComponent implements OnInit {
     })
   }
 
-  onSendButtonClicked() {
+  onSendButtonClicked(params : {url : string, method : RequestMethod}) {
 
     this.isSendingRequest = true
+
+    this.request!.url = params.url
+    this.request!.method = params.method
 
     this.request!.result = {
       guid: crypto.randomUUID(),
