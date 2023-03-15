@@ -16,6 +16,7 @@ import { ProjectSettingsComponent } from './requests/project-settings/project-se
 import { LoadingViewComponent } from './request/loading-view/loading-view.component';
 import { RequestBarComponent } from './request/request-bar/request-bar.component';
 import { NoResultComponent } from './result/no-result/no-result.component';
+import { SelectMethodDialogComponent } from './request/request-bar/select-method-dialog/select-method-dialog.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
     LoadingViewComponent,
     RequestBarComponent,
     NoResultComponent,
+    SelectMethodDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -4,12 +4,20 @@ section {
     border-radius: 8px;
     height: 40px;
 
-    select {
+    div {
         border-radius: 8px 0 0 8px;
         border: none;
         background-color: var(--dark200);
         cursor: pointer;
         padding: 10px;
+        width: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h5{
+            margin: 0;
+        }
     }
 
     input {
