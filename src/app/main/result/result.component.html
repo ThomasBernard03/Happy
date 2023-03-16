@@ -2,8 +2,10 @@
     <app-no-result class="no-result" *ngIf="!result"></app-no-result>
 
     <section class="badges" *ngIf="result">
-        <div class="result_type_{{result.code.toString()[0]}}">{{result.code}} {{result.status}}</div>
-        <div>{{result.time}} ms</div>
+        <div *ngIf="result.time != 0" class="result_type_{{result.code.toString()[0]}}">{{result.code}} {{result.status}}</div>
+        <div *ngIf="result.time == 0" class="cancel_button">Cancel</div>
+        <div *ngIf="result.time != 0">{{result.time}} ms</div>
+        <div *ngIf="result.time == 0">Loading ...</div>
         <div>{{formatedDate}}</div>
     </section>
 
