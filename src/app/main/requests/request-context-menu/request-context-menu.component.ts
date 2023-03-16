@@ -22,6 +22,10 @@ export class RequestContextMenuComponent {
       this.dialogRef.close(DialogResult.Copy)
     }
 
+    onDuplicateClicked(){
+      this.dialogRef.close(DialogResult.Duplicate)
+    }
+
     onDeleteClicked(){
       this.dialogRef.close(DialogResult.Delete)
     }
