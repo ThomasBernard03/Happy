@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Project } from 'src/models/project.interface';
 import { DeviceService } from 'src/providers/device.service';
@@ -20,7 +20,8 @@ export class CreateProjectDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CreateProjectDialogComponent>,
     private projectService: ProjectService,
-    private deviceService : DeviceService
+    private deviceService : DeviceService,
+    private zone: NgZone
   ) {}
 
 
@@ -34,14 +35,13 @@ export class CreateProjectDialogComponent implements OnInit {
 
   onImageClicked() {
     this.deviceService.openImagePicker(image => {
-      this.projectImage = image
+      this.zone.run(() => {
+        this.projectImage = image
+      })
     })
   }
 
   onProjectNameChange() {
-
-    console.log(name);
-    
     this.errorMessage = ""
     if(this.projectName.trim().length <= 0){
       this.isFormValid = false
