@@ -1,8 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, NgZone } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Project } from 'src/models/project.interface';
 import { DeviceService } from 'src/providers/device.service';
-import { ElectronService } from 'src/providers/electron.service';
 import { ProjectService } from 'src/providers/project.service';
 
 @Component({
@@ -17,6 +16,7 @@ export class ProjectSettingsComponent implements OnInit {
   guid = ""
 
   constructor(
+    private zone : NgZone,
     private projectService : ProjectService,
     private deviceService : DeviceService,
     @Inject(MAT_DIALOG_DATA) public data: Project,
@@ -32,7 +32,9 @@ export class ProjectSettingsComponent implements OnInit {
 
     onImageClicked() {
       this.deviceService.openImagePicker(image => {
-        this.picture = image
+        this.zone.run(() => {
+          this.picture = image
+        })
       })
     }
 

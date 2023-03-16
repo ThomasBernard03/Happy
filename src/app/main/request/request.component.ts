@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { RequestService } from 'src/providers/request.service';
 import { Header } from 'src/models/header.interface';
 import { RequestMethod } from 'src/models/enums/request-method'
+import { Result } from 'src/models/result.interface';
 
 @Component({
   selector: 'app-request',
@@ -14,8 +15,6 @@ import { RequestMethod } from 'src/models/enums/request-method'
 export class RequestComponent implements OnInit {
 
   request: Request | null = null
-
-  isSendingRequest = false
 
   constructor(private httpService: HttpService, private requestService: RequestService) { }
 
@@ -31,21 +30,15 @@ export class RequestComponent implements OnInit {
 
   onSendButtonClicked(params : {url : string, method : RequestMethod}) {
 
-    this.isSendingRequest = true
-
     this.request!.url = params.url
     this.request!.method = params.method
 
-    this.request!.result = {
-      guid: crypto.randomUUID(),
-      requestGuid: this.request!.guid,
-      code: 0,
-      status: "",
-      body: "",
-      headers: new Array(),
-      date: new Date().getTime(),
-      time: 0
-    }
+    this.request!.result = new Result()
+    this.request!.result.guid = crypto.randomUUID()
+    this.request!.result.date = new Date().getTime()
+    this.request!.result.requestGuid = this.request!.guid
+
+    this.requestService.selectedRequest$.next(this.request)
 
     this.httpService.sendRequest(this.request!).subscribe(response => {
 
@@ -70,7 +63,6 @@ export class RequestComponent implements OnInit {
       })
 
       this.requestService.selectedRequest$.next(this.request)
-      this.isSendingRequest = false
 
     }, (e: HttpErrorResponse) => {
 
@@ -97,7 +89,6 @@ export class RequestComponent implements OnInit {
 
       console.log(e)
       this.requestService.selectedRequest$.next(this.request)
-      this.isSendingRequest = false
     })
   }
 }
