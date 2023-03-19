@@ -126,6 +126,9 @@ export class RequestsComponent implements OnInit {
       else if (result == DialogResult.Copy){
         this.deviceService.addToClipboard(JSON.stringify(this.selectedRequest, null, 2))
       }
+      else if (result == DialogResult.Duplicate){
+        this.requestService.duplicateRequest(this.selectedRequest!!)
+      }
     })
   }
 }
