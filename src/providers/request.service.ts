@@ -46,6 +46,14 @@ export class RequestService {
         this.requests$.next(this.requests);
     }
 
+    duplicateRequest(request : Request) : Request{
+        let newRequest = Object.assign({}, request)
+        newRequest.guid = crypto.randomUUID()
+        this.requests.push(newRequest);
+        this.requests$.next(this.requests);
+        return newRequest
+    }
+
     deleteRequest(request: Request) {
         const index = this.requests.indexOf(request)
 
