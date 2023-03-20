@@ -39,18 +39,18 @@ html, body {
 
 }
 
-::-webkit-scrollbar {
-    width: 3px;
-    height: 3px;
-}
+// ::-webkit-scrollbar {
+//     width: 3px;
+//     height: 3px;
+// }
 
-::-webkit-scrollbar-corner {
-    background-color: transparent;
-}
+// ::-webkit-scrollbar-corner {
+//     background-color: transparent;
+// }
 
-::-webkit-scrollbar-thumb {
-    background: var(--dark100);
-}
+// ::-webkit-scrollbar-thumb {
+//     background: var(--dark100);
+// }
 
 *:focus {
     outline-width: 0;
