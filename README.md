@@ -27,8 +27,8 @@ You can install the application by downloading the version of your choice in the
 </p>
 
 <div display="float">
-  <img width="500" alt="Clipboard logo" src="https://user-images.githubusercontent.com/67638928/226652109-28d8f54a-f575-4005-9692-6bb6b91fc73b.png"/>
-  <img width="500" alt="Clipboard logo" src="https://user-images.githubusercontent.com/67638928/226652119-ddee8c3c-fd9d-4731-8f8e-963fdc86ad96.png"/>
+  <img width="400" alt="Clipboard logo" src="https://user-images.githubusercontent.com/67638928/226652109-28d8f54a-f575-4005-9692-6bb6b91fc73b.png"/>
+  <img width="400" alt="Clipboard logo" src="https://user-images.githubusercontent.com/67638928/226652119-ddee8c3c-fd9d-4731-8f8e-963fdc86ad96.png"/>
 </div>
 
 
