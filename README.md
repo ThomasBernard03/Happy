@@ -12,6 +12,7 @@ Happy is an open-source HTTP client application built with Angular and Electron,
 
 - **Project Management**: Easily create, edit, and delete projects to organize your API development work.
 - **Request Management**: Create, modify, and delete requests within your projects, enabling you to test different API endpoints and parameters.
+- **Notes**: You can add notes/documentation to each request
 
 ## ⚡️ Installation
 
