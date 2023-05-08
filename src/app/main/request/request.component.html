@@ -1,6 +1,0 @@
-<main *ngIf="request">
-    <section class="request">
-        <app-request-bar [(method)]="request.method" [url]="request.url" (onSendRequest)="onSendButtonClicked($event)"></app-request-bar>
-        <app-parameters class="parameters"></app-parameters>
-    </section>
-</main>

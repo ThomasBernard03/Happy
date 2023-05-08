@@ -1,8 +1,0 @@
-<section>
-    <div id="request-method-select" (click)="onMethodClicked()">
-        <h5 class="http_method_{{method}}">{{method}}</h5>
-        <i class="fa-solid fa-caret-down http_method_{{method}}"></i>
-    </div>
-    <input [(ngModel)]="url" type="url" placeholder="http://your.url.com">
-    <button (click)="onSendButtonClicked()">Send</button>
-</section>

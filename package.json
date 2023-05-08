@@ -1,87 +1,38 @@
 {
-  "name": "Happy",
-  "version": "1.0.1",
-  "main": "main.js",
-  "description": "Http client to test APIs",
-  "repository": "https://github.com/ThomasBernard03/Happy",
-  "build": {
-    "protocols": [
-      {
-        "name": "happy",
-        "schemes": [
-          "happy"
-        ]
-      }
-    ],
-    "appId": "com.thomasbernard.happy",
-    "productName": "Happy",
-    "files": [
-      "main.js",
-      "menu.js",
-      "private/**",
-      "dist/**/*"
-    ],
-    "directories": {
-      "output": "release"
-    },
-    "publish": {
-      "provider": "github"
-    },
-    "mac": {
-      "category": "public.app-category.productivity",
-      "target": "dmg"
-    },
-    "win": {
-      "target": "zip"
-    },
-    "linux": {
-      "category": "Utility"
-    }
-  },
-  "author": "Thomas Bernard",
+  "name": "happy",
+  "version": "0.0.0",
   "scripts": {
-    "start": "ng build --base-href ./ && electron .",
-    "watch": "nodemon --exec npm run start",
-    "build": "ng build --base-href ./ && electron-builder -mwl",
-    "release": "ng build --base-href ./ && electron-builder -mwl -p 'onTagOrDraft",
-    "angular": "ng serve"
+    "ng": "ng",
+    "start": "ng serve -o",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
-    "@ctrl/ngx-codemirror": "^6.1.0",
-    "codemirror": "^5.65.12",
-    "electron-updater": "^5.3.0",
-    "electron-window-state": "^5.0.3",
-    "lottie-web": "^5.10.2",
-    "ngx-lottie": "^10.0.0",
-    "rxjs": "~7.8.0"
+    "@angular/animations": "^16.0.0",
+    "@angular/common": "^16.0.0",
+    "@angular/compiler": "^16.0.0",
+    "@angular/core": "^16.0.0",
+    "@angular/forms": "^16.0.0",
+    "@angular/platform-browser": "^16.0.0",
+    "@angular/platform-browser-dynamic": "^16.0.0",
+    "@angular/router": "^16.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.13.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^15.2.0",
-    "@angular/animations": "^15.2.0",
-    "@angular/cdk": "~15.2.0",
-    "@angular/cli": "~15.2.0",
-    "@angular/common": "^15.2.0",
-    "@angular/compiler": "^15.2.0",
-    "@angular/compiler-cli": "^15.2.0",
-    "@angular/core": "^15.2.0",
-    "@angular/forms": "^15.2.0",
-    "@angular/material": "~15.2.0",
-    "@angular/platform-browser": "^15.2.0",
-    "@angular/platform-browser-dynamic": "^15.2.0",
-    "@angular/router": "^15.2.0",
+    "@angular-devkit/build-angular": "^16.0.0",
+    "@angular/cli": "~16.0.0",
+    "@angular/compiler-cli": "^16.0.0",
     "@types/jasmine": "~4.3.0",
-    "electron": "^23.1.1",
-    "electron-builder": "^24.0.0",
-    "jasmine-core": "~4.5.0",
+    "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.1.0",
+    "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "nodemon": "^2.0.0",
-    "tslib": "^2.3.0",
-    "typescript": "~4.9.4",
-    "zone.js": "~0.12.0"
+    "typescript": "~5.0.2"
   }
 }
