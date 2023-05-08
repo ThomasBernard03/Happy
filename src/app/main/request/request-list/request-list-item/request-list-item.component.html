@@ -1,0 +1,21 @@
+<main>
+    <span>
+        <!-- <ng-container [ngSwitch]="request?.method">
+            <i *ngSwitchCase="'GET'" class="fa-solid fa-arrow-right get"></i>
+            <i *ngSwitchCase="'POST'" class="fa-solid fa-arrow-right post"></i>
+            <i *ngSwitchCase="'DELETE'" class="fa-solid fa-trash delete"></i>
+            <i *ngSwitchCase="'PATCH'" class="fa-solid fa-bandage patch"></i>
+            <i *ngSwitchCase="'PUT'" class="fa-solid fa-bandage put"></i>
+        </ng-container> -->
+
+        <ng-container [ngSwitch]="request?.method">
+            <h6 *ngSwitchCase="'GET'" class="get">GET</h6>
+            <h6 *ngSwitchCase="'POST'" class="post">POST</h6>
+            <h6 *ngSwitchCase="'DELETE'" class="delete">DEL</h6>
+            <h6 *ngSwitchCase="'PATCH'" class="patch">PTCH</h6>
+            <h6 *ngSwitchCase="'PUT'" class="put">PUT</h6>
+        </ng-container>
+    </span>
+    <hr>
+    <p>{{request?.name}}</p>
+</main>

@@ -1,4 +1,20 @@
 main {
     height: 100%;
     width: 100%;
+    display: flex;
+    gap: 1px;
+
+
+    *{
+        background-color: var(--dark100);
+    }
+
+    .request-list {
+        width: 300px;
+
+    }
+
+    section {
+        flex : 1;
+    }
 } 

@@ -1,0 +1,28 @@
+main {
+    height: calc(100% - 20px) ;
+    width: calc(100% - 20px) ;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+
+    section {
+        flex: 1;
+        overflow: auto;
+    }
+
+    button {
+        border: none;
+        border: 1px solid var(--light);
+        background-color: transparent;
+        border-radius: 8px;
+        padding: 12px 20px;
+        color: var(--light);
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: var(--light);
+        color: var(--dark100);
+    }
+}

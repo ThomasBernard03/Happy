@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RequestComponent } from './request.component';
 import { Router, RouterModule, Routes } from '@angular/router';
+import { RequestListComponent } from './request-list/request-list.component';
+import { RequestListItemComponent } from './request-list/request-list-item/request-list-item.component';
 
 
 const routes: Routes = [
@@ -19,7 +21,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    RequestComponent
+    RequestComponent,
+    RequestListComponent,
+    RequestListItemComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,62 @@
+main {
+    background-color: var(--dark200);
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    gap: 8px;
+
+    span {
+        padding: 12px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h6 {
+            font-size: 12pt;
+        }
+
+        .get {
+            color: var(--get);
+            // rotate: 135deg;
+        }
+
+        .post {
+            color: var(--post);
+            // rotate: -45deg;
+        }
+
+        .delete {
+            color: var(--delete);
+        }
+
+        .patch {
+            color: var(--patch);
+        }
+
+        .put {
+            color: var(--put);
+        }
+
+    }
+
+    hr {
+        border: 1px solid var(--dark300);
+    }
+
+
+    p {
+        padding: 12px 0;
+        margin: 0;
+        color: var(--light);
+    }
+}
+
+main:hover {
+    background-color: var(--dark300);
+
+    hr {
+        border: 1px solid var(--dark200);
+    }
+}
