@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: MainComponent,
     children : [
-      // { path: 'home', loadChildren:() => import('./home/home.module').then(x => x.HomeModule)},
+       { path: 'request', loadChildren:() => import('./request/request.module').then(x => x.RequestModule)},
       // { path: 'shelter', loadChildren: () => import('./shelter/shelter.module').then(x => x.ShelterModule)},
       // { path: 'settings', loadChildren: () => import('./settings/settings.module').then(x => x.SettingsModule)},
       // { path: 'logout', loadChildren: () => import('../authentication/authentication.module').then(x => x.AuthenticationModule)},

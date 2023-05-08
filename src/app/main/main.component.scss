@@ -21,6 +21,10 @@ main {
         i:hover {
             color: var(--primary);
         }
+
+        i.active {
+            color: var(--primary);
+        } 
     }
 
 
