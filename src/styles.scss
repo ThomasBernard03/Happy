@@ -1,6 +1,8 @@
 * {
     margin: 0;
     padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
+    user-select: none;
 }
 
 :root {
@@ -8,8 +10,11 @@
     --dark100 : #1B1C21;
     --dark200 : #232429;
     --dark300 : #2F3136;
+    --dark400 : #51545d;
     --white : #FFFFFF;
     --light : #F5F5F5;
+    --grey300 : #999999;
+    --grey200 : #E0E0E0;
 
 
     --get : #319E73;

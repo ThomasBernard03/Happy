@@ -1,17 +1,38 @@
 main {
-    height: calc(100% - 20px) ;
-    width: calc(100% - 20px) ;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+
+    header {
+        height: 40px;
+        display: flex;
+        background-color: var(--dark300);
+        align-items: center;
+        padding: 8px;
+        cursor: pointer;
+
+
+        h1 {
+            color: var(--grey200);
+            font-size: 14pt;
+        }
+
+        i {
+            margin-left: auto;
+            color: var(--grey200);
+        }
+    }
 
 
     section {
         flex: 1;
         overflow: auto;
+        padding: 8px;
     }
 
     button {
+        margin: 8px;
         border: none;
         border: 1px solid var(--light);
         background-color: transparent;

@@ -1,0 +1,19 @@
+[
+    {
+        "guid" : "l7b5f47d-8f6d-4319-bef7-1c21c10d7cb3",
+        "name" : "collection 1",
+        "environments" : [
+            {
+                "name" : "Développement"
+            }
+        ],
+        "requests" : [
+            {
+                "guid" : "k7e768e8-8e02-4170-a36e-546f364fbf23",
+                "name" : "request 1",
+                "url" : "https://your.url",
+                "method" : "GET"
+            }
+        ]
+    }
+]

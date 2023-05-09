@@ -4,7 +4,6 @@ main {
     cursor: pointer;
     border-radius: 8px;
     display: flex;
-    gap: 8px;
 
     span {
         padding: 12px;
@@ -14,7 +13,7 @@ main {
         align-items: center;
 
         h6 {
-            font-size: 12pt;
+            font-size: 8pt;
         }
 
         .get {
@@ -49,7 +48,8 @@ main {
     p {
         padding: 12px 0;
         margin: 0;
-        color: var(--light);
+        color: var(--grey200);
+        padding: 12px;
     }
 }
 
@@ -57,6 +57,6 @@ main:hover {
     background-color: var(--dark300);
 
     hr {
-        border: 1px solid var(--dark200);
+        border: 1px solid var(--dark400);
     }
 }

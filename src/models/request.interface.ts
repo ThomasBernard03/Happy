@@ -1,7 +1,7 @@
 import { HttpVerb } from "./verb.enum"
 
 export interface Request {
-    id : string
+    guid : string
     name : string
     method : HttpVerb
 }

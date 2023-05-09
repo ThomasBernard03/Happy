@@ -1,8 +1,11 @@
 <main>
+    <header>
+        <h1>Collection 1</h1>
+        <i class="fa-solid fa-chevron-down"></i>
+    </header>
     <section>
         <app-request-list-item [request]="request" *ngFor="let request of requests"/>
     </section>
-
 
     <button>New request</button>
 </main>
