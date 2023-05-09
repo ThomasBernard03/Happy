@@ -1,0 +1,18 @@
+main {
+    background-color: var(--dark300);
+    display: flex;
+    height: 100%;
+    width: 100%;
+    gap: 1px;
+
+    * {
+        background-color: var(--dark100);
+        flex: 1;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        flex-direction: column;
+    }
+}
