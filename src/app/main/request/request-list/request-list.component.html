@@ -4,7 +4,7 @@
         <i class="fa-solid fa-chevron-down"></i>
     </header>
     <section>
-        <app-request-list-item [request]="request" *ngFor="let request of requests"/>
+        <app-request-list-item [request]="request" *ngFor="let request of requests" [routerLink]="request.guid"/>
     </section>
 
     <button>New request</button>
