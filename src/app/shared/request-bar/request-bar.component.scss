@@ -10,7 +10,7 @@ section {
         background-color: var(--dark200);
         cursor: pointer;
         padding: 10px;
-        width: 100px;
+        width: 120px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -32,7 +32,7 @@ section {
         border: none;
         background-color: var(--primary);
         border-radius: 0 8px 8px 0;
-        color: white;
+        color: var(--light);
         padding: 10px 20px;
         cursor: pointer;
     }

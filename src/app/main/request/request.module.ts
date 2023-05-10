@@ -7,6 +7,7 @@ import { RequestListItemComponent } from './request-list/request-list-item/reque
 import { RequestDetailComponent } from './request-detail/request-detail.component';
 import { RequestDetailRequestComponent } from './request-detail/request-detail-request/request-detail-request.component';
 import { RequestDetailResponseComponent } from './request-detail/request-detail-response/request-detail-response.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ]
 })
 export class RequestModule { }

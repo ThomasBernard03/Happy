@@ -1,7 +1,7 @@
 export enum HttpVerb {
-    Get = "GET",
-    Post = "POST",
-    Put = "PUT",
-    Patch = "PATCH",
-    Delete = "DELETE"
+    Get = "get",
+    Post = "post",
+    Put = "put",
+    Patch = "patch",
+    Delete = "delete"
 }

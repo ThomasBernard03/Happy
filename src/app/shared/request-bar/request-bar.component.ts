@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { HttpVerb } from 'src/models/verb.enum';
 import { MatDialog } from '@angular/material/dialog';
-import { SelectMethodDialogComponent } from './select-method-dialog/select-method-dialog.component';
 
 @Component({
   selector: 'app-request-bar',
@@ -12,7 +11,7 @@ export class RequestBarComponent {
 
   constructor(private dialog : MatDialog){}
 
-  @Input() method = RequestMethod.Get
+  @Input() method = HttpVerb.Get
   @Output() methodChange = new EventEmitter()
 
   @Input() url = ""
@@ -41,5 +40,43 @@ export class RequestBarComponent {
         this.methodChange.next(this.method)
       }
     })
+  }
+}
+
+
+import { MatDialogRef } from '@angular/material/dialog';
+
+@Component({
+  selector: 'app-select-method-dialog',
+  template: `
+  <section>
+    <div (click)="onMethodClicked(method)" *ngFor="let method of methods" class="{{method}}">{{method.toUpperCase()}}</div>
+  </section>`,
+  styles : [
+    `section {
+      div {
+          cursor: pointer;
+          height: 20px;
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          width: 120px;
+      }
+  
+      div:hover{
+          background-color: var(--light);
+      }
+  }`
+  ]
+})
+export class SelectMethodDialogComponent {
+
+  methods : HttpVerb[] = [HttpVerb.Get, HttpVerb.Post, HttpVerb.Delete, HttpVerb.Put, HttpVerb.Patch]
+
+  constructor(public dialogRef: MatDialogRef<SelectMethodDialogComponent>){}
+
+
+  onMethodClicked(method : HttpVerb){
+    this.dialogRef.close(method)
   }
 }
