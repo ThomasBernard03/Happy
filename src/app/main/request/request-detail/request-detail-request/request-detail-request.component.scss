@@ -1,5 +1,18 @@
 main {
+    height: calc(100% - 40px);
+    width: calc(100% - 40px) ;
     display: flex;
     flex-direction: column;
-    padding: 8px;
+    gap: 20px;
+    padding: 20px;
+
+    section {
+        display: block;
+        flex: 1;
+    }
+}
+
+.test {
+    flex: 1;
+    background-color: red;
 }

@@ -1,0 +1,11 @@
+<main>
+  <header>
+    <div *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
+      {{tab.title}}
+    </div>
+  </header>
+
+  <section>
+    <ng-content></ng-content>
+  </section>
+</main>

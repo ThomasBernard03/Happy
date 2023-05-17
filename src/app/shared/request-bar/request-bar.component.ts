@@ -60,7 +60,7 @@ import { MatDialogRef } from '@angular/material/dialog';
           display: flex;
           align-items: center;
           padding: 10px;
-          width: 120px;
+          width: 80px;
       }
   
       div:hover{
